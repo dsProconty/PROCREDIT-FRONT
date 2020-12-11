@@ -1,22 +1,40 @@
-<h2 mat-dialog-title>Felicidades</h2>
-<mat-dialog-content class="mat-typography">
-  <h3>Para poder ahorrar tu dinero en manera flexible necesitas abrir tu cuenta.</h3>
+<div class="container-fluid text-center">
+    <h1 mat-dialog-title class="text-center" style="font-family: amaranth-bold;">Felicidades</h1>
+    <img src="../../assets/images/circles-colors.svg" class="text-center" style="margin-top: -5%;" alt="" width="100" height="40">
+</div>
 
 
-  <h3>Incredible tooling</h3>
-  <p>Build features quickly with simple, declarative templates. Extend the template language with
-    your own components and use a wide array of existing components. Get immediate Angular-specific
-    help and feedback with nearly every IDE and editor. All this comes together so you can focus
-    on building amazing apps rather than trying to make the code work.</p>
-    <h3>Speed &amp; Performance</h3>
+<!-- <div class="text-center">
+    <img src="../../assets/images/franja.png" alt="" width="900" height="6">
+    <img src="../../assets/images/circles-colors.svg" alt="" width="100" height="40">
 
-  <h3>Loved by millions</h3>
-  <p>From prototype through global deployment, Angular delivers the productivity and scalable
-    infrastructure that supports Google's largest applications.</p>
-
+</div> -->
+<mat-dialog-content class="mat-typography" style="font-family: amaranth-bold;">
+    <h2 style="font-family: amaranth-bold;">Estas a pocos minutos de tener una cuenta en el Banco Alemán en Ecuador,</h2>
+    <h2 style="font-family: amaranth-bold;">donde rentabilizarás tus ahorros con la mejor tasa de interés del mercado</h2>
+    <h2 style="font-family: amaranth-bold;"> al 3.50 % anual, sin restricción de monto y plazo.</h2>
+    <h2 style="font-family: amaranth-bold;" class="text-center">Solo descarga nuestra app y en pocos minutos abrirás tu cuenta.</h2>
 
 </mat-dialog-content>
+<div class="container-flui text-center">
+    <div class="btn-group" role="group" aria-label="Basic example" style="display: block !important;">
+        <a href="https://play.google.com/store/apps/details?id=bancoprocredit.ecuador.procreditmovil&amp;hl=es_HN" target="_blank" style="margin-right: 1%;">
+            <img src="../../assets/images/playstore.svg" alt="" width="100" height="40">
+        </a>
+        <a href="https://apps.apple.com/ec/app/banco-procredit-ecuador/id1529010293" target="_blank" style="margin-right: 1%;">
+            <img src="../../assets/images/apple.svg" alt="" width="100" height="40">
+        </a>
+        <a href="https://appgallery.huawei.com/#/app/C103095315?locale=es_US&source=appshare&subsource=C103095315" target="_blank">
+            <img src="../../assets/images/huawei.svg" alt="" width="100" height="40">
+        </a>
+    </div>
+
+</div>
+
+
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cerrar</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Tienda</button>
+    <button mat-button mat-dialog-close cdkFocusInitial style="font-family: amaranth-bold;">Cerrar</button>
+    <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Tienda</button> -->
+
+
 </mat-dialog-actions>
