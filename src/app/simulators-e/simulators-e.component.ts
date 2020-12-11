@@ -449,20 +449,18 @@ export class SimulatorsEComponent implements OnInit {
     if (this.francesa.is_visible) {
       //credito educativo
       let docDefinition = {
-        footer:
-        {
-
+        footer: {
           columns: [
             {
               // width:'*',
               image: await this.getBase64ImageFromURL(
-                '../../assets/images/franja.png'
+                '../../assets/images/footer3Pdf.PNG'
                 // "https://images.pexels.com/photos/209640/pexels-photo-209640.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=300"
               ),
               width: 600,
-              heigth: 1
+              heigth: 1,
             },
-          ]
+          ],
         },
         header:
         {
@@ -505,27 +503,68 @@ export class SimulatorsEComponent implements OnInit {
             text: '  ',
           },
           {
-            table: {
-              layout: 'lightHorizontalLines',
-              headerRows: 1,
-              widths: ['auto', 'auto'],
-              body: [
-                [{ text: 'Detalles Simulación', alignment: 'center', fillColor: '#b40c15', color: 'white', colSpan: 2 }, {}],
-                [{ text: 'Monto del Préstamo', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.valorPrestamo)}`],
-                [{ text: 'Plazo (Meses)', bold: true }, `${this.numeroCuotas}`],
-                [{ text: 'Tasa de Interés', bold: true }, `${this.tasaInteresAnual.toFixed(2)}%`],
-                [{ text: 'Tasa Interés Periódica', bold: true }, `${this.tasaInteresPeriodica.toFixed(2)}%`],
-                [{ text: 'Tasa Interés Efectiva', bold: true }, `${(this.tasaEfectiva*100).toFixed(2)}%`],
-                [{ text: 'Tasa Seguro', bold: true }, `${this.porcentajeSD.toFixed(3)}%`],
-                [{ text: 'Total Seguro a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaSeguroDesgravamenF)}`],
-                [{ text: 'Contribución SOLCA 0.5%', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.solca)}`],
+            columns: [
+              {
+                table: {
+                  layout: 'lightHorizontalLines',
+                  headerRows: 1,
+                  widths: ['auto', 'auto'],
+                  body: [
+                    [{ text: 'Detalles Simulación', alignment: 'center', fillColor: '#b40c15', color: 'white', colSpan: 2 }, {}],
+                    [{ text: 'Monto del Préstamo', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.valorPrestamo)}`],
+                    [{ text: 'Plazo (Meses)', bold: true }, `${this.numeroCuotas}`],
+                    [{ text: 'Tasa de Interés', bold: true }, `${this.tasaInteresAnual.toFixed(2)}%`],
+                    [{ text: 'Tasa Interés Periódica', bold: true }, `${this.tasaInteresPeriodica.toFixed(2)}%`],
+                    [{ text: 'Tasa Interés Efectiva', bold: true }, `${(this.tasaEfectiva*100).toFixed(2)}%`],
+                    [{ text: 'Tasa Seguro', bold: true }, `${this.porcentajeSD.toFixed(3)}%`],
+                    [{ text: 'Total Seguro a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaSeguroDesgravamenF)}`],
+                    [{ text: 'Contribución SOLCA 0.5%', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.solca)}`],
 
-                [{ text: 'Liquido a Recibir', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.liquidoRecibir)}`],
-                [{ text: 'Cuota a Pagar Periódicamente', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.cuotaPagarF)}`],
-                [{ text: 'Total Interés a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaInteresesF)}`],
-              ]
-            }
+                    [{ text: 'Liquido a Recibir', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.liquidoRecibir)}`],
+                    [{ text: 'Cuota a Pagar Periódicamente', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.cuotaPagarF)}`],
+                    [{ text: 'Total Interés a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaInteresesF)}`],
+                  ]
+                },
+                width: 350,
+              },
+              // {text: ' ', fontSize: 14, bold: true, margin: [0, 20, 0, 8]},
+              {
+                table: {
+                  // layout: 'lightHorizontalLines',
+                  headerRows: 1,
+                  widths: ['auto'],
+                  body: [
+                    [{ text: 'Visita Nuestra Página Web', alignment: 'right' }],
+                    [{ qr: `https://www.bancoprocredit.com.ec/`, fit: '100' }],
+                  ],
+                },
+                alignment: 'center',
+                layout: 'noBorders',
+              },
+            ],
           },
+          // {
+          //   table: {
+          //     layout: 'lightHorizontalLines',
+          //     headerRows: 1,
+          //     widths: ['auto', 'auto'],
+          //     body: [
+          //       [{ text: 'Detalles Simulación', alignment: 'center', fillColor: '#b40c15', color: 'white', colSpan: 2 }, {}],
+          //       [{ text: 'Monto del Préstamo', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.valorPrestamo)}`],
+          //       [{ text: 'Plazo (Meses)', bold: true }, `${this.numeroCuotas}`],
+          //       [{ text: 'Tasa de Interés', bold: true }, `${this.tasaInteresAnual.toFixed(2)}%`],
+          //       [{ text: 'Tasa Interés Periódica', bold: true }, `${this.tasaInteresPeriodica.toFixed(2)}%`],
+          //       [{ text: 'Tasa Interés Efectiva', bold: true }, `${(this.tasaEfectiva*100).toFixed(2)}%`],
+          //       [{ text: 'Tasa Seguro', bold: true }, `${this.porcentajeSD.toFixed(3)}%`],
+          //       [{ text: 'Total Seguro a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaSeguroDesgravamenF)}`],
+          //       [{ text: 'Contribución SOLCA 0.5%', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.solca)}`],
+
+          //       [{ text: 'Liquido a Recibir', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.liquidoRecibir)}`],
+          //       [{ text: 'Cuota a Pagar Periódicamente', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.cuotaPagarF)}`],
+          //       [{ text: 'Total Interés a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaInteresesF)}`],
+          //     ]
+          //   }
+          // },
           {
             aligment: 'center',
             text: '  ',
@@ -556,19 +595,19 @@ export class SimulatorsEComponent implements OnInit {
               ],
             }
           },
-          {
-            aligment: 'center',
-            text: 'Visita Nuestra Página Web',
-          },
-          {
-            aligment: 'center',
-            text: '  ',
-          },
-          {
-            columns: [
-              [{ qr: `https://www.bancoprocredit.com.ec/`, fit: '100' }],
-            ]
-          },
+          // {
+          //   aligment: 'center',
+          //   text: 'Visita Nuestra Página Web',
+          // },
+          // {
+          //   aligment: 'center',
+          //   text: '  ',
+          // },
+          // {
+          //   columns: [
+          //     [{ qr: `https://www.bancoprocredit.com.ec/`, fit: '100' }],
+          //   ]
+          // },
 
         ],
         styles: {
@@ -621,20 +660,18 @@ export class SimulatorsEComponent implements OnInit {
     } else if (this.alemana.is_visible) {
       // credito educativo Simulacion Alemana
       let docDefinition = {
-        footer:
-        {
-
+        footer: {
           columns: [
             {
               // width:'*',
               image: await this.getBase64ImageFromURL(
-                '../../assets/images/franja.png'
+                '../../assets/images/footer3Pdf.PNG'
                 // "https://images.pexels.com/photos/209640/pexels-photo-209640.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=300"
               ),
               width: 600,
-              heigth: 1
+              heigth: 1,
             },
-          ]
+          ],
         },
         header:
         {
@@ -677,28 +714,70 @@ export class SimulatorsEComponent implements OnInit {
             text: '  ',
           },
           {
-            table: {
-              layout: 'lightHorizontalLines', // optional
-              headerRows: 1,
-              widths: ['auto', 'auto'],
-              body: [
-                [{ text: 'Detalles Simulación', alignment: 'center', fillColor: '#b40c15', color: 'white', colSpan: 2 }, {}],
-                [{ text: 'Monto del Prestamo', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.valorPrestamo)}`],
-                [{ text: 'Plazo (Meses)', bold: true }, `${this.numeroCuotas}`],
-                [{ text: 'Tasa de Interés', bold: true }, `${this.tasaInteresAnual.toFixed(2)}%`],
-                [{ text: 'Tasa Interés Periodica', bold: true }, `${this.tasaInteresPeriodica.toFixed(2)}`],
-                [{ text: 'Tasa Interés Efectiva', bold: true }, `${(this.tasaEfectiva*100).toFixed(2)}%`],
-                [{ text: 'Tasa Seguro', bold: true }, `${this.porcentajeSD.toFixed(2)}%`],
-                [{ text: 'Total Seguro a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaSeguroDesgravamenA)}`],
-                [{ text: 'Contribución SOLCA 0.5%', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.solca)}`],
+            columns: [
+              {
+                table: {
+                  layout: 'lightHorizontalLines', // optional
+                  headerRows: 1,
+                  widths: ['auto', 'auto'],
+                  body: [
+                    [{ text: 'Detalles Simulación', alignment: 'center', fillColor: '#b40c15', color: 'white', colSpan: 2 }, {}],
+                    [{ text: 'Monto del Prestamo', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.valorPrestamo)}`],
+                    [{ text: 'Plazo (Meses)', bold: true }, `${this.numeroCuotas}`],
+                    [{ text: 'Tasa de Interés', bold: true }, `${this.tasaInteresAnual.toFixed(2)}%`],
+                    [{ text: 'Tasa Interés Periodica', bold: true }, `${this.tasaInteresPeriodica.toFixed(2)}`],
+                    [{ text: 'Tasa Interés Efectiva', bold: true }, `${(this.tasaEfectiva*100).toFixed(2)}%`],
+                    [{ text: 'Tasa Seguro', bold: true }, `${this.porcentajeSD.toFixed(2)}%`],
+                    [{ text: 'Total Seguro a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaSeguroDesgravamenA)}`],
+                    [{ text: 'Contribución SOLCA 0.5%', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.solca)}`],
 
-                [{ text: 'Liquido a Recibir', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.liquidoRecibir)}`],
-                [{ text: 'Cuota Inicial', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.cuotaInicial)}`],
-                // [{ text: 'Cuota a Pagar Periodicamente', bold: true }, `$${this.cuotaPagarF.toFixed(2)}`],
-                [{ text: 'Total Interés a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaIntereses)}`],
-              ]
-            }
+                    [{ text: 'Liquido a Recibir', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.liquidoRecibir)}`],
+                    [{ text: 'Cuota Inicial', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.cuotaInicial)}`],
+                    // [{ text: 'Cuota a Pagar Periodicamente', bold: true }, `$${this.cuotaPagarF.toFixed(2)}`],
+                    [{ text: 'Total Interés a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaIntereses)}`],
+                  ]
+                },
+                width: 350,
+              },
+              // {text: ' ', fontSize: 14, bold: true, margin: [0, 20, 0, 8]},
+              {
+                table: {
+                  // layout: 'lightHorizontalLines',
+                  headerRows: 1,
+                  widths: ['auto'],
+                  body: [
+                    [{ text: 'Visita Nuestra Página Web', alignment: 'right' }],
+                    [{ qr: `https://www.bancoprocredit.com.ec/`, fit: '100' }],
+                  ],
+                },
+                alignment: 'center',
+                layout: 'noBorders',
+              },
+            ],
           },
+          // {
+          //   table: {
+          //     layout: 'lightHorizontalLines', // optional
+          //     headerRows: 1,
+          //     widths: ['auto', 'auto'],
+          //     body: [
+          //       [{ text: 'Detalles Simulación', alignment: 'center', fillColor: '#b40c15', color: 'white', colSpan: 2 }, {}],
+          //       [{ text: 'Monto del Prestamo', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.valorPrestamo)}`],
+          //       [{ text: 'Plazo (Meses)', bold: true }, `${this.numeroCuotas}`],
+          //       [{ text: 'Tasa de Interés', bold: true }, `${this.tasaInteresAnual.toFixed(2)}%`],
+          //       [{ text: 'Tasa Interés Periodica', bold: true }, `${this.tasaInteresPeriodica.toFixed(2)}`],
+          //       [{ text: 'Tasa Interés Efectiva', bold: true }, `${(this.tasaEfectiva*100).toFixed(2)}%`],
+          //       [{ text: 'Tasa Seguro', bold: true }, `${this.porcentajeSD.toFixed(2)}%`],
+          //       [{ text: 'Total Seguro a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaSeguroDesgravamenA)}`],
+          //       [{ text: 'Contribución SOLCA 0.5%', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.solca)}`],
+
+          //       [{ text: 'Liquido a Recibir', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.liquidoRecibir)}`],
+          //       [{ text: 'Cuota Inicial', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.cuotaInicial)}`],
+          //       // [{ text: 'Cuota a Pagar Periodicamente', bold: true }, `$${this.cuotaPagarF.toFixed(2)}`],
+          //       [{ text: 'Total Interés a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaIntereses)}`],
+          //     ]
+          //   }
+          // },
           {
             aligment: 'center',
             text: '  ',
@@ -733,19 +812,19 @@ export class SimulatorsEComponent implements OnInit {
             }
           },
 
-          {
-            aligment: 'center',
-            text: 'Visita Nuestra Página Web',
-          },
-          {
-            aligment: 'center',
-            text: '  ',
-          },
-          {
-            columns: [
-              [{ qr: `https://www.bancoprocredit.com.ec/`, fit: '100' }],
-            ]
-          },
+          // {
+          //   aligment: 'center',
+          //   text: 'Visita Nuestra Página Web',
+          // },
+          // {
+          //   aligment: 'center',
+          //   text: '  ',
+          // },
+          // {
+          //   columns: [
+          //     [{ qr: `https://www.bancoprocredit.com.ec/`, fit: '100' }],
+          //   ]
+          // },
 
         ],
         styles: {
