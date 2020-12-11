@@ -58,6 +58,10 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 import { SimulatorsEComponent } from './simulators-e/simulators-e.component';
+import { SimulatorsAfComponent } from './simulators-af/simulators-af.component';
+import { SimulatorsAdpfComponent } from './simulators-adpf/simulators-adpf.component';
+import { SimulatorsIpComponent } from './simulators-ip/simulators-ip.component';
+import { SimulatorsVComponent } from './simulators-v/simulators-v.component';
 
 
 // import { routing } from './app.routing';
@@ -70,6 +74,10 @@ import { SimulatorsEComponent } from './simulators-e/simulators-e.component';
     SimulatorsComponent,
     DialogExampleComponent,
     SimulatorsEComponent,
+    SimulatorsAfComponent,
+    SimulatorsAdpfComponent,
+    SimulatorsIpComponent,
+    SimulatorsVComponent,
 
   ],
   imports: [
