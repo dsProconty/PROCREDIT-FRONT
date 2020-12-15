@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+    <title>Simulaodor Ahorro DPF Banco Procredit</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +11,6 @@
 </head>
 
 <body>
-
     <div class="container">
         <img src="../../assets/images/franja.png" width="100%" height="6">
     </div>
@@ -18,11 +18,8 @@
         <img src="https://www.bancoprocredit.com.ec/wp-content/uploads/2020/10/logo.png" style="margin-bottom: -5%;" width="25%" height="100%">
     </div>
     <div>
-
         <div class="container-fluid  div-principal">
             <mat-tab-group #mattabgroup (selectedTabChange)="_selectedTabChange($event.index)" (selectedIndexChange)="_selectedIndexChange($event)" [selectedIndex]="selectedIndex" mat-align-tabs="center">
-
-
                 <mat-tab label="Depósito a Plazo Fijo" class="mat-tab-body-content" style="overflow: initial;">
                     <br><br>
                     <h2 class="titulo-simulador">Simulador Depósito a Plazo Fijo</h2>
@@ -67,7 +64,6 @@
                   </label>
                                 </div>
                             </div>
-
                         </div>
                         <div class="col-md-6 div-lado-derecho">
                             <div class="container-fluid div-imagen-marco">
@@ -103,14 +99,12 @@
                                                     <input value=" {{retentionDpf | currency}}" readonly class="input-td-2">
                                                 </td>
                                             </tr>
-                                            <!-- <div class="div-td" style="background-color: #244c8c;"> -->
                                             <tr style="background-color: #244c8c;">
                                                 <th>Total Recibir:</th>
                                                 <td class="txt-align-r">
                                                     <input class="input-td-2 td-div-input" value="{{totalDpf | currency}}" readonly>
                                                 </td>
                                             </tr>
-                                            <!-- </div> -->
                                             <tr>
                                                 <th class="">Tasa de interés</th>
                                                 <td class="txt-align-r">
@@ -128,104 +122,14 @@
                                 <img src="../../assets/images/flechas_azules.PNG" width="10%" height="15" class="img-flechas">
                                 <button class="btn btn-info boton-descargar" style="background-color: #005294;  color:white; font-weight: 500" (click)="generatePDF()">Descargar</button>
                             </div>
-
                         </div>
                     </div>
                 </mat-tab>
-
-
-
             </mat-tab-group>
-            <div class="row">
-                <div class="div-tabla-francesa">
-                    <div *ngIf="amortizacionF.is_visible" style="overflow: xscroll;">
-                        <div style="text-align: center;">
-                            <h2>Tabla de Amortización Francesa</h2>
-                        </div>
-                        <table class="table table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        #Cuota
-                                    </th>
-                                    <th>
-                                        Interés del Periodo
-                                    </th>
-                                    <th>
-                                        Capital Amortizado
-                                    </th>
-                                    <th>
-                                        Seguro
-                                    </th>
-                                    <th>
-                                        Cuota a Pagar
-                                    </th>
-                                    <th>
-                                        Saldo Remanente
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let data of dataFrances">
-                                    <td>{{data.numeroCuota}}</td>
-                                    <td>{{data.interesPeriodo | currency}}</td>
-                                    <td>{{data.capitalAmortizado | currency}}</td>
-                                    <td>{{data.seguro | currency}}</td>
-                                    <td>{{data.cuotaPagar | currency}}</td>
-                                    <td>{{data.saldoRemanente | currency}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div *ngIf="amortizacionIA.is_visible" style="overflow: xscroll;">
-                        <div style="text-align: center;">
-                            <h2>Tabla de Amortización Alemana</h2>
-                        </div>
-                        <table class="table table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        #Cuota
-                                    </th>
-                                    <th>
-                                        Interés del Periodo
-                                    </th>
-                                    <th>
-                                        Capital Amortizado
-                                    </th>
-                                    <th>
-                                        Seguro
-                                    </th>
-                                    <th>
-                                        Cuota a Pagar
-                                    </th>
-                                    <th>
-                                        Saldo Remanente
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let data of dataAleman">
-                                    <td>{{data.numeroCuota}}</td>
-                                    <td>{{data.interesPeriodo | currency}}</td>
-                                    <td>{{data.capitalAmortizado | currency}}</td>
-                                    <td>{{data.seguro | currency}}</td>
-                                    <td>{{data.cuotaPagar | currency}}</td>
-                                    <td>{{data.saldoRemanente | currency}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-            </div>
             <div class="container">
                 <div>
-
                     <div class="form-group grupo-botones">
-                        <!-- <button class="btn btn-light boton-lq-dialog" *ngIf="itemS==0" (click)="openDialog()">Lo Quiero!</button> -->
                         <button class="btn btn-light boton-lq-cliente" (click)="new()">Lo Quiero!</button>
-
                     </div>
                 </div>
                 <div class="form-group" *ngIf="crud_operation.is_visible" style="text-align: center;">

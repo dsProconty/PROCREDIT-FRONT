@@ -39,15 +39,16 @@ example-button-toggle-label {
 /* CSS to change Default/'Accent' color */
 
 ::ng-deep .mat-accent .mat-slider-thumb {
-    background-color: #959398;
+    background-color: #005294;
 }
 
 ::ng-deep .mat-accent .mat-slider-thumb-label {
-    background-color: black;
+    background-color: #005294;
 }
 
 ::ng-deep .mat-accent .mat-slider-track-fill {
-    background-color: #959398;
+    background-color: #005294;
+    ;
 }
 
 ::ng-deep .mat-tab-label,
@@ -102,7 +103,7 @@ height: 700px; */
     overflow: initial;
     display: flex;
     transition: height 500ms cubic-bezier(0.35, 0, 0.25, 1);
-    height: 43em;
+    height: 39em;
 }
 
 ::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-track-wrapper {
@@ -120,22 +121,18 @@ height: 700px; */
     background-color: #959398;
 }
 
-::ng-deep .mat-accent .mat-slider-thumb {
-    /* height: 30px; */
-    /* width: 30px; */
-    background-color: #959398;
-    /* border: solid 2px #959398; */
-    /* bottom: -20px; */
-    /* right: -20px; */
+::ng-deep .mat-slider-thumb-label {
+    background-color: #005294;
 }
 
-::ng-deep .mat-slider-min-value:not(.mat-slider-thumb-label-showing) .mat-slider-thumb {
-    background-color: #959398;
+::ng-deep .mat-slider-min-value.mat-slider-thumb-label-showing .mat-slider-thumb,
+.mat-slider-min-value.mat-slider-thumb-label-showing .mat-slider-thumb-label {
+    background-color: #005294;
 }
 
 ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar,
 .mat-tab-nav-bar.mat-primary .mat-ink-bar {
-    background-color: #b40c15;
+    background-color: #005294;
 }
 
 
