@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
     <div class="container">
         <img src="../../assets/images/franja.png" width="100%" height="6">
     </div>
@@ -18,7 +17,6 @@
         <img src="https://www.bancoprocredit.com.ec/wp-content/uploads/2020/10/logo.png" style="margin-bottom: -5%;" width="25%" height="100%">
     </div>
     <div>
-
         <div class="container-fluid  div-principal">
             <mat-tab-group #mattabgroup (selectedTabChange)="_selectedTabChange($event.index)" (selectedIndexChange)="_selectedIndexChange($event)" [selectedIndex]="selectedIndex" mat-align-tabs="center">
 
@@ -67,10 +65,8 @@
                     días</label>
                                 </div>
                             </div>
-
                         </div>
                         <div class="col-md-6 div-lado-derecho">
-
                             <div class="container-fluid div-imagen-marco">
                                 <img src="../../assets//images//marco-rojo.png" style="position: absolute; margin-top: -30%; margin-left: -25%; width: 160%;  -webkit-transform: rotate(6deg);">
                             </div>
@@ -104,14 +100,12 @@
                                                     <input value=" {{retention | currency}}" readonly class="input-td-2">
                                                 </td>
                                             </tr>
-                                            <!-- <div class="div-td" style="background-color: #cc242c;"> -->
                                             <tr style="background-color: #cc242c;">
                                                 <th>Total Recibir:</th>
                                                 <td class="txt-align-r ">
                                                     <input class="input-td-2 td-div-input" value="{{total | currency}}" readonly>
                                                 </td>
                                             </tr>
-                                            <!-- </div> -->
                                             <tr>
                                                 <th class="">Tasa de interés</th>
                                                 <td class="txt-align-r">
@@ -121,7 +115,6 @@
                                         </table>
                                     </div>
                                 </div>
-
                                 <div class="col-md-4 div-img-detalle" style=" background-color: #b40c15;">
                                     <img alt="ImgImgImg" src="../../assets/images/img-flex.jpg" width="500" height="600" class="img-detalle" />
                                 </div>
@@ -130,14 +123,12 @@
                                 <img src="../../assets/images/flechas_rojas.PNG" width="10%" height="15" class="img-flechas">
                                 <button class="btn btn-info boton-descargar" style="background-color: #b40c15;  color:white; font-weight: 500" (click)="generatePDF()">Descargar</button>
                             </div>
-
                         </div>
                     </div>
                 </mat-tab>
             </mat-tab-group>
             <div class="container">
                 <div>
-
                     <div class="form-group grupo-botones">
                         <button class="btn btn-light boton-lq-dialog" *ngIf="itemS==0" (click)="openDialog()">Lo Quiero!</button>
 

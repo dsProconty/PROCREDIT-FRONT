@@ -1,6 +1,5 @@
 import {
   Component,
-  DEFAULT_CURRENCY_CODE,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -8,14 +7,12 @@ import { ToastrService } from 'ngx-toastr';
 import { Client } from '../client';
 import { ClientService } from '../client.service';
 import { MatTabGroup } from '@angular/material/tabs';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { MatDialog } from '@angular/material/dialog';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { DialogExampleComponent } from '../dialog-example/dialog-example.component';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { CurrencyPipe, formatCurrency } from '@angular/common';
 declare var hbspt: any; // put this at the top
 
@@ -505,7 +502,6 @@ export class SimulatorsComponent implements OnInit {
       this.cuotaInicial = this.cuotaPagarIA;
       for (let i = 0; i < this.numeroCuotas; i++) {
         /**Calculo Aleman */
-        // this.valorSeguroDesgravamen = this.saldoRemanenteIA * this.porcentajeSeguroDesgravamen / 12;
         this.dataAleman.push({
           numeroCuota: i + 1,
           interesPeriodo: this.interesDelPeriodoIA,
@@ -533,15 +529,12 @@ export class SimulatorsComponent implements OnInit {
 
   simuladorInmobiliario(): void {
     this.limpiarTabla();
-
     if (this.checked) {
       this.tasaInteresAnual = this.tasaEcoCreditoInmobiliario;
     } else {
       this.tasaInteresAnual = this.tasaCreditoInmobiliario;
     }
     // this.limpiarTabla();
-    /**Variables globales para los dos sistemas */
-    // this.tasaInteresAnual = this.tasaCreditoEducativo;
     this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
     this.porcentajeSeguroDesgravamen = 0.684 / 100;
 
@@ -624,7 +617,6 @@ export class SimulatorsComponent implements OnInit {
         this.saldoRemanenteF = this.saldoRemanenteF - this.capitalAmortizadoF;
       }
       console.log('suma seguro d', this.sumaSeguroDesgravamenF);
-
       /**Calculo Aleman */
       //valor fijo capital amortizado calculo aleman
       this.sumaIntereses = 0;
@@ -645,7 +637,6 @@ export class SimulatorsComponent implements OnInit {
       this.cuotaInicial = this.cuotaPagarIA;
       for (let i = 0; i < this.numeroCuotas; i++) {
         /**Calculo Aleman */
-        // this.valorSeguroDesgravamen = this.saldoRemanenteIA * this.porcentajeSeguroDesgravamen / 12;
         this.dataAleman.push({
           numeroCuota: i + 1,
           interesPeriodo: this.interesDelPeriodoIA,
@@ -704,7 +695,7 @@ export class SimulatorsComponent implements OnInit {
       );
     } else {
       /**Calculo Frances */
-      //valores calculo frances
+
       this.capitalAmortizadoF = 0;
       this.sumaInteresesF = 0;
       this.sumaSeguroDesgravamenF = 0;
@@ -753,7 +744,6 @@ export class SimulatorsComponent implements OnInit {
         this.saldoRemanenteF = this.saldoRemanenteF - this.capitalAmortizadoF;
       }
       console.log('suma seguro d', this.sumaSeguroDesgravamenF);
-
       /**Calculo Aleman */
       //valor fijo capital amortizado calculo aleman
       this.sumaIntereses = 0;
@@ -774,7 +764,6 @@ export class SimulatorsComponent implements OnInit {
       this.cuotaInicial = this.cuotaPagarIA;
       for (let i = 0; i < this.numeroCuotas; i++) {
         /**Calculo Aleman */
-        // this.valorSeguroDesgravamen = this.saldoRemanenteIA * this.porcentajeSeguroDesgravamen / 12;
         this.dataAleman.push({
           numeroCuota: i + 1,
           interesPeriodo: this.interesDelPeriodoIA,
@@ -799,7 +788,6 @@ export class SimulatorsComponent implements OnInit {
       }
     }
   }
-  /************************************************************************** */
 
   /************************************************************************** */
   //Funciones Simuladores de Ahorro
@@ -828,21 +816,17 @@ export class SimulatorsComponent implements OnInit {
     } else {
       console.log('tiempo min dpf', this.tiempoMinAhorroDpf);
       if (this.amountDpf < 0) {
-        // this.amountDpf = 5000;
-        // this.termDpf = this.tiempoMinAhorroDpf;
-        this.toastr.warning('Limites Fuera de Rango ', 'Advertencia', {
+     this.toastr.warning('Limites Fuera de Rango ', 'Advertencia', {
           timeOut: 4500,
         });
       } else {
         this.tiempoDiasDpf = 0;
         this.tiempoDiasDpf = this.termDpf * 30 + 1;
         console.log('Tiempo en dias', this.tiempoDiasDpf);
-        // this.termDpf=this.termDpf*30+1
         this.returnRateDpf =
           (this.amountDpf * this.tiempoDiasDpf * this.tasaAhorroDpf) /
           360 /
           100;
-        // this.returnRateDpf = this.amountDpf * this.termDpf * this.tasaAhorroDpf / 360 / 100 * 30.4167;
         this.retentionDpf = this.returnRateDpf * 0.02;
         this.totalDpf = this.amountDpf + this.returnRateDpf - this.retentionDpf;
       }
@@ -851,7 +835,6 @@ export class SimulatorsComponent implements OnInit {
 
   /******************************************************************************** */
 
-  /************************************** */
   //Funciones para Guardar el formulario de cliente mediante el api
   new() {
     this.current_clien = new Client();
@@ -879,7 +862,6 @@ export class SimulatorsComponent implements OnInit {
   }
   /********************************** */
 
-  /************************************************ */
   //Funciones formato mat-slider
   formatoTiempo(value: number) {
     if (value >= 1000) {
@@ -1914,7 +1896,6 @@ export class SimulatorsComponent implements OnInit {
               // width:'*',
               image: await this.getBase64ImageFromURL(
                 '../../assets/images/footer3Pdf.PNG'
-                // "https://images.pexels.com/photos/209640/pexels-photo-209640.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=300"
               ),
               width: 600,
               heigth: 1,
@@ -1924,10 +1905,8 @@ export class SimulatorsComponent implements OnInit {
         header: {
           columns: [
             {
-              // width:'*',
               image: await this.getBase64ImageFromURL(
                 '../../assets/images/franja.png'
-                // "https://images.pexels.com/photos/209640/pexels-photo-209640.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=300"
               ),
               width: 600,
               heigth: 1,
@@ -1940,7 +1919,6 @@ export class SimulatorsComponent implements OnInit {
               {
                 image: await this.getBase64ImageFromURL(
                   '../../assets/images/logo.png'
-                  // "https://images.pexels.com/photos/209640/pexels-photo-209640.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=300"
                 ),
                 width: 150,
               },
@@ -1965,7 +1943,7 @@ export class SimulatorsComponent implements OnInit {
             columns: [
               {
                 table: {
-                  layout: 'lightHorizontalLines', // optional
+                  layout: 'lightHorizontalLines',
                   headerRows: 1,
                   widths: ['auto', 'auto'],
                   body: [
@@ -2035,7 +2013,6 @@ export class SimulatorsComponent implements OnInit {
                         currency: 'USD',
                       }).format(this.cuotaInicial)}`,
                     ],
-                    // [{ text: 'Cuota a Pagar Periodicamente', bold: true }, `$${this.cuotaPagarF.toFixed(2)}`],
                     [
                       { text: 'Total Interés a Pagar', bold: true },
                       `${Intl.NumberFormat('en-US', {
@@ -2047,10 +2024,8 @@ export class SimulatorsComponent implements OnInit {
                 },
                 width: 350,
               },
-              // {text: ' ', fontSize: 14, bold: true, margin: [0, 20, 0, 8]},
               {
                 table: {
-                  // layout: 'lightHorizontalLines',
                   headerRows: 1,
                   widths: ['auto'],
                   body: [
@@ -2063,29 +2038,6 @@ export class SimulatorsComponent implements OnInit {
               },
             ],
           },
-          // {
-          //   table: {
-          //     layout: 'lightHorizontalLines', // optional
-          //     headerRows: 1,
-          //     widths: ['auto', 'auto'],
-          //     body: [
-          //       [{ text: 'Detalles Simulación', alignment: 'center', fillColor: '#b40c15', color: 'white', colSpan: 2 }, {}],
-          //       [{ text: 'Monto del Préstamo', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.valorPrestamo)}`],
-          //       [{ text: 'Plazo (Meses)', bold: true }, `${this.numeroCuotas}`],
-          //       [{ text: 'Tasa de Interés', bold: true }, `${this.tasaInteresAnual.toFixed(2)}%`],
-          //       [{ text: 'Tasa Interés Periodica', bold: true }, `${this.tasaInteresPeriodica.toFixed(2)}`],
-          //       [{ text: 'Tasa Interés Efectiva', bold: true }, `${(this.tasaEfectivaV*100).toFixed(2)}%`],
-          //       [{ text: 'Tasa Seguro', bold: true }, `${this.porcentajeSD.toFixed(2)}%`],
-          //       [{ text: 'Total Seguro a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaSeguroDesgravamenA)}`],
-          //       [{ text: 'Contribución SOLCA 0.5%', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.solcaV)}`],
-
-          //       [{ text: 'Liquido a Recibir', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.liquidoRecibirV)}`],
-          //       [{ text: 'Cuota Inicial', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.cuotaInicial)}`],
-          //       // [{ text: 'Cuota a Pagar Periodicamente', bold: true }, `$${this.cuotaPagarF.toFixed(2)}`],
-          //       [{ text: 'Total Interés a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaIntereses)}`],
-          //     ]
-          //   }
-          // },
           {
             aligment: 'center',
             text: '  ',
@@ -2167,19 +2119,6 @@ export class SimulatorsComponent implements OnInit {
             },
           },
 
-          // {
-          //   aligment: 'center',
-          //   text: 'Visita Nuestra Página Web',
-          // },
-          // {
-          //   aligment: 'center',
-          //   text: '  ',
-          // },
-          // {
-          //   columns: [
-          //     [{ qr: `https://www.bancoprocredit.com.ec/`, fit: '100' }],
-          //   ],
-          // },
         ],
         styles: {
           table: {

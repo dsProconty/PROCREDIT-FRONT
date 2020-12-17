@@ -20,11 +20,7 @@
     <div>
 
         <div class="container-fluid  div-principal">
-            <mat-tab-group #mattabgroup (selectedTabChange)="_selectedTabChange($event.index)" (selectedIndexChange)="_selectedIndexChange($event)" [selectedIndex]="selectedIndex" mat-align-tabs="center">
-
-
-
-
+            <mat-tab-group #mattabgroup mat-align-tabs="center">
                 <mat-tab label="Crédito Inversión Personal">
                     <br><br>
                     <h2 class="titulo-simulador">Simulador Crédito Inversion Personal</h2>
@@ -80,7 +76,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <br> -->
                                 <div class="button-group div-tiempos-y-montos" style="background-color: #f46c24; color:white; font-weight: 500; ">
                                     <label class="label-limites-tiempos" style="color:white; font-weight: 500">Tiempo mínimo
                     {{tiempoMinCreditoInversion}} meses,
@@ -131,14 +126,12 @@
                                                     <input value="{{liquidoRecibirP | currency}}" readonly class="input-td-2">
                                                 </td>
                                             </tr>
-                                            <!-- <div class="div-td" style="background-color: #f45424;"> -->
                                             <tr style="background-color: #f45424;">
                                                 <th>Cuota inicial:</th>
                                                 <td class="txt-align-r">
                                                     <input class="input-td-2 input-td-2-creditoA" value="{{cuotaInicial | currency}}" readonly>
                                                 </td>
                                             </tr>
-                                            <!-- </div> -->
                                             <tr>
                                                 <th class="">Total interés a pagar:</th>
                                                 <td class=" txt-align-r">
@@ -174,14 +167,12 @@
                                                     <input value="{{liquidoRecibirP | currency}}" readonly class="input-td-2">
                                                 </td>
                                             </tr>
-                                            <!-- <div class="div-td-2" style="background-color: #f45424 ; "> -->
                                             <tr style="background-color: #f45424 ; ">
                                                 <th> Cuota a pagar:</th>
                                                 <td class="txt-align-r">
                                                     <input class="input-td-2 input-td-2-creditof" value="{{cuotaPagarF | currency}}" readonly>
                                                 </td>
                                             </tr>
-                                            <!-- </div> -->
                                             <tr>
                                                 <th class=""> Total interés a pagar:</th>
                                                 <td class="txt-align-r ">
@@ -200,15 +191,10 @@
                                 <button class="btn btn-info boton-descargar" style="background-color: #f46c24;  color:white; font-weight: 500" (click)="generatePDF()">Descargar</button>
                             </div>
                         </div>
-
                     </div>
                     <div class="row">
-
-
                     </div>
                 </mat-tab>
-
-
             </mat-tab-group>
             <div class="row">
                 <div class="div-tabla-francesa">

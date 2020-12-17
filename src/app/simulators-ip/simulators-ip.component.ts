@@ -49,34 +49,12 @@ export class SimulatorsIpComponent implements OnInit {
 
  //cerratTabla variable para guardar el estado del boton de cerrar tabla
  cerrarTabla = { is_visible: false };
-
  botonSimulacion = { is_visible: false };
-
  botonSimulacion2 = { is_visible: true };
-
- //selectIndex guarda el estado del matSlider
- selectedIndex = 0;
 
  //francesa y alemana variables para uardar el estado de las tablas de datos de simuladores
  francesa = { is_visible: true };
  alemana = { is_visible: false };
-
- //*****************************************************
- /*Variables Simuladores Ahorro*/
- //Ahorro Flex
- amount: number;
- term: number;
- returnRate: number;
- retention: number;
- total: number;
-
- //Ahorro DPF
- amountDpf: number;
- termDpf: number;
- returnRateDpf: number;
- retentionDpf: number;
- totalDpf: number;
- //****************************************************** */
 
  //*****************************************************
  /*Variables Simuladores Credito*/
@@ -115,38 +93,17 @@ export class SimulatorsIpComponent implements OnInit {
  /***************************************************** */
 
  /**Variables Creditos para guardar peticiones del API */
- tasaCreditoEducativo: number;
+
  tasaCreditoInversion: number;
- tasaCreditoInmobiliario: number;
- tasaEcoCreditoInmobiliario: number;
- montoMinCreditoEducativo: number;
  montoMinCreditoInversion: number;
- montoMinCreditoInmobiliario: number;
- montoMaxCreditoEducativo: number;
  montoMaxCreditoInversion: number;
- montoMaxCreditoInmobiliario: number;
- tiempoMinCreditoEducativo: number;
  tiempoMinCreditoInversion: number;
- tiempoMinCreditoInmobiliario: number;
- tiempoMaxCreditoEducativo: number;
  tiempoMaxCreditoInversion: number;
- tiempoMaxCreditoInmobiliario: number;
 
- /**Variables Ahorros para guardar peticiones del API */
 
- tasaAhorroFlexSave: number;
- tasaAhorroDpf: number;
- tiempoMinAhorroFlexSave: number;
- tiempoMinAhorroDpf: number;
- tiempoMaxAhorroFlexSave: number;
- tiempoMaxAhorroDpf: number;
 
  /**Varibles para almacenar las consultas api de credito y ahorro */
- datosFlexSaving = null;
- datosDpfSaving = null;
- datosCreditoEducativo = null;
  datosCreditoInversion = null;
- datosCreditoInmobiliario = null;
 
  porcentajeSD = null;
  nombreProducto: string;
@@ -157,11 +114,6 @@ export class SimulatorsIpComponent implements OnInit {
  tasaEfectivaP: number;
  solcaP: number;
 
- liquidoRecibirV: number;
- tasaEfectivaV: number;
- tasaEfectivaVEco: number;
-
- solcaV: number;
  cp: CurrencyPipe;
 
  constructor(
@@ -171,15 +123,8 @@ export class SimulatorsIpComponent implements OnInit {
  ) {
    this.data = [];
    this.itemS = 0;
-   this.nombreProducto = 'Ahorro DPF';
+   this.nombreProducto = 'Crédito Inversión Personal';
    this.francesa.is_visible = true;
-
-   this.termDpf = 6;
-   this.term = this.tiempoMinAhorroFlexSave;
-   this.amountDpf = 5000;
-   this.amount = 1;
-   this.nombreProducto = 'Credito Inversion Personal';
-
  }
 
  openDialog() {
@@ -187,54 +132,6 @@ export class SimulatorsIpComponent implements OnInit {
  }
 
  ngOnInit(): void {
-   this.service.getFlexSaving().subscribe(
-     (datos) => {
-       this.datosFlexSaving = datos;
-       for (let x of this.datosFlexSaving) {
-         this.tasaAhorroFlexSave = x.rate;
-         this.tiempoMinAhorroFlexSave = x.minimum_time;
-         this.tiempoMaxAhorroFlexSave = x.maximum_time;
-       }
-       console.log('TasaFlex', this.tasaAhorroFlexSave);
-     },
-     (error) => {
-       console.log('ERROR DE CONEXION', error);
-       this.refresh();
-     }
-   );
-   this.service.getDpfSaving().subscribe(
-     (datos) => {
-       this.datosDpfSaving = datos;
-       for (let x of this.datosDpfSaving) {
-         this.tasaAhorroDpf = x.rate;
-         this.tiempoMinAhorroDpf = x.minimum_time;
-         this.tiempoMaxAhorroDpf = x.maximum_time;
-       }
-       console.log('tasadpf', this.tasaAhorroDpf);
-     },
-     (error) => {
-       console.log('ERROR DE CONEXION', error);
-       this.refresh();
-     }
-   );
-   this.service.getCreditoEducativo().subscribe(
-     (datos) => {
-       this.datosCreditoEducativo = datos;
-       for (let x of this.datosCreditoEducativo) {
-         this.tasaCreditoEducativo = x.tasa;
-         this.montoMinCreditoEducativo = x.montomin;
-         this.montoMaxCreditoEducativo = x.montomax;
-         this.tiempoMinCreditoEducativo = x.tiempomin;
-         this.tiempoMaxCreditoEducativo = x.tiempomax;
-       }
-
-       console.log('tasaeducativo', this.tasaCreditoEducativo);
-     },
-     (error) => {
-       console.log('ERROR DE CONEXION', error);
-       this.refresh();
-     }
-   );
    this.service.getCreditoInversion().subscribe(
      (datos) => {
        this.datosCreditoInversion = datos;
@@ -249,29 +146,6 @@ export class SimulatorsIpComponent implements OnInit {
          Math.pow(1 + this.tasaCreditoInversion / 12 / 100, 12) - 1;
 
        console.log('tasainversion', this.tasaCreditoInversion);
-     },
-     (error) => {
-       console.log('ERROR DE CONEXION', error);
-       this.refresh();
-     }
-   );
-   this.service.getCreditoInmobiliario().subscribe(
-     (datos) => {
-       this.datosCreditoInmobiliario = datos;
-       for (let x of this.datosCreditoInmobiliario) {
-         this.tasaCreditoInmobiliario = x.tasa;
-         this.montoMinCreditoInmobiliario = x.montomin;
-         this.montoMaxCreditoInmobiliario = x.montomax;
-         this.tiempoMinCreditoInmobiliario = x.tiempomin;
-         this.tiempoMaxCreditoInmobiliario = x.tiempomax;
-         this.tasaEcoCreditoInmobiliario = x.tasa_ecologica;
-       }
-       this.tasaEfectivaV =
-         Math.pow(1 + this.tasaCreditoInmobiliario / 12 / 100, 12) - 1;
-       this.tasaEfectivaVEco =
-         Math.pow(1 + this.tasaEcoCreditoInmobiliario / 12 / 100, 12) - 1;
-
-       console.log('Tasa ecologica', this.tasaEcoCreditoInmobiliario);
      },
      (error) => {
        console.log('ERROR DE CONEXION', error);
@@ -324,47 +198,14 @@ export class SimulatorsIpComponent implements OnInit {
 
  _selectedTabChange(index: number) {
    console.log('_selectTabChange ' + index);
-   this.limpiarDatos();
-   if (index == 0 || index == 1) {
-     this.francesa.is_visible = false;
-   } else {
-     this.francesa.is_visible = true;
-   }
-   if (index == 0) {
-    this.francesa.is_visible = true;
-
-    this.nombreProducto = 'Credito Inversion Personal';
-    this.itemS = 0;
-    this.valorPrestamo = this.montoMinCreditoInversion;
-    this.numeroCuotas = this.tiempoMinCreditoInversion;
-    this.simuladorInversion();
-   } else if (index == 1) {
-     this.itemS = 1;
-     this.termDpf = this.tiempoMinAhorroDpf;
-     this.nombreProducto = 'Ahorro DPF';
-     this.dpfSave();
-   } else if (index == 2) {
-     this.nombreProducto = 'Credito Inversion';
-     this.itemS = 2;
-     this.valorPrestamo = this.montoMinCreditoInversion;
-     this.numeroCuotas = this.tiempoMinCreditoInversion;
-     this.simuladorInversion();
-   } else {
-     this.itemS = 3;
-     this.nombreProducto = 'Credito Inmobilirio ';
-     this.valorPrestamo = this.montoMinCreditoInmobiliario;
-     this.numeroCuotas = this.tiempoMinCreditoInmobiliario;
-     this.simuladorInmobiliario();
-   }
  }
 
  _selectedIndexChange(index: number) {
    console.log('_selectedIndexChange ' + index);
  }
-
  _select(index: number) {
    console.log('_select ' + index);
-   this.selectedIndex = index;
+
  }
 
  /****************************************************************** */
@@ -538,326 +379,6 @@ export class SimulatorsIpComponent implements OnInit {
    }
  }
 
- simuladorInmobiliario(): void {
-   this.limpiarTabla();
-
-   if (this.checked) {
-     this.tasaInteresAnual = this.tasaEcoCreditoInmobiliario;
-   } else {
-     this.tasaInteresAnual = this.tasaCreditoInmobiliario;
-   }
-   // this.limpiarTabla();
-   /**Variables globales para los dos sistemas */
-   // this.tasaInteresAnual = this.tasaCreditoEducativo;
-   this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
-   this.porcentajeSeguroDesgravamen = 0.684 / 100;
-
-   this.solcaV = (this.valorPrestamo * 0.5) / 100;
-   console.log('valor solca', this.solcaV);
-   this.liquidoRecibirV = this.valorPrestamo - this.solcaV;
-   /**Validacion montos y tiempo */
-   if (
-     this.valorPrestamo > this.montoMaxCreditoInmobiliario ||
-     this.valorPrestamo < this.montoMinCreditoInmobiliario
-   ) {
-     this.valorPrestamo = this.montoMinCreditoInmobiliario;
-     this.toastr.warning(
-       'Monto Maximo $30.000, Monto Minimo $1000 ',
-       'Monto Fuera de Rango',
-       {
-         timeOut: 4500,
-       }
-     );
-   } else if (
-     this.numeroCuotas > this.tiempoMaxCreditoInmobiliario ||
-     this.numeroCuotas < this.tiempoMinCreditoInmobiliario
-   ) {
-     this.numeroCuotas = this.tiempoMinCreditoInmobiliario;
-     this.toastr.warning(
-       'Tiempo Maximo 48 Meses, Tiempo Minimo 6 Meses',
-       'Tiempo Fuera de Rango',
-       {
-         timeOut: 4500,
-       }
-     );
-   } else {
-     /**Calculo Frances */
-     //valores calculo frances
-     this.capitalAmortizadoF = 0;
-     this.sumaInteresesF = 0;
-     this.sumaSeguroDesgravamenF = 0;
-     this.base = 1 + this.tasaInteresPeriodica / 100;
-     this.saldoRemanenteF = this.valorPrestamo;
-     this.valorSeguroDesgravamenF =
-       (this.saldoRemanenteF * this.porcentajeSeguroDesgravamen) / 12;
-     this.interesDelPeriodoF =
-       (this.saldoRemanenteF * this.tasaInteresPeriodica) / 100;
-     this.cuotaFrancesa =
-       (this.tasaInteresPeriodica /
-         100 /
-         (1 - Math.pow(this.base, -this.numeroCuotas))) *
-       this.valorPrestamo;
-     this.cuotaPagarF =
-       (this.tasaInteresPeriodica /
-         100 /
-         (1 - Math.pow(this.base, -this.numeroCuotas))) *
-         this.valorPrestamo +
-       this.valorSeguroDesgravamenF;
-     this.capitalAmortizadoF = this.cuotaFrancesa - this.interesDelPeriodoF;
-     this.saldoRemanenteF = this.saldoRemanenteF - this.capitalAmortizadoF;
-     for (let i = 0; i < this.numeroCuotas; i++) {
-       this.dataFrances.push({
-         numeroCuota: i + 1,
-         interesPeriodo: this.interesDelPeriodoF,
-         capitalAmortizado: this.capitalAmortizadoF,
-         seguro: this.valorSeguroDesgravamenF,
-         cuotaPagar: this.cuotaPagarF,
-         saldoRemanente: this.saldoRemanenteF,
-       });
-       this.sumaSeguroDesgravamenF =
-         this.sumaSeguroDesgravamenF + this.valorSeguroDesgravamenF;
-       this.sumaInteresesF = this.sumaInteresesF + this.interesDelPeriodoF;
-       this.valorSeguroDesgravamenF =
-         (this.saldoRemanenteF * this.porcentajeSeguroDesgravamen) / 12;
-       this.interesDelPeriodoF =
-         (this.saldoRemanenteF * this.tasaInteresPeriodica) / 100;
-       this.cuotaPagarF =
-         (this.tasaInteresPeriodica /
-           100 /
-           (1 - Math.pow(this.base, -this.numeroCuotas))) *
-           this.valorPrestamo +
-         this.valorSeguroDesgravamenF;
-       this.capitalAmortizadoF = this.cuotaFrancesa - this.interesDelPeriodoF;
-       this.saldoRemanenteF = this.saldoRemanenteF - this.capitalAmortizadoF;
-     }
-     console.log('suma seguro d', this.sumaSeguroDesgravamenF);
-
-     /**Calculo Aleman */
-     //valor fijo capital amortizado calculo aleman
-     this.sumaIntereses = 0;
-     this.sumaSeguroDesgravamenA = 0;
-     this.saldoRemanenteIA = this.valorPrestamo;
-     this.capitalAmortizadoIA = this.valorPrestamo / this.numeroCuotas;
-     //valores calculo aleman
-     this.interesDelPeriodoIA =
-       (this.saldoRemanenteIA * this.tasaInteresPeriodica) / 100;
-     this.valorSeguroDesgravamen =
-       (this.saldoRemanenteIA * this.porcentajeSeguroDesgravamen) / 12;
-     this.cuotaPagarIA =
-       this.interesDelPeriodoIA +
-       this.capitalAmortizadoIA +
-       this.valorSeguroDesgravamen;
-     this.saldoRemanenteIA = this.saldoRemanenteIA - this.capitalAmortizadoIA;
-     console.log('interes aleman primera cuota', this.interesDelPeriodoIA);
-     this.cuotaInicial = this.cuotaPagarIA;
-     for (let i = 0; i < this.numeroCuotas; i++) {
-       /**Calculo Aleman */
-       // this.valorSeguroDesgravamen = this.saldoRemanenteIA * this.porcentajeSeguroDesgravamen / 12;
-       this.dataAleman.push({
-         numeroCuota: i + 1,
-         interesPeriodo: this.interesDelPeriodoIA,
-         capitalAmortizado: this.capitalAmortizadoIA,
-         seguro: this.valorSeguroDesgravamen,
-         cuotaPagar: this.cuotaPagarIA,
-         saldoRemanente: this.saldoRemanenteIA,
-       });
-       this.sumaSeguroDesgravamenA =
-         this.sumaSeguroDesgravamenA + this.valorSeguroDesgravamen;
-       this.sumaIntereses = this.sumaIntereses + this.interesDelPeriodoIA;
-       this.interesDelPeriodoIA =
-         (this.saldoRemanenteIA * this.tasaInteresPeriodica) / 100;
-       this.valorSeguroDesgravamen =
-         (this.saldoRemanenteIA * this.porcentajeSeguroDesgravamen) / 12;
-       this.cuotaPagarIA =
-         this.interesDelPeriodoIA +
-         this.capitalAmortizadoIA +
-         this.valorSeguroDesgravamen;
-       this.saldoRemanenteIA =
-         this.saldoRemanenteIA - this.capitalAmortizadoIA;
-     }
-   }
- }
-
- simuladorEducativo(): void {
-   this.limpiarTabla();
-   /**Variables globales para los dos sistemas */
-   this.tasaInteresAnual = this.tasaCreditoEducativo;
-   this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
-   this.porcentajeSeguroDesgravamen = 0.684 / 100;
-   /**Validacion montos y tiempo */
-   if (
-     this.valorPrestamo > this.montoMaxCreditoEducativo ||
-     this.valorPrestamo < this.montoMinCreditoEducativo
-   ) {
-     this.valorPrestamo = this.montoMinCreditoEducativo;
-     this.toastr.warning(
-       'Monto Maximo $30.000, Monto Minimo $1000 ',
-       'Monto Fuera de Rango',
-       {
-         timeOut: 4500,
-       }
-     );
-   } else if (
-     this.numeroCuotas > this.tiempoMaxCreditoEducativo ||
-     this.numeroCuotas < this.tiempoMinCreditoEducativo
-   ) {
-     this.numeroCuotas = this.tiempoMinCreditoEducativo;
-     this.toastr.warning(
-       'Tiempo Maximo 48 Meses, Tiempo Minimo 6 Meses',
-       'Tiempo Fuera de Rango',
-       {
-         timeOut: 4500,
-       }
-     );
-   } else {
-     /**Calculo Frances */
-     //valores calculo frances
-     this.capitalAmortizadoF = 0;
-     this.sumaInteresesF = 0;
-     this.sumaSeguroDesgravamenF = 0;
-     this.base = 1 + this.tasaInteresPeriodica / 100;
-     this.saldoRemanenteF = this.valorPrestamo;
-     this.valorSeguroDesgravamenF =
-       (this.saldoRemanenteF * this.porcentajeSeguroDesgravamen) / 12;
-     this.interesDelPeriodoF =
-       (this.saldoRemanenteF * this.tasaInteresPeriodica) / 100;
-     this.cuotaFrancesa =
-       (this.tasaInteresPeriodica /
-         100 /
-         (1 - Math.pow(this.base, -this.numeroCuotas))) *
-       this.valorPrestamo;
-     this.cuotaPagarF =
-       (this.tasaInteresPeriodica /
-         100 /
-         (1 - Math.pow(this.base, -this.numeroCuotas))) *
-         this.valorPrestamo +
-       this.valorSeguroDesgravamenF;
-     this.capitalAmortizadoF = this.cuotaFrancesa - this.interesDelPeriodoF;
-     this.saldoRemanenteF = this.saldoRemanenteF - this.capitalAmortizadoF;
-     for (let i = 0; i < this.numeroCuotas; i++) {
-       this.dataFrances.push({
-         numeroCuota: i + 1,
-         interesPeriodo: this.interesDelPeriodoF,
-         capitalAmortizado: this.capitalAmortizadoF,
-         seguro: this.valorSeguroDesgravamenF,
-         cuotaPagar: this.cuotaPagarF,
-         saldoRemanente: this.saldoRemanenteF,
-       });
-       this.sumaSeguroDesgravamenF =
-         this.sumaSeguroDesgravamenF + this.valorSeguroDesgravamenF;
-       this.sumaInteresesF = this.sumaInteresesF + this.interesDelPeriodoF;
-       this.valorSeguroDesgravamenF =
-         (this.saldoRemanenteF * this.porcentajeSeguroDesgravamen) / 12;
-       this.interesDelPeriodoF =
-         (this.saldoRemanenteF * this.tasaInteresPeriodica) / 100;
-       this.cuotaPagarF =
-         (this.tasaInteresPeriodica /
-           100 /
-           (1 - Math.pow(this.base, -this.numeroCuotas))) *
-           this.valorPrestamo +
-         this.valorSeguroDesgravamenF;
-       this.capitalAmortizadoF = this.cuotaFrancesa - this.interesDelPeriodoF;
-       this.saldoRemanenteF = this.saldoRemanenteF - this.capitalAmortizadoF;
-     }
-     console.log('suma seguro d', this.sumaSeguroDesgravamenF);
-
-     /**Calculo Aleman */
-     //valor fijo capital amortizado calculo aleman
-     this.sumaIntereses = 0;
-     this.sumaSeguroDesgravamenA = 0;
-     this.saldoRemanenteIA = this.valorPrestamo;
-     this.capitalAmortizadoIA = this.valorPrestamo / this.numeroCuotas;
-     //valores calculo aleman
-     this.interesDelPeriodoIA =
-       (this.saldoRemanenteIA * this.tasaInteresPeriodica) / 100;
-     this.valorSeguroDesgravamen =
-       (this.saldoRemanenteIA * this.porcentajeSeguroDesgravamen) / 12;
-     this.cuotaPagarIA =
-       this.interesDelPeriodoIA +
-       this.capitalAmortizadoIA +
-       this.valorSeguroDesgravamen;
-     this.saldoRemanenteIA = this.saldoRemanenteIA - this.capitalAmortizadoIA;
-     console.log('interes aleman primera cuota', this.interesDelPeriodoIA);
-     this.cuotaInicial = this.cuotaPagarIA;
-     for (let i = 0; i < this.numeroCuotas; i++) {
-       /**Calculo Aleman */
-       // this.valorSeguroDesgravamen = this.saldoRemanenteIA * this.porcentajeSeguroDesgravamen / 12;
-       this.dataAleman.push({
-         numeroCuota: i + 1,
-         interesPeriodo: this.interesDelPeriodoIA,
-         capitalAmortizado: this.capitalAmortizadoIA,
-         seguro: this.valorSeguroDesgravamen,
-         cuotaPagar: this.cuotaPagarIA,
-         saldoRemanente: this.saldoRemanenteIA,
-       });
-       this.sumaSeguroDesgravamenA =
-         this.sumaSeguroDesgravamenA + this.valorSeguroDesgravamen;
-       this.sumaIntereses = this.sumaIntereses + this.interesDelPeriodoIA;
-       this.interesDelPeriodoIA =
-         (this.saldoRemanenteIA * this.tasaInteresPeriodica) / 100;
-       this.valorSeguroDesgravamen =
-         (this.saldoRemanenteIA * this.porcentajeSeguroDesgravamen) / 12;
-       this.cuotaPagarIA =
-         this.interesDelPeriodoIA +
-         this.capitalAmortizadoIA +
-         this.valorSeguroDesgravamen;
-       this.saldoRemanenteIA =
-         this.saldoRemanenteIA - this.capitalAmortizadoIA;
-     }
-   }
- }
- /************************************************************************** */
-
- /************************************************************************** */
- //Funciones Simuladores de Ahorro
-
- flexSave(): void {
-   console.log('tiempo min felxsave', this.tiempoMinAhorroFlexSave);
-   if (
-     this.term < this.tiempoMinAhorroFlexSave ||
-     this.term > this.tiempoMaxAhorroFlexSave
-   ) {
-     this.term = this.tiempoMinAhorroFlexSave;
-     this.toastr.warning('Limites Fuera de Rango ', 'Advertencia', {
-       timeOut: 4500,
-     });
-   } else {
-     this.returnRate =
-       (this.amount * this.term * this.tasaAhorroFlexSave) / 360 / 100;
-     this.retention = this.returnRate * 0.02;
-     this.total = this.amount + this.returnRate - this.retention;
-   }
- }
- tiempoDiasDpf: number;
- dpfSave(): void {
-   if (this.tasaAhorroDpf == null) {
-     this.ngOnInit();
-   } else {
-     console.log('tiempo min dpf', this.tiempoMinAhorroDpf);
-     if (this.amountDpf < 0) {
-       // this.amountDpf = 5000;
-       // this.termDpf = this.tiempoMinAhorroDpf;
-       this.toastr.warning('Limites Fuera de Rango ', 'Advertencia', {
-         timeOut: 4500,
-       });
-     } else {
-       this.tiempoDiasDpf = 0;
-       this.tiempoDiasDpf = this.termDpf * 30 + 1;
-       console.log('Tiempo en dias', this.tiempoDiasDpf);
-       // this.termDpf=this.termDpf*30+1
-       this.returnRateDpf =
-         (this.amountDpf * this.tiempoDiasDpf * this.tasaAhorroDpf) /
-         360 /
-         100;
-       // this.returnRateDpf = this.amountDpf * this.termDpf * this.tasaAhorroDpf / 360 / 100 * 30.4167;
-       this.retentionDpf = this.returnRateDpf * 0.02;
-       this.totalDpf = this.amountDpf + this.returnRateDpf - this.retentionDpf;
-     }
-   }
- }
-
- /******************************************************************************** */
-
  /************************************** */
  //Funciones para Guardar el formulario de cliente mediante el api
  new() {
@@ -906,27 +427,10 @@ export class SimulatorsIpComponent implements OnInit {
    this.valorPrestamo = event.value;
  }
 
- onInputChangeMontoFlex(event: any) {
-   console.log(event.value);
-   this.amount = event.value;
- }
-
- onInputChangeMontoDpf(event: any) {
-   console.log(event.value);
-   this.amountDpf = event.value;
- }
 
  onInputChangeTiempo(event: any) {
    console.log(event.value);
    this.numeroCuotas = event.value;
- }
- onInputChangeTiempoFlex(event: any) {
-   console.log(event.value);
-   this.term = event.value;
- }
- onInputChangeTiempoDpf(event: any) {
-   console.log(event.value);
-   this.termDpf = event.value;
  }
  getBase64ImageFromURL(url) {
    return new Promise((resolve, reject) => {
@@ -1280,10 +784,8 @@ export class SimulatorsIpComponent implements OnInit {
        footer: {
          columns: [
            {
-             // width:'*',
              image: await this.getBase64ImageFromURL(
                '../../assets/images/footer3Pdf.PNG'
-               // "https://images.pexels.com/photos/209640/pexels-photo-209640.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=300"
              ),
              width: 600,
              heigth: 1,
@@ -1296,7 +798,6 @@ export class SimulatorsIpComponent implements OnInit {
              // width:'*',
              image: await this.getBase64ImageFromURL(
                '../../assets/images/franja.png'
-               // "https://images.pexels.com/photos/209640/pexels-photo-209640.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=300"
              ),
              width: 600,
              heigth: 1,
@@ -1309,7 +810,6 @@ export class SimulatorsIpComponent implements OnInit {
              {
                image: await this.getBase64ImageFromURL(
                  '../../assets/images/logo.png'
-                 // "https://images.pexels.com/photos/209640/pexels-photo-209640.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=300"
                ),
                width: 150,
              },
@@ -1334,7 +834,7 @@ export class SimulatorsIpComponent implements OnInit {
            columns: [
              {
                table: {
-                 layout: 'lightHorizontalLines', // optional
+                 layout: 'lightHorizontalLines',
                  headerRows: 1,
                  widths: ['auto', 'auto'],
                  body: [
@@ -1403,7 +903,6 @@ export class SimulatorsIpComponent implements OnInit {
                        currency: 'USD',
                      }).format(this.cuotaInicial)}`,
                    ],
-                   // [{ text: 'Cuota a Pagar Periodicamente', bold: true }, `$${this.cuotaPagarF.toFixed(2)}`],
                    [
                      { text: 'Total Interés a Pagar', bold: true },
                      `${Intl.NumberFormat('en-US', {
@@ -1415,10 +914,8 @@ export class SimulatorsIpComponent implements OnInit {
                },
                width: 350,
              },
-             // {text: ' ', fontSize: 14, bold: true, margin: [0, 20, 0, 8]},
              {
                table: {
-                 // layout: 'lightHorizontalLines',
                  headerRows: 1,
                  widths: ['auto'],
                  body: [
@@ -1431,28 +928,6 @@ export class SimulatorsIpComponent implements OnInit {
              },
            ],
          },
-         // {
-         //   table: {
-         //     layout: 'lightHorizontalLines', // optional
-         //     headerRows: 1,
-         //     widths: ['auto', 'auto'],
-         //     body: [
-         //       [{ text: 'Detalles Simulación', alignment: 'center', fillColor: '#b40c15', color: 'white', colSpan: 2 }, {}],
-         //       [{ text: 'Monto del Préstamo', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.valorPrestamo)}`],
-         //       [{ text: 'Plazo (Meses)', bold: true }, `${this.numeroCuotas}`],
-         //       [{ text: 'Tasa de Interés', bold: true }, `${this.tasaInteresAnual.toFixed(2)}%`],
-         //       [{ text: 'Tasa Interés Periodica', bold: true }, `${this.tasaInteresPeriodica.toFixed(2)}`],
-         //       [{ text: 'Tasa Interés Efectiva', bold: true }, `${(this.tasaEfectivaP*100).toFixed(2)}%`],
-         //       [{ text: 'Tasa Seguro', bold: true }, `${this.porcentajeSD.toFixed(2)}%`],
-         //       [{ text: 'Total Seguro a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaSeguroDesgravamenA)}`],
-         //       [{ text: 'Contribución SOLCA 0.5%', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.solcaP)}`],
-         //       [{ text: 'Liquido a Recibir', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.liquidoRecibirP)}`],
-         //       [{ text: 'Cuota Inicial', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.cuotaInicial)}`],
-         //       // [{ text: 'Cuota a Pagar Periodicamente', bold: true }, `$${this.cuotaPagarF.toFixed(2)}`],
-         //       [{ text: 'Total Interés a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaIntereses)}`],
-         //     ]
-         //   }
-         // },
          {
            aligment: 'center',
            text: '  ',
@@ -1465,7 +940,7 @@ export class SimulatorsIpComponent implements OnInit {
          {
            style: 'tableExample',
            table: {
-             layout: 'lightHorizontalLines', // optional
+             layout: 'lightHorizontalLines',
              headerRows: 1,
              widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
              body: [
@@ -1533,20 +1008,6 @@ export class SimulatorsIpComponent implements OnInit {
              ],
            },
          },
-
-         // {
-         //   aligment: 'center',
-         //   text: 'Visita Nuestra Página Web',
-         // },
-         // {
-         //   aligment: 'center',
-         //   text: '  ',
-         // },
-         // {
-         //   columns: [
-         //     [{ qr: `https://www.bancoprocredit.com.ec/`, fit: '100' }],
-         //   ],
-         // },
        ],
        styles: {
          table: {
