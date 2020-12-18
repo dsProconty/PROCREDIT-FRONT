@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                                 <div class="button-group div-tiempos-y-montos div-tiempos-y-montos-ahorro" style="background-color: #005294;">
-                                    <label class="label-limites-tiempos" style="color:white; font-weight: 500">Tiempo mínimo
+                                    <label class="label-limites-tiempos" style="color:white; font-weight: 400">Tiempo mínimo
                     {{tiempoMinAhorroDpf}} meses, máximo {{tiempoMaxAhorroDpf}} meses
                   </label>
                                 </div>
@@ -74,7 +74,7 @@
                                     <div id="htmlData">
                                         <h3 class="h3-detalle-alemana" style="color:white; ">
                                             Detalle de la simulación:</h3>
-                                        <table width="100%" cellspacing="5px" cellpadding="5px" class="tabla-detalle-alemana" style="color:white; font-weight: 500">
+                                        <table width="100%" cellspacing="5px" cellpadding="5px" class="tabla-detalle-alemana" style="color:white; font-weight: 400 !important">
                                             <tr>
                                                 <th>Monto:</th>
                                                 <td class="txt-align-r">
@@ -118,9 +118,9 @@
                                     <img alt="ImgImgImg" src="../../assets/images/img-dpf.jpg" width="500" height="600" class="img-detalle" />
                                 </div>
                             </div>
-                            <div class="div-flechas-descargar">
+                            <div class="div-flechas-descargar  middle">
                                 <img src="../../assets/images/flechas_azules.PNG" width="10%" height="15" class="img-flechas">
-                                <button class="btn btn-info boton-descargar" style="background-color: #005294;  color:white; font-weight: 500" (click)="generatePDF()">Descargar</button>
+                                <button class="btn1 third" style="font-weight: 500" (click)="generatePDF()">Descargar</button>
                             </div>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
             <div class="container">
                 <div>
                     <div class="form-group grupo-botones">
-                        <button class="btn btn-light boton-lq-cliente" (click)="new()">Lo Quiero!</button>
+                        <button class="boton-lq-cliente third1" (click)="new()">Lo Quiero!</button>
                     </div>
                 </div>
                 <div class="form-group" *ngIf="crud_operation.is_visible" style="text-align: center;">

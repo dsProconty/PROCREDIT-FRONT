@@ -143,6 +143,10 @@ height: 700px; */
     margin-top: 5%;
 }
 
+th {
+    font-weight: 400;
+}
+
 .mat-slider {
     min-width: 280px;
     margin-top: -4.5%;
@@ -431,7 +435,7 @@ margin-left: 7%; */
 }
 
 .input-td-2 {
-    width: 90px;
+    width: 120px;
     border-radius: 10px;
     border: 1px solid white;
     text-align: right;
@@ -497,10 +501,10 @@ margin-left: 7%; */
     position: absolute;
 }
 
-.boton-descargar {
+.btn1 {
     border-radius: 12px;
     border: none;
-    color: black;
+    color: white;
     padding: 1px;
     text-align: center;
     text-decoration: none;
@@ -514,41 +518,100 @@ margin-left: 7%; */
     font-weight: 500;
 }
 
+.btn1 {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* background-color: transparent; */
+    border: 2px solid #e74c3c;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: inline-block;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    font-weight: 400;
+    width: 20%;
+    margin: 20px;
+    padding: 1px;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 10%;
+    margin-left: 80%;
+    font-weight: 500;
+}
+
+.btn1:hover,
+.btn1:focus {
+    color: black;
+    outline: 0;
+}
+
+.third {
+    border-color: #b40c15;
+    color: white;
+    box-shadow: 0 0 40px 40px #b40c15 inset, 0 0 0 0 #b40c15;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+
+.third:hover {
+    box-shadow: 0 0 10px 0 #b40c15 inset, 0 0 10px 4px #b40c15;
+}
+
 .grupo-botones {
     text-align: center;
     /* margin-top: -2%; */
 }
 
-.boton-lq-dialog {
-    background-color: #959398;
+.boton-lq-cliente {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* background-color: transparent; */
+    border: 2px solid #e74c3c;
     border-radius: 12px;
     border: none;
     color: white;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: inline-block;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    font-weight: 400;
+    width: 20%;
+    margin: 20px;
     padding: 1px;
-    /* text-align: center;
-text-decoration: none;
-display: inline-block; */
-    /* font-size: 16px; */
-    /* height: 10%; */
-    /* margin: 4px 2px; */
-    width: 10%;
-    /* margin-top: 10em; margin-left: 80%; */
+    text-decoration: none;
+    text-align: center;
+    /* margin-top: 10%;
+margin-left: 80%; */
+    font-weight: 500;
 }
 
-.boton-lq-cliente {
-    background-color: #959398;
-    border-radius: 12px;
-    border: none;
-    color: white;
-    padding: 1px;
-    /* text-align: center;
-      text-decoration: none;
-      display: inline-block; */
-    /* font-size: 16px; */
-    /* height: 10%; */
-    /* margin: 4px 2px; */
-    width: 10%;
-    /* margin-top: 10em; margin-left: 80%; */
+.boton-lq-cliente:hover,
+.boton-lq-cliente:focus {
+    color: black;
+    outline: 0;
+}
+
+.third1 {
+    border-color: #959398;
+    box-shadow: 0 0 40px 40px #959398 inset, 0 0 0 0 #959398;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+
+.third1:hover {
+    box-shadow: 0 0 10px 0 #959398 inset, 0 0 10px 4px #959398;
 }
 
 .boton-sd {
@@ -896,7 +959,7 @@ display: inline-block; */
         border: 1px solid white;
     }
     .input-td-2 {
-        /* width: 90px; */
+        /* width: 120px; */
         border-radius: 10px;
         border: 1px solid white;
     }
@@ -959,10 +1022,10 @@ display: inline-block; */
         font-weight: 500;
         position: relative;
     }
-    .boton-descargar {
+    .btn1 {
         border-radius: 12px;
         border: none;
-        color: black;
+        color: white;
         padding: 1px;
         text-align: center;
         text-decoration: none;
@@ -979,7 +1042,7 @@ display: inline-block; */
     .flechas-y-boton {
         text-align: center;
     }
-    .boton-lq-dialog {
+    .boton-lq-cliente {
         background-color: #959398;
         border-radius: 12px;
         border: none;
@@ -991,7 +1054,7 @@ display: inline-block; */
         /* font-size: 16px; */
         /* height: 10%; */
         /* margin: 4px 2px; */
-        width: 40%;
+        width: 50%;
         /* margin-top: 10em; margin-left: 80%; */
     }
     .boton-lq-cliente {
@@ -1006,7 +1069,7 @@ display: inline-block; */
         /* font-size: 16px; */
         /* height: 10%; */
         /* margin: 4px 2px; */
-        width: 30%;
+        width: 50%;
         /* margin-top: 10em; margin-left: 80%; */
     }
     .boton-sd {
@@ -1092,7 +1155,7 @@ display: inline-block; */
         position: absolute;
         width: 97.5%;
     }
-    .boton-lq-dialog {
+    .boton-lq-cliente {
         background-color: #959398;
         border-radius: 12px;
         border: none;
@@ -1104,7 +1167,7 @@ display: inline-block; */
         /* font-size: 16px; */
         /* height: 10%; */
         /* margin: 4px 2px; */
-        width: 20%;
+        width: 50%;
         /* margin-top: 10em; margin-left: 80%; */
     }
     .div-detalle-simulacion {
@@ -1278,7 +1341,7 @@ display: inline-block; */
         padding-bottom: 2%;
         max-width: 100%;
     }
-    .boton-lq-dialog {
+    .boton-lq-cliente {
         background-color: #959398;
         border-radius: 12px;
         border: none;
@@ -1290,7 +1353,7 @@ display: inline-block; */
         /* font-size: 16px; */
         /* height: 10%; */
         /* margin: 4px 2px; */
-        width: 20%;
+        width: 30%;
         /* margin-top: 10em; margin-left: 80%; */
     }
     .div-porcentaje-anual {
@@ -1337,10 +1400,10 @@ display: inline-block; */
 margin-left: 7%; */
         font-family: amaranth-regular;
     }
-    .boton-descargar {
+    .btn1 {
         border-radius: 12px;
         border: none;
-        color: black;
+        color: white;
         padding: 1px;
         text-align: center;
         text-decoration: none;
@@ -1505,10 +1568,10 @@ margin-left: 7%; */
 margin-left: 7%; */
         font-family: amaranth-regular;
     }
-    .boton-descargar {
+    .btn1 {
         border-radius: 12px;
         border: none;
-        color: black;
+        color: white;
         padding: 1px;
         text-align: center;
         text-decoration: none;
@@ -1543,7 +1606,7 @@ margin-left: 7%; */
         /* font-size: 16px; */
         /* height: 10%; */
         /* margin: 4px 2px; */
-        width: 15%;
+        width: 25%;
         /* margin-top: 10em; margin-left: 80%; */
     }
     .div-tabla-francesa {

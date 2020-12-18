@@ -197,7 +197,7 @@
                             </div>
                             <div class="div-flechas-descargar">
                                 <img src="../../assets/images/flechas_amarillas.PNG" width="10%" height="15" class="img-flechas">
-                                <button class="btn btn-info boton-descargar" style="background-color: #f4d900;" (click)="generatePDF()">Descargar</button>
+                                <button class="btn1 third" (click)="generatePDF()">Descargar</button>
                             </div>
                         </div>
 
@@ -293,11 +293,11 @@
             <br class="salto-linea">
             <div class="form-group" style="text-align: center;">
 
-                <button class="btn btn-light boton-lq-cliente" (click)="new()">Lo Quiero!</button>
-                <button *ngIf="alemana.is_visible && botonSimulacion2.is_visible" class="btn btn-light boton-sd" (click)="vetTablaIA()" style="">Simulación
+                <button class="boton-lq-cliente third1" (click)="new()">Lo Quiero!</button>
+                <button *ngIf="alemana.is_visible && botonSimulacion2.is_visible" class="boton-sd third2" (click)="vetTablaIA()" style="">Simulación
           detallada
         </button>
-                <button *ngIf="francesa.is_visible && botonSimulacion2.is_visible" class="btn btn-light boton-sd" (click)="vetTablaFrancesa()">Simulación
+                <button *ngIf="francesa.is_visible && botonSimulacion2.is_visible" class="boton-sd third2" (click)="vetTablaFrancesa()">Simulación
           detallada
         </button>
                 <button *ngIf="botonSimulacion.is_visible" class="btn btn-light boton-lq-cliente " style="background-color: #291d19;  color:white" (click)="cerrarTablas()">

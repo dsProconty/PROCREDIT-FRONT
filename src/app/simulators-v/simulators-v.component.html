@@ -18,22 +18,14 @@
         <img src="https://www.bancoprocredit.com.ec/wp-content/uploads/2020/10/logo.png" style="margin-bottom: -5%;" width="25%" height="100%">
     </div>
     <div>
-
         <div class="container-fluid  div-principal">
             <mat-tab-group #mattabgroup mat-align-tabs="center">
-
-
-
-
-
                 <mat-tab label="Crédito de Vivienda">
                     <br><br>
                     <h2 class="titulo-simulador">Simulador Crédito de Vivienda</h2>
                     <div class="row div-principal-2-credito">
                         <div class="col-md-6 div-lado-izq">
-                            <label for="exampleInputEmail1" class="label-monto">
-                Monto
-              </label>
+                            <label for="exampleInputEmail1" class="label-monto">Monto</label>
                             <div class="input-group margin-left-3">
                                 <mat-slider thumbLabel [displayWith]="formatoMonto" (input)="onInputChangeMonto($event)" step="100" tickInterval="100" class="mat-slider" min="{{montoMinCreditoInmobiliario}}" max="{{montoMaxCreditoInmobiliario}}" [(ngModel)]="valorPrestamo" (ngModelChange)="simuladorInmobiliario()">
                                 </mat-slider>
@@ -54,7 +46,6 @@
                                 <mat-checkbox class="example-margin" [(ngModel)]="checked" (ngModelChange)="simuladorInmobiliario()">
                                     Vivienda Ecológica</mat-checkbox>
                             </section>
-                            <!-- <br class="salto-linea"> -->
                             <label class="label-tabla-de">Tabla de </label> <br>
                             <label class="label-amortizacion">amortización</label>
                             <div class="button-group div-botones-francesa-alemana">
@@ -62,7 +53,6 @@
                                 <button class="btn btn-light boton-simuladores" (click)="verAlemana()" style="background-color: #959398;  margin-left: 2%;">Alemana</button>
                             </div>
                             <div class="div-bg-gray">
-                                <!-- <br class="salto-linea"> -->
                                 <h2 class="h3-tasa-interes-efectiva" *ngIf="checked==false">
                                     Tasa de Interés Efectiva: {{this.tasaEfectivaV | percent: '1.2-2'}}</h2>
 
@@ -205,89 +195,9 @@
                             </div>
                             <div class="div-flechas-descargar">
                                 <img src="../../assets/images/flechas-moradas.png" width="10%" height="15" class="img-flechas">
-                                <button class="btn btn-info boton-descargar" style="background-color: #970077; color:white " (click)="generatePDF()">Descargar</button>
+                                <button class="btn1 third" style=" " (click)="generatePDF()">Descargar</button>
                             </div>
                         </div>
-                        <!-- <div class="div-tabla-francesa">
-                            <div *ngIf="amortizacionF.is_visible" style="overflow: xscroll;">
-                                <div style="text-align: center;">
-                                    <h2>Tabla de Amortización Francesa</h2>
-                                </div>
-                                <table class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                #Cuota
-                                            </th>
-                                            <th>
-                                                Interés del Periodo
-                                            </th>
-                                            <th>
-                                                Capital Amortizado
-                                            </th>
-                                            <th>
-                                                Seguro
-                                            </th>
-                                            <th>
-                                                Cuota a Pagar
-                                            </th>
-                                            <th>
-                                                Saldo Remanente
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let data of dataFrances">
-                                            <td>{{data.numeroCuota}}</td>
-                                            <td>{{data.interesPeriodo | currency}}</td>
-                                            <td>{{data.capitalAmortizado | currency}}</td>
-                                            <td>{{data.seguro | currency}}</td>
-                                            <td>{{data.cuotaPagar | currency}}</td>
-                                            <td>{{data.saldoRemanente | currency}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div *ngIf="amortizacionIA.is_visible" style="overflow: xscroll;">
-                                <div style="text-align: center;">
-                                    <h2>Tabla de Amortización Alemana</h2>
-                                </div>
-                                <table class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                #Cuota
-                                            </th>
-                                            <th>
-                                                Interés del Periodo
-                                            </th>
-                                            <th>
-                                                Capital Amortizado
-                                            </th>
-                                            <th>
-                                                Seguro
-                                            </th>
-                                            <th>
-                                                Cuota a Pagar
-                                            </th>
-                                            <th>
-                                                Saldo Remanente
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let data of dataAleman">
-                                            <td>{{data.numeroCuota}}</td>
-                                            <td>{{data.interesPeriodo | currency}}</td>
-                                            <td>{{data.capitalAmortizado | currency}}</td>
-                                            <td>{{data.seguro | currency}}</td>
-                                            <td>{{data.cuotaPagar | currency}}</td>
-                                            <td>{{data.saldoRemanente | currency}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div> -->
                     </div>
                 </mat-tab>
             </mat-tab-group>
@@ -378,9 +288,9 @@
                 <div>
 
                     <div class="form-group grupo-botones">
-                        <button class="btn btn-light boton-lq-cliente" *ngIf="crud_operation.is_visible==false" (click)="new()">Lo Quiero!</button>
-                        <button *ngIf="alemana.is_visible && botonSimulacion2.is_visible" class="btn btn-light boton-sd" (click)="vetTablaIA()">Simulación detallada </button>
-                        <button *ngIf="francesa.is_visible && botonSimulacion2.is_visible" class="btn btn-light boton-sd" (click)="vetTablaFrancesa()">Simulación detallada </button>
+                        <button class="boton-lq-cliente third1" *ngIf="crud_operation.is_visible==false" (click)="new()">Lo Quiero!</button>
+                        <button *ngIf="alemana.is_visible && botonSimulacion2.is_visible" class="boton-sd third2" (click)="vetTablaIA()">Simulación detallada </button>
+                        <button *ngIf="francesa.is_visible && botonSimulacion2.is_visible" class="boton-sd third2" (click)="vetTablaFrancesa()">Simulación detallada </button>
                         <button *ngIf="botonSimulacion.is_visible" class="btn btn-light boton-lq-cliente " style="background-color: #291d19;  color:white" (click)="cerrarTablas()">
                           Cerrar Tabla</button>
                     </div>

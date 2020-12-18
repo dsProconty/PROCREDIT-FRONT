@@ -154,11 +154,17 @@ export class SimulatorsAfComponent implements OnInit {
     this.current_clien = new Client();
     this.crud_operation.is_visible = true;
     this.crud_operation.is_new = true;
+    // hbspt.forms.create({
+    //   portalId: '8821548',
+    //   formId: 'b3e4925e-7ec3-45ef-b106-e085420d9091',
+    //   target: '#hubspotForm',
+    // });
     hbspt.forms.create({
-      portalId: '8821548',
-      formId: 'b3e4925e-7ec3-45ef-b106-e085420d9091',
+      portalId: "6606991",
+      formId: "70816719-56a7-467f-b589-ea231934f9c3",
       target: '#hubspotForm',
-    });
+
+});
     window.scrollTo(0, 0);
   }
 

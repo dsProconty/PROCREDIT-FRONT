@@ -333,14 +333,14 @@ ng-trigger-translateTab::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-w
     color: black;
     text-align: center;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .label-limites-montos {
     color: black;
     text-align: center;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .boton-cerrar-tabla {
@@ -422,6 +422,10 @@ ng-trigger-translateTab::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-w
     -webkit-border-radius: 5px;
 }
 
+th {
+    font-weight: 400;
+}
+
 .input-td {
     width: 120px;
     border-radius: 10px;
@@ -430,7 +434,7 @@ ng-trigger-translateTab::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-w
 }
 
 .input-td-2 {
-    width: 90px;
+    width: 120px;
     border-radius: 10px;
     border: 1px solid white;
     text-align: right;
@@ -496,21 +500,49 @@ ng-trigger-translateTab::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-w
     position: absolute;
 }
 
-.boton-descargar {
+.btn1 {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* background-color: transparent; */
+    border: 2px solid #e74c3c;
     border-radius: 12px;
     border: none;
     color: black;
-    padding: 1px;
-    text-align: center;
-    text-decoration: none;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: inline-block;
-    /* font-size: 16px; */
-    /* height: 10%; */
-    /* margin: 4px 2px; */
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    font-weight: 400;
     width: 20%;
-    margin-top: 15%;
+    margin: 20px;
+    padding: 1px;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 14%;
     margin-left: 80%;
     font-weight: 500;
+}
+
+.btn1:hover,
+.btn1:focus {
+    color: black;
+    outline: 0;
+}
+
+.third {
+    border-color: #f4d900;
+    box-shadow: 0 0 40px 40px #f4d900 inset, 0 0 0 0 #f4d900;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+
+.third:hover {
+    box-shadow: 0 0 10px 0 #f4d900 inset, 0 0 10px 4px #f4d900;
 }
 
 .boton-lq-dialog {
@@ -530,35 +562,94 @@ ng-trigger-translateTab::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-w
 }
 
 .boton-lq-cliente {
-    background-color: #959398;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* background-color: transparent; */
+    border: 2px solid #e74c3c;
     border-radius: 12px;
     border: none;
     color: white;
-    padding: 1px;
-    /* text-align: center;
-        text-decoration: none;
-        display: inline-block; */
-    /* font-size: 16px; */
-    /* height: 10%; */
-    /* margin: 4px 2px; */
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: inline-block;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    font-weight: 400;
     width: 10%;
-    /* margin-top: 10em; margin-left: 80%; */
+    margin: 20px;
+    padding: 1px;
+    text-decoration: none;
+    text-align: center;
+    /* margin-top: 10%;
+margin-left: 80%; */
+    font-weight: 500;
+}
+
+.boton-lq-cliente:hover,
+.boton-lq-cliente:focus {
+    color: black;
+    outline: 0;
+}
+
+.third1 {
+    border-color: #959398;
+    box-shadow: 0 0 40px 40px #959398 inset, 0 0 0 0 #959398;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+
+.third1:hover {
+    box-shadow: 0 0 10px 0 #959398 inset, 0 0 10px 4px #959398;
 }
 
 .boton-sd {
-    background-color: #291d19;
+    /* margin-top: 10em; margin-left: 80%; */
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* background-color: transparent; */
+    border: 2px solid #e74c3c;
     border-radius: 12px;
     border: none;
     color: white;
-    padding: 1px;
-    text-align: center;
-    text-decoration: none;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: inline-block;
-    /* font-size: 16px; */
-    /* height: 10%; */
-    /* margin: 4px 2px; */
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    font-weight: 400;
     width: 20%;
-    /* margin-top: 10em; margin-left: 80%; */
+    margin: 20px;
+    padding: 1px;
+    text-decoration: none;
+    text-align: center;
+    /* margin-top: 10%;
+  margin-left: 80%; */
+    font-weight: 500;
+}
+
+.boton-sd:hover,
+.boton-sd:focus {
+    color: black;
+    outline: 0;
+}
+
+.third2 {
+    border-color: black;
+    box-shadow: 0 0 40px 40px black inset, 0 0 0 0 black;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+
+.third2:hover {
+    box-shadow: 0 0 10px 0 black inset, 0 0 10px 4px black;
 }
 
 .boton-cancelar {
@@ -767,13 +858,13 @@ ng-trigger-translateTab::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-w
         color: black;
         text-align: center;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 400;
     }
     .label-limites-montos {
         color: black;
         text-align: center;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 400;
     }
     .div-imagen-marco {
         display: none;
@@ -877,7 +968,7 @@ ng-trigger-translateTab::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-w
         border: 1px solid white;
     }
     .input-td-2 {
-        /* width: 90px; */
+        /* width: 120px; */
         border-radius: 10px;
         border: 1px solid white;
     }
@@ -940,7 +1031,7 @@ ng-trigger-translateTab::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-w
         font-weight: 500;
         position: relative;
     }
-    .boton-descargar {
+    .btn1 {
         border-radius: 12px;
         border: none;
         color: black;
@@ -1202,7 +1293,7 @@ ng-trigger-translateTab::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-w
   margin-left: 7%; */
         font-family: amaranth-regular;
     }
-    .boton-descargar {
+    .btn1 {
         border-radius: 12px;
         border: none;
         color: black;
@@ -1345,7 +1436,7 @@ ng-trigger-translateTab::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-w
   margin-left: 7%; */
         font-family: amaranth-regular;
     }
-    .boton-descargar {
+    .btn1 {
         border-radius: 12px;
         border: none;
         color: black;
