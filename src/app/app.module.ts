@@ -47,10 +47,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatSortModule} from '@angular/material/sort';
-import {MatTableModule} from '@angular/material/table';
+
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -62,6 +59,8 @@ import { SimulatorsAfComponent } from './simulators-af/simulators-af.component';
 import { SimulatorsAdpfComponent } from './simulators-adpf/simulators-adpf.component';
 import { SimulatorsIpComponent } from './simulators-ip/simulators-ip.component';
 import { SimulatorsVComponent } from './simulators-v/simulators-v.component';
+import { NgxCurrencyModule } from "ngx-currency";
+import  {MatCurrencyFormatModule} from 'mat-currency-format';
 
 
 // import { routing } from './app.routing';
@@ -127,10 +126,6 @@ import { SimulatorsVComponent } from './simulators-v/simulators-v.component';
     MatSelectModule,
     MatSidenavModule,
     MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
@@ -138,7 +133,50 @@ import { SimulatorsVComponent } from './simulators-v/simulators-v.component';
     OverlayModule,
     PortalModule,
     ScrollingModule,
-    MatInputModule
+    MatInputModule,
+    BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    A11yModule,
+    CdkStepperModule,
+    CdkTableModule,
+    CdkTreeModule,
+    DragDropModule,
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTreeModule,
+    PortalModule,
+    ScrollingModule,
+    NgxCurrencyModule,
+    MatCurrencyFormatModule
 
 
   ],

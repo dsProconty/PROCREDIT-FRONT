@@ -15,7 +15,8 @@
         <img src="../../assets/images/franja.png" width="100%" height="6">
     </div>
     <div class="container">
-        <img src="https://www.bancoprocredit.com.ec/wp-content/uploads/2020/10/logo.png" style="margin-bottom: -5%;" width="25%" height="100%">
+        <img src="../../assets/images/logo.png" style="margin-bottom: -5%;" width="25%" height="100%">
+
     </div>
     <div>
 
@@ -32,7 +33,9 @@
               </label>
                             <div class="input-group margin-left-3">
                                 <mat-slider class="mat-slider" thumbLabel [displayWith]="formatoMonto" (input)="onInputChangeMontoFlex($event)" tickInterval="100" min="1" max="1000000" [(ngModel)]="amount" (ngModelChange)="flexSave()" style="min-width: 280px;" step="100"></mat-slider>
-                                <input type="number" class="form-control input-monto-tiempo input-monto" id="exampleInputEmail1" placeholder="Monto" [(ngModel)]="amount" name="amount" (ngModelChange)="flexSave()" size=40>
+                                <!-- <input type="number" class="form-control input-monto-tiempo input-monto" id="exampleInputEmail1" placeholder="Monto" [(ngModel)]="amount" name="amount" (ngModelChange)="flexSave()" size=40> -->
+                                <input matInput type="text" class="form-control input-monto-tiempo input-monto" id="exampleInputEmail1" placeholder="Monto" mvndrMatCurrencyFormat [allowNegative]="false" [currencyCode]="'USD'" [value]="amount" (blur)="updateUSAmount($event)" (ngModelChange)="flexSave()"
+                                />
                             </div>
                             <br>
                             <label for="exampleInputPassword1" class="label-plazo">

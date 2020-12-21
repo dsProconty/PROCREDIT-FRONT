@@ -16,6 +16,8 @@ import { DialogExampleComponent } from '../dialog-example/dialog-example.compone
 import { CurrencyPipe, formatCurrency } from '@angular/common';
 declare var hbspt: any; // put this at the top
 
+import  {MatCurrencyFormatModule} from 'mat-currency-format';
+
 class Product {
   name: string;
   tasaAnual: number;
@@ -31,6 +33,13 @@ class Product {
   styleUrls: ['./simulators.component.css'],
 })
 export class SimulatorsComponent implements OnInit {
+
+
+
+  updateUSAmount(event) {
+    this.amount = event.target.value;
+  }
+
   // data y current_clien almacena los datos del formulario de contacto para posterior envio a BaseDeDatos
   data: Client[];
   current_clien: Client;
@@ -793,6 +802,7 @@ export class SimulatorsComponent implements OnInit {
   //Funciones Simuladores de Ahorro
 
   flexSave(): void {
+
     console.log('tiempo min felxsave', this.tiempoMinAhorroFlexSave);
     if (
       this.term < this.tiempoMinAhorroFlexSave ||
@@ -808,6 +818,7 @@ export class SimulatorsComponent implements OnInit {
       this.retention = this.returnRate * 0.02;
       this.total = this.amount + this.returnRate - this.retention;
     }
+    this.amount=this.amount;
   }
   tiempoDiasDpf: number;
   dpfSave(): void {
