@@ -501,7 +501,7 @@ margin-left: 7%; */
     position: absolute;
 }
 
-.boton-descargar {
+.btn1 {
     border-radius: 12px;
     border: none;
     color: black;
@@ -1067,7 +1067,7 @@ margin-left: 80%; */
         font-weight: 500;
         position: relative;
     }
-    .boton-descargar {
+    .btn1 {
         border-radius: 12px;
         border: none;
         color: black;
@@ -1445,7 +1445,7 @@ margin-left: 80%; */
 margin-left: 7%; */
         font-family: amaranth-regular;
     }
-    .boton-descargar {
+    .btn1 {
         border-radius: 12px;
         border: none;
         color: black;
@@ -1613,7 +1613,7 @@ margin-left: 7%; */
 margin-left: 7%; */
         font-family: amaranth-regular;
     }
-    .boton-descargar {
+    .btn1 {
         border-radius: 12px;
         border: none;
         color: black;
