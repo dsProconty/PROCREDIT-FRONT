@@ -30,7 +30,7 @@
                             <div class="input-group margin-left-3">
                                 <mat-slider thumbLabel [displayWith]="formatoMonto" (input)="onInputChangeMonto($event)" step="100" tickInterval="100" class="mat-slider" min="{{montoMinCreditoInmobiliario}}" max="{{montoMaxCreditoInmobiliario}}" [(ngModel)]="valorPrestamo" (ngModelChange)="simuladorInmobiliario()">
                                 </mat-slider>
-                                <input type="number" class="form-control input-monto-tiempo" id="exampleInputEmail1" placeholder="Monto" min="{{montoMinCreditoInmobiliario}}" max="{{montoMaxCreditoInmobiliario}}" [(ngModel)]="valorPrestamo" name="valorPrestamo" (ngModelChange)="simuladorInmobiliario()"
+                                <input type="number" pattern="^[0-9]+" onkeypress="return event.charCode >= 48" pattern="^[0-9]+" class="form-control input-monto-tiempo" id="exampleInputEmail1" placeholder="Monto" min="{{montoMinCreditoInmobiliario}}" max="{{montoMaxCreditoInmobiliario}}" [(ngModel)]="valorPrestamo" name="valorPrestamo" (ngModelChange)="simuladorInmobiliario()"
                                     size=40>
                             </div>
                             <br>
@@ -40,7 +40,7 @@
                             <div class="input-group margin-left-3">
                                 <mat-slider thumbLabel [displayWith]="formatoTiempo" (input)="onInputChangeTiempo($event)" tickInterval="1" class="mat-slider" min="{{tiempoMinCreditoInmobiliario}}" max="{{tiempoMaxCreditoInmobiliario}}" [(ngModel)]="numeroCuotas" (ngModelChange)="simuladorInmobiliario()">
                                 </mat-slider>
-                                <input type="number" class="input-monto-tiempo form-control " id="exampleInputPassword1" value="{{numeroCuotas}}" placeholder="Plazo" min="{{tiempoMinCreditoInmobiliario}}" max="{{tiempoMaxCreditoInmobiliario}}" [(ngModel)]="numeroCuotas" name="numeroCuotas"
+                                <input type="number" pattern="^[0-9]+" onkeypress="return event.charCode >= 48" class="input-monto-tiempo form-control " id="exampleInputPassword1" value="{{numeroCuotas}}" placeholder="Plazo" min="{{tiempoMinCreditoInmobiliario}}" max="{{tiempoMaxCreditoInmobiliario}}" [(ngModel)]="numeroCuotas" name="numeroCuotas"
                                     (ngModelChange)="simuladorInmobiliario()" size=40>
                             </div>
                             <section class="example-section">

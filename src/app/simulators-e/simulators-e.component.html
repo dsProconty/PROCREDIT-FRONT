@@ -32,7 +32,7 @@
                             <div class="input-group margin-left-3">
                                 <mat-slider thumbLabel [displayWith]="formatoMonto" (input)="onInputChangeMonto($event)" step="100" tickInterval="100" class="mat-slider" min="{{montoMinCreditoEducativo}}" max="{{montoMaxCreditoEducativo}}" [(ngModel)]="valorPrestamo" (ngModelChange)="simuladorEducativo()">
                                 </mat-slider>
-                                <input type="number" class="form-control input-monto-tiempo" id="exampleInputEmail1" placeholder="Monto" min="{{montoMinCreditoEducativo}}" max="{{montoMaxCreditoEducativo}}" [(ngModel)]="valorPrestamo" name="valorPrestamo" (ngModelChange)="simuladorEducativo()"
+                                <input type="number" pattern="^[0-9]+" onkeypress="return event.charCode >= 48" class="form-control input-monto-tiempo" id="exampleInputEmail1" placeholder="Monto" min="{{montoMinCreditoEducativo}}" max="{{montoMaxCreditoEducativo}}" [(ngModel)]="valorPrestamo" name="valorPrestamo" (ngModelChange)="simuladorEducativo()"
                                     size=40>
                             </div>
                             <br>
@@ -42,7 +42,7 @@
                             <div class="input-group margin-left-3">
                                 <mat-slider thumbLabel [displayWith]="formatoTiempo" (input)="onInputChangeTiempo($event)" tickInterval="1" class="mat-slider" min="{{tiempoMinCreditoEducativo}}" max="{{tiempoMaxCreditoEducativo}}" [(ngModel)]="numeroCuotas" (ngModelChange)="simuladorEducativo()">
                                 </mat-slider>
-                                <input type="number" class="input-monto-tiempo form-control " id="exampleInputPassword1" value="{{numeroCuotas}}" placeholder="Plazo" min="{{tiempoMinCreditoEducativo}}" max="{{tiempoMaxCreditoEducativo}}" [(ngModel)]="numeroCuotas" name="numeroCuotas"
+                                <input type="number" pattern="^[0-9]+" onkeypress="return event.charCode >= 48" class="input-monto-tiempo form-control " id="exampleInputPassword1" value="{{numeroCuotas}}" placeholder="Plazo" min="{{tiempoMinCreditoEducativo}}" max="{{tiempoMaxCreditoEducativo}}" [(ngModel)]="numeroCuotas" name="numeroCuotas"
                                     (ngModelChange)="simuladorEducativo()" size=40>
                             </div>
                             <br>
