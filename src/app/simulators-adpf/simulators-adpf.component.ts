@@ -73,6 +73,7 @@ export class SimulatorsAdpfComponent implements OnInit {
           this.tiempoMinAhorroDpf = x.minimum_time;
           this.tiempoMaxAhorroDpf = x.maximum_time;
         }
+        console.log("Tiempo maximo de ahorro",this.tiempoMaxAhorroDpf);
         console.log('tasadpf', this.tasaAhorroDpf);
       },
       (error) => {
@@ -273,7 +274,7 @@ export class SimulatorsAdpfComponent implements OnInit {
                     {},
                   ],
                   [
-                    { text: 'Monto del Préstamo', bold: true },
+                    { text: 'Monto del Ahorro', bold: true },
                     `${Intl.NumberFormat('en-US', {
                       style: 'currency',
                       currency: 'USD',

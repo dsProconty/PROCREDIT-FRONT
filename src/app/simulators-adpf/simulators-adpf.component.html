@@ -38,7 +38,7 @@
                 Plazo (Meses)
               </label>
                             <div class="input-group margin-left-3">
-                                <mat-slider thumbLabel [displayWith]="formatoTiempo" (input)="onInputChangeTiempoDpf($event)" class="mat-slider" tickInterval="1" min="6" max="36" [(ngModel)]="termDpf" (ngModelChange)="dpfSave()"> </mat-slider>
+                                <mat-slider thumbLabel [displayWith]="formatoTiempo" (input)="onInputChangeTiempoDpf($event)" class="mat-slider" tickInterval="1" min="{{tiempoMinAhorroDpf}}" max="{{tiempoMaxAhorroDpf}}"  [(ngModel)]="termDpf" (ngModelChange)="dpfSave()"> </mat-slider>
                                 <input type="number" pattern="^[0-9]+" onkeypress="return event.charCode >= 48" class="form-control input-monto-tiempo" id="exampleInputPassword1" placeholder="Pazo" [(ngModel)]="termDpf" name="termDpf" (ngModelChange)="dpfSave()" size=40 min="{{tiempoMinAhorroDpf}}" max="{{tiempoMaxAhorroDpf}}">
                             </div>
                             <br>

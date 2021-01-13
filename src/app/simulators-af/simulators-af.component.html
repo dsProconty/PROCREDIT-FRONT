@@ -40,7 +40,7 @@
                             <div class="input-group margin-left-3">
                                 <mat-slider class="mat-slider" thumbLabel [displayWith]="formatoTiempo" (input)="onInputChangeTiempoFlex($event)" tickInterval="1" min="{{tiempoMinAhorroFlexSave}}" max="{{tiempoMaxAhorroFlexSave}}" [(ngModel)]="term" (ngModelChange)="flexSave()" style="min-width: 280px;">
                                 </mat-slider>
-                                <input type="number" pattern="^[0-9]+" onkeypress="return event.charCode >= 48" class="form-control input-monto-tiempo" id="exampleInputPassword1" placeholder="Pazo" [(ngModel)]="term" name="term" (ngModelChange)="flexSave()" size=40 style="width:100px; flex:none;">
+                                <input type="number" pattern="^[0-9]+" onkeypress="return event.charCode >= 48" class="form-control input-monto-tiempo" id="exampleInputPassword1" placeholder="Plazo" [(ngModel)]="term" name="term" (ngModelChange)="flexSave()" size=40 style="width:100px; flex:none;">
                             </div>
                             <br>
                             <div class="div-bg-gray">
@@ -84,6 +84,12 @@
                                                 </td>
                                             </tr>
                                             <tr>
+                                              <th>Tasa de Interés:</th>
+                                              <td class="txt-align-r">
+                                                  <input value=" {{tasaAhorroFlexSave | currency}}" readonly class="input-td-2">
+                                              </td>
+                                          </tr>
+                                            <tr>
                                                 <th>Plazo Días:</th>
                                                 <td class="txt-align-r">
                                                     <input value="{{term}}" readonly class="input-td">
@@ -95,12 +101,7 @@
                                                     <input value="{{returnRate | currency}}" readonly class="input-td">
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <th>Retención IR:</th>
-                                                <td class="txt-align-r">
-                                                    <input value=" {{retention | currency}}" readonly class="input-td-2">
-                                                </td>
-                                            </tr>
+
                                             <tr style="background-color: #cc242c;">
                                                 <th>Total Recibir:</th>
                                                 <td class="txt-align-r ">

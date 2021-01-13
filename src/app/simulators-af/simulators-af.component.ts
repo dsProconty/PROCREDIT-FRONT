@@ -52,7 +52,7 @@ export class SimulatorsAfComponent implements OnInit {
   amount: number;
   term: number;
   returnRate: number;
-  retention: number;
+  // retention: number;
   total: number;
   /**Variables Ahorros para guardar peticiones del API */
 
@@ -78,7 +78,7 @@ export class SimulatorsAfComponent implements OnInit {
     // this.nombreProducto = 'Ahorro DPF';
     this.term = this.tiempoMinAhorroFlexSave;
     this.amount = 1;
-    this.nombreProducto="Ahorro Flex Save";
+    this.nombreProducto="Ahorro FlexSave";
   }
 
   openDialog() {
@@ -143,8 +143,8 @@ export class SimulatorsAfComponent implements OnInit {
     } else {
       this.returnRate =
         (this.amount * this.term * this.tasaAhorroFlexSave) / 360 / 100;
-      this.retention = this.returnRate * 0.02;
-      this.total = this.amount + this.returnRate - this.retention;
+      // this.retention = this.returnRate * 0.02;
+      this.total = this.amount + this.returnRate;
     }
   }
 
@@ -302,7 +302,7 @@ export class SimulatorsAfComponent implements OnInit {
                     ],
 
                     [
-                      { text: 'Monto del Préstamo', bold: true },
+                      { text: 'Monto del Ahorro', bold: true },
                       `${Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'USD',
@@ -320,13 +320,13 @@ export class SimulatorsAfComponent implements OnInit {
                         currency: 'USD',
                       }).format(this.returnRate)}`,
                     ],
-                    [
-                      { text: 'Retención IR', bold: true },
-                      `${Intl.NumberFormat('en-US', {
-                        style: 'currency',
-                        currency: 'USD',
-                      }).format(this.retention)}`,
-                    ],
+                    // [
+                    //   { text: 'Retención IR', bold: true },
+                    //   `${Intl.NumberFormat('en-US', {
+                    //     style: 'currency',
+                    //     currency: 'USD',
+                    //   }).format(this.retention)}`,
+                    // ],
                     [
                       { text: 'Total a Recibir', bold: true },
                       `${Intl.NumberFormat('en-US', {
