@@ -56,7 +56,7 @@ export class SimulatorsAdpfComponent implements OnInit {
   ) {
     this.itemS = 0;
     this.nombreProducto = 'Ahorro DPF';
-    this.termDpf = 6;
+    // this.termDpf = 6;
     this.amountDpf = 5000;
   }
 
@@ -73,7 +73,7 @@ export class SimulatorsAdpfComponent implements OnInit {
           this.tiempoMinAhorroDpf = x.minimum_time;
           this.tiempoMaxAhorroDpf = x.maximum_time;
         }
-        console.log("Tiempo maximo de ahorro",this.tiempoMaxAhorroDpf);
+        console.log('Tiempo maximo de ahorro', this.tiempoMaxAhorroDpf);
         console.log('tasadpf', this.tasaAhorroDpf);
       },
       (error) => {
@@ -98,7 +98,7 @@ export class SimulatorsAdpfComponent implements OnInit {
 
     if (index == 0) {
       this.itemS = 1;
-      this.termDpf = this.tiempoMinAhorroDpf;
+      // this.termDpf = this.tiempoMinAhorroDpf;
       this.nombreProducto = 'Ahorro DPF';
       this.dpfSave();
     }
@@ -112,15 +112,25 @@ export class SimulatorsAdpfComponent implements OnInit {
     console.log('_select ' + index);
     this.selectedIndex = index;
   }
+
+
   /************************************************************************** */
   //Funciones Simuladores de Ahorro
 
   dpfSave(): void {
+
     if (this.tasaAhorroDpf == null) {
       this.ngOnInit();
     } else {
       console.log('tiempo min dpf', this.tiempoMinAhorroDpf);
-      if (this.amountDpf < 0) {
+      if (
+        this.amountDpf < 5000 ||
+        this.termDpf > this.tiempoMaxAhorroDpf ||
+        this.amountDpf > 1000000 ||
+        this.termDpf < this.tiempoMinAhorroDpf
+      ) {
+        this.termDpf = this.tiempoMinAhorroDpf;
+        this.amountDpf = 5000;
         this.toastr.warning('Limites Fuera de Rango ', 'Advertencia', {
           timeOut: 4500,
         });
@@ -128,12 +138,20 @@ export class SimulatorsAdpfComponent implements OnInit {
         this.tiempoDiasDpf = 0;
         this.tiempoDiasDpf = this.termDpf * 30 + 1;
         console.log('Tiempo en dias', this.tiempoDiasDpf);
+
         this.returnRateDpf =
           (this.amountDpf * this.tiempoDiasDpf * this.tasaAhorroDpf) /
           360 /
           100;
-        this.retentionDpf = this.returnRateDpf * 0.02;
-        this.totalDpf = this.amountDpf + this.returnRateDpf - this.retentionDpf;
+
+        if (this.termDpf > 12) {
+          this.totalDpf = this.amountDpf + this.returnRateDpf;
+          this.retentionDpf=0;
+        } else {
+          this.retentionDpf = this.returnRateDpf * 0.02;
+          this.totalDpf =
+            this.amountDpf + this.returnRateDpf - this.retentionDpf;
+        }
       }
     }
   }
@@ -274,7 +292,7 @@ export class SimulatorsAdpfComponent implements OnInit {
                     {},
                   ],
                   [
-                    { text: 'Monto del Ahorro', bold: true },
+                    { text: 'Monto de Ahorro', bold: true },
                     `${Intl.NumberFormat('en-US', {
                       style: 'currency',
                       currency: 'USD',

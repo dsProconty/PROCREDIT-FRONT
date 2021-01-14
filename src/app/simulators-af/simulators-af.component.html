@@ -83,18 +83,19 @@
                                                     <input class="input-td" value="{{amount | currency}}" readonly>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                              <th>Tasa de Interés:</th>
-                                              <td class="txt-align-r">
-                                                  <input value=" {{tasaAhorroFlexSave | currency}}" readonly class="input-td-2">
-                                              </td>
-                                          </tr>
+
                                             <tr>
                                                 <th>Plazo Días:</th>
                                                 <td class="txt-align-r">
                                                     <input value="{{term}}" readonly class="input-td">
                                                 </td>
                                             </tr>
+                                            <tr>
+                                              <th>Plazo Meses:</th>
+                                              <td class="txt-align-r">
+                                                  <input value="{{tiempoMeses | number:'1.0-0'}}" readonly class="input-td">
+                                              </td>
+                                          </tr>
                                             <tr>
                                                 <th>Interés Ganado Referencial:</th>
                                                 <td class="txt-align-r">

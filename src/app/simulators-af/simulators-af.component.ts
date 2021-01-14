@@ -51,6 +51,7 @@ export class SimulatorsAfComponent implements OnInit {
   //Ahorro Flex
   amount: number;
   term: number;
+  tiempoMeses:number;
   returnRate: number;
   // retention: number;
   total: number;
@@ -131,7 +132,8 @@ export class SimulatorsAfComponent implements OnInit {
   //Funciones Simuladores de Ahorro
 
   flexSave(): void {
-    console.log('tiempo min felxsave', this.tiempoMinAhorroFlexSave);
+    this.tiempoMeses=this.term*0.0328767;
+    console.log("tiempo meses", this.tiempoMeses);
     if (
       this.term < this.tiempoMinAhorroFlexSave ||
       this.term > this.tiempoMaxAhorroFlexSave
@@ -145,6 +147,8 @@ export class SimulatorsAfComponent implements OnInit {
         (this.amount * this.term * this.tasaAhorroFlexSave) / 360 / 100;
       // this.retention = this.returnRate * 0.02;
       this.total = this.amount + this.returnRate;
+      console.log("tiempo en meses", this.tiempoMeses);
+
     }
   }
 
@@ -302,7 +306,7 @@ export class SimulatorsAfComponent implements OnInit {
                     ],
 
                     [
-                      { text: 'Monto del Ahorro', bold: true },
+                      { text: 'Monto de Ahorro', bold: true },
                       `${Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'USD',
