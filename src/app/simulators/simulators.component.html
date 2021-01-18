@@ -45,7 +45,7 @@
                             <div class="input-group margin-left-3">
                                 <mat-slider class="mat-slider" thumbLabel [displayWith]="formatoTiempo" (input)="onInputChangeTiempoFlex($event)" tickInterval="1" min="{{tiempoMinAhorroFlexSave}}" max="{{tiempoMaxAhorroFlexSave}}" [(ngModel)]="term" (ngModelChange)="flexSave()" style="min-width: 280px;">
                                 </mat-slider>
-                                <input type="number" class="form-control input-monto-tiempo" id="exampleInputPassword1" placeholder="Pazo" [(ngModel)]="term" name="term" (ngModelChange)="flexSave()" size=40 style="width:100px; flex:none;">
+                                <input type="number" class="form-control input-monto-tiempo" id="exampleInputPassword1" placeholder="Plazo" [(ngModel)]="term" name="term" (ngModelChange)="flexSave()" size=40 style="width:100px; flex:none;">
                             </div>
                             <br>
                             <div class="div-bg-gray">
