@@ -805,7 +805,7 @@ export class SimulatorsEComponent implements OnInit {
                       `${this.tasaInteresAnual.toFixed(2)}%`,
                     ],
                     [
-                      { text: 'Tasa Interés Periodica', bold: true },
+                      { text: 'Tasa Interés Periódica', bold: true },
                       `${this.tasaInteresPeriodica.toFixed(2)}`,
                     ],
                     [

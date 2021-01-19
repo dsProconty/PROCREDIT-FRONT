@@ -130,7 +130,7 @@ export class SimulatorsVComponent implements OnInit {
     this.itemS = 0;
     this.nombreProducto = 'Ahorro DPF';
     this.francesa.is_visible = true;
-    this.nombreProducto = 'Credito Inmobilirio ';
+    this.nombreProducto = 'Crédito Inmobiliario ';
   }
 
   openDialog() {
@@ -897,7 +897,7 @@ export class SimulatorsVComponent implements OnInit {
                       `${this.tasaInteresAnual.toFixed(2)}%`,
                     ],
                     [
-                      { text: 'Tasa Interés Periodica', bold: true },
+                      { text: 'Tasa Interés Periódica', bold: true },
                       `${this.tasaInteresPeriodica.toFixed(2)}`,
                     ],
                     [
@@ -965,29 +965,7 @@ export class SimulatorsVComponent implements OnInit {
               },
             ],
           },
-          // {
-          //   table: {
-          //     layout: 'lightHorizontalLines', // optional
-          //     headerRows: 1,
-          //     widths: ['auto', 'auto'],
-          //     body: [
-          //       [{ text: 'Detalles Simulación', alignment: 'center', fillColor: '#b40c15', color: 'white', colSpan: 2 }, {}],
-          //       [{ text: 'Monto del Préstamo', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.valorPrestamo)}`],
-          //       [{ text: 'Plazo (Meses)', bold: true }, `${this.numeroCuotas}`],
-          //       [{ text: 'Tasa de Interés', bold: true }, `${this.tasaInteresAnual.toFixed(2)}%`],
-          //       [{ text: 'Tasa Interés Periodica', bold: true }, `${this.tasaInteresPeriodica.toFixed(2)}`],
-          //       [{ text: 'Tasa Interés Efectiva', bold: true }, `${(this.tasaEfectivaV*100).toFixed(2)}%`],
-          //       [{ text: 'Tasa Seguro', bold: true }, `${this.porcentajeSD.toFixed(2)}%`],
-          //       [{ text: 'Total Seguro a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaSeguroDesgravamenA)}`],
-          //       [{ text: 'Contribución SOLCA 0.5%', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.solcaV)}`],
 
-          //       [{ text: 'Liquido a Recibir', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.liquidoRecibirV)}`],
-          //       [{ text: 'Cuota Inicial', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.cuotaInicial)}`],
-          //       // [{ text: 'Cuota a Pagar Periodicamente', bold: true }, `$${this.cuotaPagarF.toFixed(2)}`],
-          //       [{ text: 'Total Interés a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaIntereses)}`],
-          //     ]
-          //   }
-          // },
           {
             aligment: 'center',
             text: '  ',
