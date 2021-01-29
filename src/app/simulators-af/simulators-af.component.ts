@@ -95,10 +95,10 @@ export class SimulatorsAfComponent implements OnInit {
           this.tiempoMinAhorroFlexSave = x.minimum_time;
           this.tiempoMaxAhorroFlexSave = x.maximum_time;
         }
-        console.log('TasaFlex', this.tasaAhorroFlexSave);
+        // console.log('TasaFlex', this.tasaAhorroFlexSave);
       },
       (error) => {
-        console.log('ERROR DE CONEXION', error);
+        // console.log('ERROR DE CONEXION', error);
         this.refresh();
       }
     );
@@ -115,15 +115,15 @@ export class SimulatorsAfComponent implements OnInit {
   @ViewChild('mattabgroup', { static: false }) mattabgroup: MatTabGroup;
 
   _selectedTabChange(index: number) {
-    console.log('_selectTabChange ' + index);
+    // console.log('_selectTabChange ' + index);
   }
 
   _selectedIndexChange(index: number) {
-    console.log('_selectedIndexChange ' + index);
+    // console.log('_selectedIndexChange ' + index);
   }
 
   _select(index: number) {
-    console.log('_select ' + index);
+    // console.log('_select ' + index);
     this.selectedIndex = index;
   }
 
@@ -133,12 +133,13 @@ export class SimulatorsAfComponent implements OnInit {
 
   flexSave(): void {
     this.tiempoMeses=this.term*0.0328767;
-    console.log("tiempo meses", this.tiempoMeses);
+    // console.log("tiempo meses", this.tiempoMeses);
     if (
       this.term < this.tiempoMinAhorroFlexSave ||
-      this.term > this.tiempoMaxAhorroFlexSave
+      this.term > this.tiempoMaxAhorroFlexSave || this.amount>1000000
     ) {
       this.term = this.tiempoMinAhorroFlexSave;
+      this.amount=1;
       this.toastr.warning('Limites Fuera de Rango ', 'Advertencia', {
         timeOut: 4500,
       });
@@ -147,7 +148,7 @@ export class SimulatorsAfComponent implements OnInit {
         (this.amount * this.term * this.tasaAhorroFlexSave) / 360 / 100;
       // this.retention = this.returnRate * 0.02;
       this.total = this.amount + this.returnRate;
-      console.log("tiempo en meses", this.tiempoMeses);
+      // console.log("tiempo en meses", this.tiempoMeses);
 
     }
   }
@@ -203,11 +204,11 @@ export class SimulatorsAfComponent implements OnInit {
   }
 
   onInputChangeMontoFlex(event: any) {
-    console.log(event.value);
+    // console.log(event.value);
     this.amount = event.value;
   }
   onInputChangeTiempoFlex(event: any) {
-    console.log(event.value);
+    // console.log(event.value);
     this.term = event.value;
   }
 

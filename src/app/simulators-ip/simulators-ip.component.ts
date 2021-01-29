@@ -145,10 +145,10 @@ export class SimulatorsIpComponent implements OnInit {
        this.tasaEfectivaP =
          Math.pow(1 + this.tasaCreditoInversion / 12 / 100, 12) - 1;
 
-       console.log('tasainversion', this.tasaCreditoInversion);
+      //  console.log('tasainversion', this.tasaCreditoInversion);
      },
      (error) => {
-       console.log('ERROR DE CONEXION', error);
+      //  console.log('ERROR DE CONEXION', error);
        this.refresh();
      }
    );
@@ -197,14 +197,14 @@ export class SimulatorsIpComponent implements OnInit {
  @ViewChild('mattabgroup', { static: false }) mattabgroup: MatTabGroup;
 
  _selectedTabChange(index: number) {
-   console.log('_selectTabChange ' + index);
+  //  console.log('_selectTabChange ' + index);
  }
 
  _selectedIndexChange(index: number) {
-   console.log('_selectedIndexChange ' + index);
+  //  console.log('_selectedIndexChange ' + index);
  }
  _select(index: number) {
-   console.log('_select ' + index);
+  //  console.log('_select ' + index);
 
  }
 
@@ -249,13 +249,13 @@ export class SimulatorsIpComponent implements OnInit {
  simuladorInversion(): void {
    this.limpiarTabla();
    /**Variables globales para los dos sistemas */
-   this.tasaInteresAnual = this.tasaCreditoInversion;
-   this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
-   this.porcentajeSeguroDesgravamen = 0.684 / 100;
+  //  this.tasaInteresAnual = this.tasaCreditoInversion;
+  //  this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
+  //  this.porcentajeSeguroDesgravamen = 0.684 / 100;
 
-   this.solcaP = (this.valorPrestamo * 0.5) / 100;
-   console.log('valor solca', this.solcaP);
-   this.liquidoRecibirP = this.valorPrestamo - this.solcaP;
+  //  this.solcaP = (this.valorPrestamo * 0.5) / 100;
+  // //  console.log('valor solca', this.solcaP);
+  //  this.liquidoRecibirP = this.valorPrestamo - this.solcaP;
    /**Validacion montos y tiempo */
    if (
      this.valorPrestamo > this.montoMaxCreditoInversion ||
@@ -282,6 +282,14 @@ export class SimulatorsIpComponent implements OnInit {
        }
      );
    } else {
+
+    this.tasaInteresAnual = this.tasaCreditoInversion;
+    this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
+    this.porcentajeSeguroDesgravamen = 0.684 / 100;
+
+    this.solcaP = (this.valorPrestamo * 0.5) / 100;
+   //  console.log('valor solca', this.solcaP);
+    this.liquidoRecibirP = this.valorPrestamo - this.solcaP;
      /**Calculo Frances */
      //valores calculo frances
      this.capitalAmortizadoF = 0;
@@ -331,7 +339,7 @@ export class SimulatorsIpComponent implements OnInit {
        this.capitalAmortizadoF = this.cuotaFrancesa - this.interesDelPeriodoF;
        this.saldoRemanenteF = this.saldoRemanenteF - this.capitalAmortizadoF;
      }
-     console.log('suma seguro d', this.sumaSeguroDesgravamenF);
+    //  console.log('suma seguro d', this.sumaSeguroDesgravamenF);
 
      /**Calculo Aleman */
      //valor fijo capital amortizado calculo aleman
@@ -349,7 +357,7 @@ export class SimulatorsIpComponent implements OnInit {
        this.capitalAmortizadoIA +
        this.valorSeguroDesgravamen;
      this.saldoRemanenteIA = this.saldoRemanenteIA - this.capitalAmortizadoIA;
-     console.log('interes aleman primera cuota', this.interesDelPeriodoIA);
+    //  console.log('interes aleman primera cuota', this.interesDelPeriodoIA);
      this.cuotaInicial = this.cuotaPagarIA;
      for (let i = 0; i < this.numeroCuotas; i++) {
        /**Calculo Aleman */
@@ -428,13 +436,13 @@ export class SimulatorsIpComponent implements OnInit {
    return value;
  }
  onInputChangeMonto(event: any) {
-   console.log(event.value);
+  //  console.log(event.value);
    this.valorPrestamo = event.value;
  }
 
 
  onInputChangeTiempo(event: any) {
-   console.log(event.value);
+  //  console.log(event.value);
    this.numeroCuotas = event.value;
  }
  getBase64ImageFromURL(url) {

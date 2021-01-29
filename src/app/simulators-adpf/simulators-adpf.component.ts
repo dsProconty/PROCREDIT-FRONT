@@ -73,11 +73,11 @@ export class SimulatorsAdpfComponent implements OnInit {
           this.tiempoMinAhorroDpf = x.minimum_time;
           this.tiempoMaxAhorroDpf = x.maximum_time;
         }
-        console.log('Tiempo maximo de ahorro', this.tiempoMaxAhorroDpf);
-        console.log('tasadpf', this.tasaAhorroDpf);
+        // console.log('Tiempo maximo de ahorro', this.tiempoMaxAhorroDpf);
+        // console.log('tasadpf', this.tasaAhorroDpf);
       },
       (error) => {
-        console.log('ERROR DE CONEXION', error);
+        // console.log('ERROR DE CONEXION', error);
         this.refresh();
       }
     );
@@ -93,7 +93,7 @@ export class SimulatorsAdpfComponent implements OnInit {
   @ViewChild('mattabgroup', { static: false }) mattabgroup: MatTabGroup;
 
   _selectedTabChange(index: number) {
-    console.log('_selectTabChange ' + index);
+    // console.log('_selectTabChange ' + index);
     // this.limpiarDatos();
 
     if (index == 0) {
@@ -105,11 +105,11 @@ export class SimulatorsAdpfComponent implements OnInit {
   }
 
   _selectedIndexChange(index: number) {
-    console.log('_selectedIndexChange ' + index);
+    // console.log('_selectedIndexChange ' + index);
   }
 
   _select(index: number) {
-    console.log('_select ' + index);
+    // console.log('_select ' + index);
     this.selectedIndex = index;
   }
 
@@ -122,7 +122,7 @@ export class SimulatorsAdpfComponent implements OnInit {
     if (this.tasaAhorroDpf == null) {
       this.ngOnInit();
     } else {
-      console.log('tiempo min dpf', this.tiempoMinAhorroDpf);
+      // console.log('tiempo min dpf', this.tiempoMinAhorroDpf);
       if (
         this.amountDpf < 5000 ||
         this.termDpf > this.tiempoMaxAhorroDpf ||
@@ -137,7 +137,7 @@ export class SimulatorsAdpfComponent implements OnInit {
       } else {
         this.tiempoDiasDpf = 0;
         this.tiempoDiasDpf = this.termDpf * 30 + 1;
-        console.log('Tiempo en dias', this.tiempoDiasDpf);
+        // console.log('Tiempo en dias', this.tiempoDiasDpf);
 
         this.returnRateDpf =
           (this.amountDpf * this.tiempoDiasDpf * this.tasaAhorroDpf) /
@@ -193,12 +193,12 @@ export class SimulatorsAdpfComponent implements OnInit {
   }
 
   onInputChangeMontoDpf(event: any) {
-    console.log(event.value);
+    // console.log(event.value);
     this.amountDpf = event.value;
   }
 
   onInputChangeTiempoDpf(event: any) {
-    console.log(event.value);
+    // console.log(event.value);
     this.termDpf = event.value;
   }
 

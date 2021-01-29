@@ -133,10 +133,10 @@ export class SimulatorsEComponent implements OnInit {
         this.tasaEfectiva =
           Math.pow(1 + this.tasaCreditoEducativo / 12 / 100, 12) - 1;
 
-        console.log('tasaeducativo', this.tasaCreditoEducativo);
+        // console.log('tasaeducativo', this.tasaCreditoEducativo);
       },
       (error) => {
-        console.log('ERROR DE CONEXION', error);
+        // console.log('ERROR DE CONEXION', error);
         this.refresh();
       }
     );
@@ -185,15 +185,15 @@ export class SimulatorsEComponent implements OnInit {
   @ViewChild('mattabgroup', { static: false }) mattabgroup: MatTabGroup;
 
   _selectedTabChange(index: number) {
-    console.log('_selectTabChange ' + index);
+    // console.log('_selectTabChange ' + index);
   }
 
   _selectedIndexChange(index: number) {
-    console.log('_selectedIndexChange ' + index);
+    // console.log('_selectedIndexChange ' + index);
   }
 
   _select(index: number) {
-    console.log('_select ' + index);
+    // console.log('_select ' + index);
   }
 
   /****************************************************************** */
@@ -235,13 +235,13 @@ export class SimulatorsEComponent implements OnInit {
   simuladorEducativo(): void {
     this.limpiarTabla();
     /**Variables globales para los dos sistemas */
-    this.tasaInteresAnual = this.tasaCreditoEducativo;
-    this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
-    this.porcentajeSeguroDesgravamen = 0.684 / 100;
-    this.solca = (this.valorPrestamo * 0.5) / 100;
-    console.log('valor solca', this.solca);
-    this.liquidoRecibir = this.valorPrestamo - this.solca;
-    console.log('tasa efectiva', this.tasaEfectiva);
+    // this.tasaInteresAnual = this.tasaCreditoEducativo;
+    // this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
+    // this.porcentajeSeguroDesgravamen = 0.684 / 100;
+    // this.solca = (this.valorPrestamo * 0.5) / 100;
+    // console.log('valor solca', this.solca);
+    // this.liquidoRecibir = this.valorPrestamo - this.solca;
+    // console.log('tasa efectiva', this.tasaEfectiva);
     if (
       this.valorPrestamo > this.montoMaxCreditoEducativo ||
       this.valorPrestamo < this.montoMinCreditoEducativo
@@ -267,6 +267,13 @@ export class SimulatorsEComponent implements OnInit {
         }
       );
     } else {
+      this.tasaInteresAnual = this.tasaCreditoEducativo;
+      this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
+      this.porcentajeSeguroDesgravamen = 0.684 / 100;
+      this.solca = (this.valorPrestamo * 0.5) / 100;
+      // console.log('valor solca', this.solca);
+      this.liquidoRecibir = this.valorPrestamo - this.solca;
+      // console.log('tasa efectiva', this.tasaEfectiva);
       /**Calculo Frances */
       //valores calculo frances
       this.capitalAmortizadoF = 0;
@@ -317,7 +324,7 @@ export class SimulatorsEComponent implements OnInit {
           this.valorSeguroDesgravamenF;
         this.capitalAmortizadoF = this.cuotaFrancesa - this.interesDelPeriodoF;
         this.saldoRemanenteF = this.saldoRemanenteF - this.capitalAmortizadoF;
-        console.log('suma seguro d', this.sumaSeguroDesgravamenF);
+        // console.log('suma seguro d', this.sumaSeguroDesgravamenF);
       }
 
       /**Calculo Aleman */
@@ -336,7 +343,7 @@ export class SimulatorsEComponent implements OnInit {
         this.capitalAmortizadoIA +
         this.valorSeguroDesgravamen;
       this.saldoRemanenteIA = this.saldoRemanenteIA - this.capitalAmortizadoIA;
-      console.log('interes aleman primera cuota', this.interesDelPeriodoIA);
+      // console.log('interes aleman primera cuota', this.interesDelPeriodoIA);
       this.cuotaInicial = this.cuotaPagarIA;
       for (let i = 0; i < this.numeroCuotas; i++) {
         /**Calculo Aleman */
@@ -413,12 +420,12 @@ export class SimulatorsEComponent implements OnInit {
     return value;
   }
   onInputChangeMonto(event: any) {
-    console.log(event.value);
+    // console.log(event.value);
     this.valorPrestamo = event.value;
   }
 
   onInputChangeTiempo(event: any) {
-    console.log(event.value);
+    // console.log(event.value);
     this.numeroCuotas = event.value;
   }
   getBase64ImageFromURL(url) {

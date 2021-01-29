@@ -146,7 +146,9 @@ export class SimulatorsVComponent implements OnInit {
           this.montoMinCreditoInmobiliario = x.montomin;
           this.montoMaxCreditoInmobiliario = x.montomax;
           this.tiempoMinCreditoInmobiliario = x.tiempomin;
-          this.tiempoMaxCreditoInmobiliario = x.tiempomax;
+          // this.tiempoMaxCreditoInmobiliario = x.tiempomax;
+          this.tiempoMaxCreditoInmobiliario = 180;
+
           this.tasaEcoCreditoInmobiliario = x.tasa_ecologica;
         }
         this.tasaEfectivaV =
@@ -154,10 +156,10 @@ export class SimulatorsVComponent implements OnInit {
         this.tasaEfectivaVEco =
           Math.pow(1 + this.tasaEcoCreditoInmobiliario / 12 / 100, 12) - 1;
 
-        console.log('Tasa ecologica', this.tasaEcoCreditoInmobiliario);
+        // console.log('Tasa ecologica', this.tasaEcoCreditoInmobiliario);
       },
       (error) => {
-        console.log('ERROR DE CONEXION', error);
+        // console.log('ERROR DE CONEXION', error);
         this.refresh();
       }
     );
@@ -206,16 +208,16 @@ export class SimulatorsVComponent implements OnInit {
   @ViewChild('mattabgroup', { static: false }) mattabgroup: MatTabGroup;
 
   _selectedTabChange(index: number) {
-    console.log('_selectTabChange ' + index);
+    // console.log('_selectTabChange ' + index);
 
   }
 
   _selectedIndexChange(index: number) {
-    console.log('_selectedIndexChange ' + index);
+    // console.log('_selectedIndexChange ' + index);
   }
 
   _select(index: number) {
-    console.log('_select ' + index);
+    // console.log('_select ' + index);
     this.selectedIndex = index;
   }
 
@@ -263,18 +265,23 @@ export class SimulatorsVComponent implements OnInit {
 
     if (this.checked) {
       this.tasaInteresAnual = this.tasaEcoCreditoInmobiliario;
+          this.tiempoMaxCreditoInmobiliario = 240;
+
+
     } else {
       this.tasaInteresAnual = this.tasaCreditoInmobiliario;
+      // console.log("Tiempo maximo sin marcar vivienda eco", this.tiempoMaxCreditoInmobiliario);
+      this.tiempoMaxCreditoInmobiliario = 180;
+
     }
-    // this.limpiarTabla();
     /**Variables globales para los dos sistemas */
     // this.tasaInteresAnual = this.tasaCreditoEducativo;
-    this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
-    this.porcentajeSeguroDesgravamen = 0.684 / 100;
+    // this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
+    // this.porcentajeSeguroDesgravamen = 0.684 / 100;
 
-    this.solcaV = (this.valorPrestamo * 0.5) / 100;
-    console.log('valor solca', this.solcaV);
-    this.liquidoRecibirV = this.valorPrestamo - this.solcaV;
+    // this.solcaV = (this.valorPrestamo * 0.5) / 100;
+    // // console.log('valor solca', this.solcaV);
+    // this.liquidoRecibirV = this.valorPrestamo - this.solcaV;
     /**Validacion montos y tiempo */
     if (
       this.valorPrestamo > this.montoMaxCreditoInmobiliario ||
@@ -303,6 +310,12 @@ export class SimulatorsVComponent implements OnInit {
     } else {
       /**Calculo Frances */
       //valores calculo frances
+      this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
+      this.porcentajeSeguroDesgravamen = 0.684 / 100;
+
+      this.solcaV = (this.valorPrestamo * 0.5) / 100;
+      // console.log('valor solca', this.solcaV);
+      this.liquidoRecibirV = this.valorPrestamo - this.solcaV;
       this.capitalAmortizadoF = 0;
       this.sumaInteresesF = 0;
       this.sumaSeguroDesgravamenF = 0;
@@ -350,7 +363,7 @@ export class SimulatorsVComponent implements OnInit {
         this.capitalAmortizadoF = this.cuotaFrancesa - this.interesDelPeriodoF;
         this.saldoRemanenteF = this.saldoRemanenteF - this.capitalAmortizadoF;
       }
-      console.log('suma seguro d', this.sumaSeguroDesgravamenF);
+      // console.log('suma seguro d', this.sumaSeguroDesgravamenF);
 
       /**Calculo Aleman */
       //valor fijo capital amortizado calculo aleman
@@ -368,7 +381,7 @@ export class SimulatorsVComponent implements OnInit {
         this.capitalAmortizadoIA +
         this.valorSeguroDesgravamen;
       this.saldoRemanenteIA = this.saldoRemanenteIA - this.capitalAmortizadoIA;
-      console.log('interes aleman primera cuota', this.interesDelPeriodoIA);
+      // console.log('interes aleman primera cuota', this.interesDelPeriodoIA);
       this.cuotaInicial = this.cuotaPagarIA;
       for (let i = 0; i < this.numeroCuotas; i++) {
         /**Calculo Aleman */
@@ -452,14 +465,14 @@ export class SimulatorsVComponent implements OnInit {
     return value;
   }
   onInputChangeMonto(event: any) {
-    console.log(event.value);
+    // console.log(event.value);
     this.valorPrestamo = event.value;
   }
 
 
 
   onInputChangeTiempo(event: any) {
-    console.log(event.value);
+    // console.log(event.value);
     this.numeroCuotas = event.value;
   }
 
