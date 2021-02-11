@@ -256,16 +256,17 @@ height: 1%; */
 .h3-tasa-interes {
     margin-left: 3%;
     font-size: 25px;
-    font-weight: 700;
-    font-family: amaranth-regular;
+    font-weight: 600;
+    font-family: amaranth-bold;
     margin-bottom: -0.5%;
 }
 
 .h3-tasa-interes-efectiva {
+  margin-top: 4%;
     margin-left: 3%;
     font-size: 20px;
-    font-weight: 700;
-    font-family: amaranth-regular;
+    font-weight: 600;
+    font-family: amaranth-bold;
     margin-bottom: -0.5%;
 }
 

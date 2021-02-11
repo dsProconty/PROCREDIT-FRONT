@@ -57,8 +57,8 @@
                 <mat-checkbox class="example-margin" [(ngModel)]="checked" (ngModelChange)="simuladorInmobiliario()">
                   Vivienda Ecológica</mat-checkbox>
               </section>
-              <label class="label-tabla-de">Tabla de </label> <br>
-              <label class="label-amortizacion">amortización</label>
+              <label class="label-tabla-de">Tabla de amortización</label> <br>
+              <!-- <label class="label-amortizacion">amortización</label> -->
               <div class="button-group div-botones-francesa-alemana">
                 <button class="btn btn-light boton-simuladores" (click)="verFrancesa()"
                   style="background-color: #970077; ">Francesa</button>
@@ -67,12 +67,12 @@
               </div>
               <div class="div-bg-gray">
                 <h2 class="h3-tasa-interes-efectiva" *ngIf="checked==false">
-                  Tasa de Interés Efectiva: {{this.tasaEfectivaV | percent: '1.2-2'}}</h2>
+                  Tasa de interés efectiva: {{this.tasaEfectivaV | percent: '1.2-2'}}</h2>
 
                 <h2 class="h3-tasa-interes-efectiva" *ngIf="checked">
-                  Tasa de Interés Efectiva: {{this.tasaEfectivaVEco | percent: '1.2-2'}}</h2>
+                  Tasa de interés efectiva: {{this.tasaEfectivaVEco | percent: '1.2-2'}}</h2>
                 <h2 class="h3-tasa-interes">
-                  Tasa de Interés</h2>
+                  Tasa de interés</h2>
                 <div class="row div-interes-tasa">
                   <div class="col-md-4 margin-left-3">
                     <h1 class="h1-tasa-credito" *ngIf="checked==false">{{tasaCreditoInmobiliario | number: '1.2-2'}}

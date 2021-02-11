@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule} from '@angular/forms';
@@ -61,6 +61,11 @@ import { SimulatorsIpComponent } from './simulators-ip/simulators-ip.component';
 import { SimulatorsVComponent } from './simulators-v/simulators-v.component';
 import { NgxCurrencyModule } from "ngx-currency";
 import  {MatCurrencyFormatModule} from 'mat-currency-format';
+
+import localeEs from '@angular/common/locales/es';
+
+import {registerLocaleData} from '@angular/common'
+registerLocaleData(localeEs,'es');
 
 
 // import { routing } from './app.routing';
@@ -180,7 +185,7 @@ import  {MatCurrencyFormatModule} from 'mat-currency-format';
 
 
   ],
-  providers: [ClientService],
+  providers: [ClientService,{provide:LOCALE_ID, useValue:'es'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import {
   Component,
+  LOCALE_ID,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -14,13 +15,14 @@ import { MatDialog } from '@angular/material/dialog';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { DialogExampleComponent } from '../dialog-example/dialog-example.component';
 
-import { CurrencyPipe, formatCurrency } from '@angular/common';
+import { CurrencyPipe, formatCurrency, registerLocaleData } from '@angular/common';
 declare var hbspt: any;
 
 
 @Component({
   selector: 'app-simulators-v',
   templateUrl: './simulators-v.component.html',
+
   styleUrls: ['./simulators-v.component.css']
 })
 export class SimulatorsVComponent implements OnInit {
@@ -289,7 +291,7 @@ export class SimulatorsVComponent implements OnInit {
     ) {
       this.valorPrestamo = this.montoMinCreditoInmobiliario;
       this.toastr.warning(
-        'Monto Maximo $30.000, Monto Minimo $1000 ',
+        'Monto Máximo $500.000 Monto Mínimo $50000 ',
         'Monto Fuera de Rango',
         {
           timeOut: 4500,
@@ -301,7 +303,7 @@ export class SimulatorsVComponent implements OnInit {
     ) {
       this.numeroCuotas = this.tiempoMinCreditoInmobiliario;
       this.toastr.warning(
-        'Tiempo Maximo 48 Meses, Tiempo Minimo 6 Meses',
+        'Tiempo Máximo 180 Meses Tiempo Mínimo 12 Meses',
         'Tiempo Fuera de Rango',
         {
           timeOut: 4500,

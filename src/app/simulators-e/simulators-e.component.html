@@ -46,8 +46,8 @@
                                     (ngModelChange)="simuladorEducativo()" size=40>
                             </div>
                             <br>
-                            <label class="label-tabla-de">Tabla de </label> <br>
-                            <label class="label-amortizacion">amortización</label>
+                            <label class="label-tabla-de">Tabla de amortización </label> <br>
+                            <!-- <label class="label-amortizacion">amortización</label> -->
                             <div class="button-group div-botones-francesa-alemana">
                                 <button class="btn btn-light boton-simuladores" (click)="verFrancesa()" style="background-color: #f4d900; ">Francesa</button>
                                 <button class="btn btn-light boton-simuladores" (click)="verAlemana()" style="background-color: #959398;  margin-left: 2%;">Alemana</button>
@@ -55,9 +55,9 @@
                             <div class="div-bg-gray">
                                 <br class="salto-linea">
                                 <h2 class="h3-tasa-interes-efectiva">
-                                    Tasa de Interés Efectiva: {{this.tasaEfectiva | percent: '1.2-2'}}</h2>
+                                    Tasa de interés Efectiva: {{this.tasaEfectiva | percent: '1.2-2'}}</h2>
                                 <h2 class="h3-tasa-interes">
-                                    Tasa de Interés</h2>
+                                    Tasa de interés</h2>
                                 <div class="row div-interes-tasa">
                                     <div class="col-md-4 margin-left-3">
                                         <h1 class="h1-tasa-credito">
