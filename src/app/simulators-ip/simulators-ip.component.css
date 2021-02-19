@@ -501,6 +501,18 @@ margin-left: 7%; */
     position: absolute;
 }
 
+.div-solca{
+  margin-top: 8%;
+  margin-bottom: -15%;
+  padding-left: 15%
+}
+.h3-solca{
+  font-size: 14px;
+  font-family: amaranth-regular;
+  color: #959398;
+  line-height: 16pt;
+}
+
 .btn1 {
     box-sizing: border-box;
     -webkit-appearance: none;
@@ -1050,6 +1062,18 @@ margin-left: 80%; */
         font-weight: 500;
         position: relative;
     }
+
+    .div-solca{
+      margin-top: 0%;
+      margin-bottom: 0%;
+      padding-left: 3%
+    }
+    .h3-solca{
+      font-size: 14px;
+      font-family: amaranth-regular;
+      color: #959398;
+      line-height: 16pt;
+    }
     .btn1 {
         border-radius: 12px;
         border: none;
@@ -1326,6 +1350,7 @@ margin-left: 80%; */
         height: 100%;
         overflow: initial !important;
     }
+
 }
 
 
@@ -1427,6 +1452,18 @@ margin-left: 80%; */
         /* margin-right: -10%;
 margin-left: 7%; */
         font-family: amaranth-regular;
+    }
+
+    .div-solca{
+      margin-top: 2%;
+      margin-bottom: -15%;
+      padding-left: 30%
+    }
+    .h3-solca{
+      font-size: 14px;
+      font-family: amaranth-regular;
+      color: #959398;
+      line-height: 16pt;
     }
     .btn1 {
         border-radius: 12px;
@@ -1595,6 +1632,19 @@ margin-left: 7%; */
         /* margin-right: -10%;
 margin-left: 7%; */
         font-family: amaranth-regular;
+    }
+
+    .div-solca{
+      margin-top: 1%;
+      margin-bottom: -20%;
+      padding-left: 25%;
+
+    }
+    .h3-solca{
+      font-size: 14px;
+      font-family: amaranth-regular;
+      color: #959398;
+      line-height: 16pt;
     }
     .btn1 {
         border-radius: 12px;

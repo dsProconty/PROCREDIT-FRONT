@@ -1,22 +1,18 @@
 @font-face {
   font-family: amaranth-regular;
-  /* src: url('assets/Amaranth-Regular.ttf'); */
   src:url(../assets/Amaranth-Regular.ttf)
 }
 
 @font-face {
   font-family: amaranth-bold;
-  /* src: url('assets/Amaranth-Regular.ttf'); */
   src:url(../assets/Amaranth-Bold.ttf)
 }
 @font-face {
   font-family: amaranth-bolditalic;
-  /* src: url('assets/Amaranth-Regular.ttf'); */
   src:url(../assets/Amaranth-BoldItalic.ttf)
 }
 @font-face {
   font-family: amaranth-italic;
-  /* src: url('assets/Amaranth-Regular.ttf'); */
   src:url(../assets/Amaranth-Italic.ttf)
 }
 .container-responsive{

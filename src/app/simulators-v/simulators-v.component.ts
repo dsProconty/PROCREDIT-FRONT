@@ -1,6 +1,5 @@
 import {
   Component,
-  LOCALE_ID,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -15,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { DialogExampleComponent } from '../dialog-example/dialog-example.component';
 
-import { CurrencyPipe, formatCurrency, registerLocaleData } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 declare var hbspt: any;
 
 

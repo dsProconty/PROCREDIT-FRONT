@@ -17,6 +17,7 @@
     height: 60px;
 }
 
+
 .example-margin {
     margin: 0 10px;
 }
@@ -173,6 +174,18 @@ height: 700px; */
     font-weight: 900;
 }
 
+
+.div-solca{
+  margin-top: 8%;
+  margin-bottom: -15%;
+  padding-left: 15%
+}
+.h3-solca{
+  font-size: 14px;
+  font-family: amaranth-regular;
+  color: #959398;
+  line-height: 16pt;
+}
 .div-lado-izq {
     background-color: #eff0f1;
     /* padding: inherit;
@@ -744,6 +757,17 @@ margin-left: 80%; */
         flex: none;
         /* margin-left: 2%; */
     }
+    .div-solca{
+      margin-top: 0%;
+      margin-bottom: 0%;
+      padding-left: 3%
+    }
+    .h3-solca{
+      font-size: 14px;
+      font-family: amaranth-regular;
+      color: #959398;
+      line-height: 16pt;
+    }
     .row {
         display: flex;
         flex-wrap: wrap;
@@ -1201,6 +1225,18 @@ margin-left: 80%; */
         position: absolute;
         width: 97.5%;
     }
+
+    .div-solca{
+      margin-top: 2%;
+      margin-bottom: -15%;
+      padding-left: 30%
+    }
+    .h3-solca{
+      font-size: 14px;
+      font-family: amaranth-regular;
+      color: #959398;
+      line-height: 16pt;
+    }
     .boton-lq-dialog {
         background-color: #959398;
         border-radius: 12px;
@@ -1401,6 +1437,18 @@ margin-left: 80%; */
         /* margin: 4px 2px; */
         width: 20%;
         /* margin-top: 10em; margin-left: 80%; */
+    }
+    .div-solca{
+      margin-top: 1%;
+      margin-bottom: -20%;
+      padding-left: 25%;
+
+    }
+    .h3-solca{
+      font-size: 14px;
+      font-family: amaranth-regular;
+      color: #959398;
+      line-height: 16pt;
     }
     .div-porcentaje-anual {
         /* margin-right: -3%; */

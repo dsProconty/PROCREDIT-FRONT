@@ -4,8 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule} from '@angular/forms';
 import { SimulatorsComponent } from './simulators/simulators.component';
-
-
 import { HttpClientModule } from '@angular/common/http';
 import { ClientService } from './client.service';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -46,9 +44,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
-
-
-
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
@@ -61,15 +56,9 @@ import { SimulatorsIpComponent } from './simulators-ip/simulators-ip.component';
 import { SimulatorsVComponent } from './simulators-v/simulators-v.component';
 import { NgxCurrencyModule } from "ngx-currency";
 import  {MatCurrencyFormatModule} from 'mat-currency-format';
-
 import localeEs from '@angular/common/locales/es';
-
 import {registerLocaleData} from '@angular/common'
 registerLocaleData(localeEs,'es');
-
-
-// import { routing } from './app.routing';
-
 
 
 @NgModule({

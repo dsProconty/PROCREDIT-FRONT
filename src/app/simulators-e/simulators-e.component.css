@@ -170,7 +170,17 @@ ng-trigger-translateTab::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-w
   margin-left: 3%;
   height: 1%; */
 }
-
+.div-solca{
+  margin-top: 8%;
+  margin-bottom: -15%;
+  padding-left: 15%
+}
+.h3-solca{
+  font-size: 14px;
+  font-family: amaranth-regular;
+  color: #959398;
+  line-height: 16pt;
+}
 .titulo-simulador {
     font-family: amaranth-bold;
     margin-left: 6%;
@@ -707,6 +717,18 @@ margin-left: 80%; */
         flex: none;
         /* margin-left: 2%; */
     }
+
+    .div-solca{
+      margin-top: 0%;
+      margin-bottom: 0%;
+      padding-left: 3%
+    }
+    .h3-solca{
+      font-size: 14px;
+      font-family: amaranth-regular;
+      color: #959398;
+      line-height: 16pt;
+    }
     .row {
         display: flex;
         flex-wrap: wrap;
@@ -1031,6 +1053,7 @@ margin-left: 80%; */
         font-weight: 500;
         position: relative;
     }
+
     .btn1 {
         border-radius: 12px;
         border: none;
@@ -1293,6 +1316,18 @@ margin-left: 80%; */
   margin-left: 7%; */
         font-family: amaranth-regular;
     }
+    .div-solca{
+      margin-top: 2%;
+      margin-bottom: -15%;
+      padding-left: 30%
+    }
+    .h3-solca{
+      font-size: 14px;
+      font-family: amaranth-regular;
+      color: #959398;
+      line-height: 16pt;
+    }
+
     .btn1 {
         border-radius: 12px;
         border: none;
@@ -1435,6 +1470,18 @@ margin-left: 80%; */
         /* margin-right: -10%;
   margin-left: 7%; */
         font-family: amaranth-regular;
+    }
+    .div-solca{
+      margin-top: 1%;
+      margin-bottom: -15%;
+      padding-left: 25%;
+
+    }
+    .h3-solca{
+      font-size: 14px;
+      font-family: amaranth-regular;
+      color: #959398;
+      line-height: 16pt;
     }
     .btn1 {
         border-radius: 12px;
