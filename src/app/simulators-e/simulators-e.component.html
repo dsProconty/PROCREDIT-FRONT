@@ -82,8 +82,8 @@
                     {{tiempoMinCreditoEducativo}} meses,
                     máximo {{tiempoMaxCreditoEducativo}} meses</label>
                                     <label class="label-limites-montos">Monto mínimo
-                    {{montoMinCreditoEducativo | currency}}
-                    monto máximo {{montoMaxCreditoEducativo | currency}}
+                    ${{montoMinCreditoEducativo | number}}
+                    monto máximo ${{montoMaxCreditoEducativo | number}}
                   </label>
                                 </div>
                             </div>
@@ -118,27 +118,27 @@
                                             <tr>
                                                 <th> Total seguro :</th>
                                                 <td class="txt-align-r">
-                                                    <input value="{{sumaSeguroDesgravamenA | currency}}" readonly class="input-td">
+                                                    <input value="${{sumaSeguroDesgravamenA | number:'1.0-2'}}" readonly class="input-td">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th> Liquido a Recibir:</th>
                                                 <td class="txt-align-r">
-                                                    <input value="{{liquidoRecibir | currency}}" readonly class="input-td-2">
+                                                    <input value="${{liquidoRecibir | number:'1.0-2'}}" readonly class="input-td-2">
                                                 </td>
                                             </tr>
                                             <!-- <div class="div-td" style="background-color: #fbcb0c;"> -->
                                             <tr style="background-color: #fbcb0c;">
                                                 <th>Cuota inicial:</th>
                                                 <td class="txt-align-r">
-                                                    <input class="input-td-2 input-td-2-creditoA" value="{{cuotaInicial | currency}}" readonly>
+                                                    <input class="input-td-2 input-td-2-creditoA" value="${{cuotaInicial | number:'1.0-2'}}" readonly>
                                                 </td>
                                             </tr>
                                             <!-- </div> -->
                                             <tr>
                                                 <th class="th-total-interes">Total interés a pagar:</th>
                                                 <td class="th-total-interes txt-align-r">
-                                                    <input value="{{sumaIntereses | currency}}" readonly class="input-td-2">
+                                                    <input value="${{sumaIntereses | number:'1.0-2'}}" readonly class="input-td-2">
                                                 </td>
                                             </tr>
                                         </table>
@@ -164,27 +164,27 @@
                                             <tr>
                                                 <th> Total seguro :</th>
                                                 <td class="txt-align-r">
-                                                    <input value="{{sumaSeguroDesgravamenF | currency}}" readonly class="input-td">
+                                                    <input value="${{sumaSeguroDesgravamenF | number:'1.0-2'}}" readonly class="input-td">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th> Liquido a Recibir:</th>
                                                 <td class="txt-align-r">
-                                                    <input value="{{liquidoRecibir | currency}}" readonly class="input-td-2">
+                                                    <input value="${{liquidoRecibir | number:'1.0-2'}}" readonly class="input-td-2">
                                                 </td>
                                             </tr>
                                             <!-- <div class="div-td-2" style="background-color: #fbcb0c ; "> -->
                                             <tr style="background-color: #fbcb0c;">
-                                                <th> Cuota a pagar:</th>
+                                                <th> *Cuota a pagar:</th>
                                                 <td class="txt-align-r">
-                                                    <input class="input-td-2 input-td-2-creditof" value="{{cuotaPagarF | currency}}" readonly>
+                                                    <input class="input-td-2 input-td-2-creditof" value="${{cuotaPagarF | number:'1.0-2'}}" readonly>
                                                 </td>
                                             </tr>
                                             <!-- </div> -->
                                             <tr>
                                                 <th class="th-total-interes"> Total interés a pagar:</th>
                                                 <td class="th-total-interes txt-align-r ">
-                                                    <input class="input-td-2" value="{{sumaInteresesF | currency}}" readonly>
+                                                    <input class="input-td-2" value="${{sumaInteresesF | number:'1.0-2'}}" readonly>
                                                 </td>
                                             </tr>
                                         </table>
@@ -242,11 +242,11 @@
                     <tbody>
                         <tr *ngFor="let data of dataFrances">
                             <td>{{data.numeroCuota}}</td>
-                            <td>{{data.interesPeriodo | currency}}</td>
-                            <td>{{data.capitalAmortizado | currency}}</td>
-                            <td>{{data.seguro | currency}}</td>
-                            <td>{{data.cuotaPagar | currency}}</td>
-                            <td>{{data.saldoRemanente | currency}}</td>
+                            <td>${{data.interesPeriodo | number:'1.0-2'}}</td>
+                            <td>${{data.capitalAmortizado | number:'1.0-2'}}</td>
+                            <td>${{data.seguro | number:'1.0-2'}}</td>
+                            <td>${{data.cuotaPagar | number:'1.0-2'}}</td>
+                            <td>${{data.saldoRemanente | number:'1.0-2'}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -281,11 +281,11 @@
                     <tbody>
                         <tr *ngFor="let data of dataAleman">
                             <td>{{data.numeroCuota}}</td>
-                            <td>{{data.interesPeriodo | currency}}</td>
-                            <td>{{data.capitalAmortizado | currency}}</td>
-                            <td>{{data.seguro | currency}}</td>
-                            <td>{{data.cuotaPagar | currency}}</td>
-                            <td>{{data.saldoRemanente | currency}}</td>
+                            <td>${{data.interesPeriodo | number:'1.0-2'}}</td>
+                            <td>${{data.capitalAmortizado | number:'1.0-2'}}</td>
+                            <td>${{data.seguro | number:'1.0-2'}}</td>
+                            <td>${{data.cuotaPagar | number:'1.0-2'}}</td>
+                            <td>${{data.saldoRemanente | number:'1.0-2'}}</td>
                         </tr>
                     </tbody>
                 </table>

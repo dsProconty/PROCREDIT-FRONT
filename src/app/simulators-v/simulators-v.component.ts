@@ -290,8 +290,8 @@ export class SimulatorsVComponent implements OnInit {
     ) {
       this.valorPrestamo = this.montoMinCreditoInmobiliario;
       this.toastr.warning(
-        'Monto Máximo $500.000 Monto Mínimo $50000 ',
-        'Monto Fuera de Rango',
+        'Monto máximo $500.000 monto mínimo $50000 ',
+        'Monto fuera de rango',
         {
           timeOut: 4500,
         }
@@ -302,8 +302,8 @@ export class SimulatorsVComponent implements OnInit {
     ) {
       this.numeroCuotas = this.tiempoMinCreditoInmobiliario;
       this.toastr.warning(
-        'Tiempo Máximo 180 Meses Tiempo Mínimo 12 Meses',
-        'Tiempo Fuera de Rango',
+        'Tiempo máximo 180 meses tiempo mínimo 12 meses',
+        'Tiempo fuera de Rango',
         {
           timeOut: 4500,
         }

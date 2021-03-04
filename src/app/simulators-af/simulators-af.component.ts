@@ -140,7 +140,7 @@ export class SimulatorsAfComponent implements OnInit {
     ) {
       this.term = this.tiempoMinAhorroFlexSave;
       this.amount=1;
-      this.toastr.warning('Limites Fuera de Rango ', 'Advertencia', {
+      this.toastr.warning('Limites fuera de rango ', 'Advertencia', {
         timeOut: 4500,
       });
     } else {

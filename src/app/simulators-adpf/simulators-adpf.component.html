@@ -79,7 +79,7 @@
                                             <tr>
                                                 <th>Monto:</th>
                                                 <td class="txt-align-r">
-                                                    <input class="input-td" value="{{amountDpf | currency}}" readonly>
+                                                    <input class="input-td" value="${{amountDpf | number:'1.0-2'}}" readonly>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -91,19 +91,19 @@
                                             <tr>
                                                 <th>Interés Ganado Referencial:</th>
                                                 <td class="txt-align-r">
-                                                    <input value="{{returnRateDpf | currency}}" readonly class="input-td">
+                                                    <input value="${{returnRateDpf | number:'1.0-2'}}" readonly class="input-td">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th>Retención IR:</th>
                                                 <td class="txt-align-r">
-                                                    <input value=" {{retentionDpf | currency}}" readonly class="input-td-2">
+                                                    <input value=" ${{retentionDpf | number:'1.0-2'}}" readonly class="input-td-2">
                                                 </td>
                                             </tr>
                                             <tr style="background-color: #244c8c;">
                                                 <th>Total Recibir:</th>
                                                 <td class="txt-align-r">
-                                                    <input class="input-td-2 td-div-input" value="{{totalDpf | currency}}" readonly>
+                                                    <input class="input-td-2 td-div-input" value="${{totalDpf | number:'1.0-2'}}" readonly>
                                                 </td>
                                             </tr>
                                             <tr>

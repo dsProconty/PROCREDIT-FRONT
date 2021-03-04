@@ -803,13 +803,13 @@ export class SimulatorsComponent implements OnInit {
 
   flexSave(): void {
 
-    console.log('tiempo min felxsave', this.tiempoMinAhorroFlexSave);
+    // console.log('tiempo min felxsave', this.tiempoMinAhorroFlexSave);
     if (
       this.term < this.tiempoMinAhorroFlexSave ||
       this.term > this.tiempoMaxAhorroFlexSave
     ) {
       this.term = this.tiempoMinAhorroFlexSave;
-      this.toastr.warning('Limites Fuera de Rango ', 'Advertencia', {
+      this.toastr.warning('Limites fuera de rango ', 'Advertencia', {
         timeOut: 4500,
       });
     } else {
@@ -825,15 +825,15 @@ export class SimulatorsComponent implements OnInit {
     if (this.tasaAhorroDpf == null) {
       this.ngOnInit();
     } else {
-      console.log('tiempo min dpf', this.tiempoMinAhorroDpf);
+      // console.log('tiempo min dpf', this.tiempoMinAhorroDpf);
       if (this.amountDpf < 0) {
-     this.toastr.warning('Limites Fuera de Rango ', 'Advertencia', {
+     this.toastr.warning('Limites fuera de rango ', 'Advertencia', {
           timeOut: 4500,
         });
       } else {
         this.tiempoDiasDpf = 0;
         this.tiempoDiasDpf = this.termDpf * 30 + 1;
-        console.log('Tiempo en dias', this.tiempoDiasDpf);
+        // console.log('Tiempo en dias', this.tiempoDiasDpf);
         this.returnRateDpf =
           (this.amountDpf * this.tiempoDiasDpf * this.tasaAhorroDpf) /
           360 /

@@ -80,7 +80,7 @@
                                             <tr>
                                                 <th>Monto:</th>
                                                 <td class="txt-align-r">
-                                                    <input class="input-td" value="{{amount | currency}}" readonly>
+                                                    <input class="input-td" value="${{amount | number:'1.0-2'}}" readonly>
                                                 </td>
                                             </tr>
 
@@ -99,14 +99,14 @@
                                             <tr>
                                                 <th>Interés Ganado Referencial:</th>
                                                 <td class="txt-align-r">
-                                                    <input value="{{returnRate | currency}}" readonly class="input-td">
+                                                    <input value="${{returnRate | number:'1.0-2'}}" readonly class="input-td">
                                                 </td>
                                             </tr>
 
                                             <tr style="background-color: #cc242c;">
                                                 <th>Total Recibir:</th>
                                                 <td class="txt-align-r ">
-                                                    <input class="input-td-2 td-div-input" value="{{total | currency}}" readonly>
+                                                    <input class="input-td-2 td-div-input" value="${{total | number:'1.0-2'}}" readonly>
                                                 </td>
                                             </tr>
                                             <tr>
