@@ -433,8 +433,8 @@ export class SimulatorsComponent implements OnInit {
     ) {
       this.numeroCuotas = this.tiempoMinCreditoInversion;
       this.toastr.warning(
-        'Tiempo Maximo 48 Meses, Tiempo Minimo 6 Meses',
-        'Tiempo Fuera de Rango',
+        'Tiempo Maximo 48 meses, Tiempo Minimo 6 meses',
+        'Tiempo fuera de rango',
         {
           timeOut: 4500,
         }

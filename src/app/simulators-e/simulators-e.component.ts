@@ -260,8 +260,8 @@ export class SimulatorsEComponent implements OnInit {
     ) {
       this.numeroCuotas = this.tiempoMinCreditoEducativo;
       this.toastr.warning(
-        'Tiempo máximo 48 Meses, tiempo mínimo 6 meses',
-        'Tiempo muera de rango',
+        'Tiempo máximo 48 meses, tiempo mínimo 6 meses',
+        'Tiempo fuera de rango',
         {
           timeOut: 4500,
         }
