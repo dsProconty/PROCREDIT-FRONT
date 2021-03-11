@@ -138,7 +138,6 @@ export class SimulatorsAdpfComponent implements OnInit {
         this.tiempoDiasDpf = 0;
         this.tiempoDiasDpf = this.termDpf * 30 + 1;
         // console.log('Tiempo en dias', this.tiempoDiasDpf);
-
         this.returnRateDpf =
           (this.amountDpf * this.tiempoDiasDpf * this.tasaAhorroDpf) /
           360 /
