@@ -290,7 +290,7 @@ export class SimulatorsVComponent implements OnInit {
     ) {
       this.valorPrestamo = this.montoMinCreditoInmobiliario;
       this.toastr.warning(
-        'Monto máximo $500.000 monto mínimo $50000 ',
+        `Monto máximo ${Intl.NumberFormat().format(this.montoMaxCreditoInmobiliario)} monto mínimo  ${Intl.NumberFormat().format(this.montoMinCreditoInmobiliario)} `,
         'Monto fuera de rango',
         {
           timeOut: 4500,
@@ -302,8 +302,8 @@ export class SimulatorsVComponent implements OnInit {
     ) {
       this.numeroCuotas = this.tiempoMinCreditoInmobiliario;
       this.toastr.warning(
-        'Tiempo máximo 180 meses tiempo mínimo 12 meses',
-        'Tiempo fuera de Rango',
+        `Tiempo máximo ${this.tiempoMaxCreditoInmobiliario} meses tiempo mínimo ${this.tiempoMinCreditoInmobiliario} meses`,
+        'Tiempo fuera de rango',
         {
           timeOut: 4500,
         }
@@ -424,14 +424,10 @@ export class SimulatorsVComponent implements OnInit {
     //   formId: 'b3e4925e-7ec3-45ef-b106-e085420d9091',
     //   target: '#hubspotForm',
     // });
-
     hbspt.forms.create({
-
       portalId: "6606991",
-
       formId: "87a486a8-87f8-49de-a6bf-efb79658e7a6",
       target: '#hubspotForm',
-
   });
     window.scrollTo(0, 0);
   }
@@ -660,28 +656,7 @@ export class SimulatorsVComponent implements OnInit {
               },
             ],
           },
-          // {
-          //   table: {
-          //     layout: 'lightHorizontalLines',
-          //     headerRows: 1,
-          //     widths: ['auto', 'auto'],
-          //     body: [
-          //       [{ text: 'Detalles Simulación', alignment: 'center', fillColor: '#b40c15', color: 'white', colSpan: 2 }, {}],
-          //       [{ text: 'Monto del Préstamo', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.valorPrestamo)}`],
-          //       [{ text: 'Plazo (Meses)', bold: true }, `${this.numeroCuotas}`],
-          //       [{ text: 'Tasa de Interés', bold: true }, `${this.tasaInteresAnual.toFixed(2)}%`],
-          //       [{ text: 'Tasa Interés Periódica', bold: true }, `${this.tasaInteresPeriodica.toFixed(2)}%`],
-          //       [{ text: 'Tasa Interés Efectiva', bold: true }, `${(this.tasaEfectivaV*100).toFixed(2)}%`],
-          //       [{ text: 'Tasa Seguro', bold: true }, `${this.porcentajeSD.toFixed(3)}%`],
-          //       [{ text: 'Total Seguro a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaSeguroDesgravamenF)}`],
-          //       [{ text: 'Contribución SOLCA 0.5%', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.solcaV)}`],
 
-          //       [{ text: 'Liquido a Recibir', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.liquidoRecibirV)}`],
-          //       [{ text: 'Cuota a Pagar Periódicamente', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.cuotaPagarF)}`],
-          //       [{ text: 'Total Interés a Pagar', bold: true }, `${Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(this.sumaInteresesF)}`],
-          //     ]
-          //   }
-          // },
           {
             aligment: 'center',
             text: '  ',

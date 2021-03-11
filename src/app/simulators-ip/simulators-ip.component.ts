@@ -263,7 +263,7 @@ export class SimulatorsIpComponent implements OnInit {
    ) {
      this.valorPrestamo = this.montoMinCreditoInversion;
      this.toastr.warning(
-       'Monto máximo $30.000 monto mínimo $5000 ',
+       `Monto máximo ${Intl.NumberFormat().format(this.montoMaxCreditoInversion)} monto mínimo ${Intl.NumberFormat().format(this.montoMinCreditoInversion)} `,
        'Monto fuera de rango',
        {
          timeOut: 4500,
@@ -275,7 +275,7 @@ export class SimulatorsIpComponent implements OnInit {
    ) {
      this.numeroCuotas = this.tiempoMinCreditoInversion;
      this.toastr.warning(
-       'Tiempo máximo 60 meses tiempo mínimo 6 meses',
+       `Tiempo máximo ${this.tiempoMaxCreditoInversion} meses tiempo mínimo ${this.tiempoMinCreditoInversion} meses`,
        'Tiempo fuera de rango',
        {
          timeOut: 4500,

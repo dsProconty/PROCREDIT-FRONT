@@ -248,7 +248,7 @@ export class SimulatorsEComponent implements OnInit {
     ) {
       this.valorPrestamo = this.montoMinCreditoEducativo;
       this.toastr.warning(
-        'Monto máximo $30.000, monto mínimo $1000 ',
+        `Monto máximo ${Intl.NumberFormat().format(this.montoMaxCreditoEducativo)}, monto mínimo ${Intl.NumberFormat().format(this.montoMinCreditoEducativo)} `,
         'Monto fuera de rango',
         {
           timeOut: 4500,
@@ -260,7 +260,7 @@ export class SimulatorsEComponent implements OnInit {
     ) {
       this.numeroCuotas = this.tiempoMinCreditoEducativo;
       this.toastr.warning(
-        'Tiempo máximo 48 meses, tiempo mínimo 6 meses',
+        `Tiempo máximo ${this.tiempoMaxCreditoEducativo} meses, tiempo mínimo ${this.tiempoMinCreditoEducativo} meses`,
         'Tiempo fuera de rango',
         {
           timeOut: 4500,

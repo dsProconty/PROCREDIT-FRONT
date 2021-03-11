@@ -422,7 +422,7 @@ export class SimulatorsComponent implements OnInit {
       this.valorPrestamo = this.montoMinCreditoInversion;
       this.toastr.warning(
         'Monto Maximo $30.000, Monto Minimo $1000 ',
-        'Monto Fuera de Rango',
+        'Monto Fuera de rango',
         {
           timeOut: 4500,
         }
@@ -558,7 +558,7 @@ export class SimulatorsComponent implements OnInit {
       this.valorPrestamo = this.montoMinCreditoInmobiliario;
       this.toastr.warning(
         'Monto Maximo $30.000, Monto Minimo $1000 ',
-        'Monto Fuera de Rango',
+        'Monto Fuera de rango',
         {
           timeOut: 4500,
         }
@@ -570,7 +570,7 @@ export class SimulatorsComponent implements OnInit {
       this.numeroCuotas = this.tiempoMinCreditoInmobiliario;
       this.toastr.warning(
         'Tiempo Maximo 48 Meses, Tiempo Minimo 6 Meses',
-        'Tiempo Fuera de Rango',
+        'Tiempo Fuera de rango',
         {
           timeOut: 4500,
         }
@@ -685,7 +685,7 @@ export class SimulatorsComponent implements OnInit {
       this.valorPrestamo = this.montoMinCreditoEducativo;
       this.toastr.warning(
         'Monto Maximo $30.000, Monto Minimo $1000 ',
-        'Monto Fuera de Rango',
+        'Monto Fuera de rango',
         {
           timeOut: 4500,
         }
@@ -697,7 +697,7 @@ export class SimulatorsComponent implements OnInit {
       this.numeroCuotas = this.tiempoMinCreditoEducativo;
       this.toastr.warning(
         'Tiempo Maximo 48 Meses, Tiempo Minimo 6 Meses',
-        'Tiempo Fuera de Rango',
+        'Tiempo Fuera de rango',
         {
           timeOut: 4500,
         }
