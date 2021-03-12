@@ -131,7 +131,7 @@ export class SimulatorsAdpfComponent implements OnInit {
       ) {
         this.termDpf = this.tiempoMinAhorroDpf;
         this.amountDpf = 5000;
-        this.toastr.warning('Limites fuera de rango ', 'Advertencia', {
+        this.toastr.warning('Límites fuera de rango ', 'Advertencia', {
           timeOut: 4500,
         });
       } else {
@@ -167,7 +167,6 @@ export class SimulatorsAdpfComponent implements OnInit {
     // });
     hbspt.forms.create({
       portalId: '6606991',
-
       formId: '70816719-56a7-467f-b589-ea231934f9c3',
       target: '#hubspotForm',
     });
