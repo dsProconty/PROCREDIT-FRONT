@@ -229,6 +229,11 @@ export class SimulatorsEComponent implements OnInit {
     this.dataAleman = [];
     this.dataFrances = [];
   }
+
+  transform(value: any) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");;
+}
+
   /************************************************************* */
   /**Funciones Simuladores de Credito */
 
@@ -248,7 +253,7 @@ export class SimulatorsEComponent implements OnInit {
     ) {
       this.valorPrestamo = this.montoMinCreditoEducativo;
       this.toastr.warning(
-        `Monto máximo ${Intl.NumberFormat().format(this.montoMaxCreditoEducativo)}, monto mínimo ${Intl.NumberFormat().format(this.montoMinCreditoEducativo)} `,
+        `Monto máximo $${this.transform(this.montoMaxCreditoEducativo)}, monto mínimo $${this.transform(this.montoMinCreditoEducativo)} `,
         'Monto fuera de rango',
         {
           timeOut: 4500,

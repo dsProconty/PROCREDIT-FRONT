@@ -1,8 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Client } from '../client';
 import { ClientService } from '../client.service';
@@ -17,15 +13,13 @@ import { DialogExampleComponent } from '../dialog-example/dialog-example.compone
 import { CurrencyPipe } from '@angular/common';
 declare var hbspt: any;
 
-
 @Component({
   selector: 'app-simulators-v',
   templateUrl: './simulators-v.component.html',
 
-  styleUrls: ['./simulators-v.component.css']
+  styleUrls: ['./simulators-v.component.css'],
 })
 export class SimulatorsVComponent implements OnInit {
-
   // data y current_clien almacena los datos del formulario de contacto para posterior envio a BaseDeDatos
   data: Client[];
   current_clien: Client;
@@ -48,8 +42,6 @@ export class SimulatorsVComponent implements OnInit {
   //francesa y alemana variables para uardar el estado de las tablas de datos de simuladores
   francesa = { is_visible: true };
   alemana = { is_visible: false };
-
-
 
   //*****************************************************
   /*Variables Simuladores Credito*/
@@ -99,8 +91,6 @@ export class SimulatorsVComponent implements OnInit {
   tiempoMinCreditoInmobiliario: number;
 
   tiempoMaxCreditoInmobiliario: number;
-
-
 
   /**Varibles para almacenar las consultas api de credito y ahorro */
 
@@ -210,7 +200,6 @@ export class SimulatorsVComponent implements OnInit {
 
   _selectedTabChange(index: number) {
     // console.log('_selectTabChange ' + index);
-
   }
 
   _selectedIndexChange(index: number) {
@@ -256,24 +245,23 @@ export class SimulatorsVComponent implements OnInit {
     this.dataAleman = [];
     this.dataFrances = [];
   }
+  transform(value: any) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
 
   /************************************************************* */
   /**Funciones Simuladores de Credito */
-
 
   simuladorInmobiliario(): void {
     this.limpiarTabla();
 
     if (this.checked) {
       this.tasaInteresAnual = this.tasaEcoCreditoInmobiliario;
-          this.tiempoMaxCreditoInmobiliario = 240;
-
-
+      this.tiempoMaxCreditoInmobiliario = 240;
     } else {
       this.tasaInteresAnual = this.tasaCreditoInmobiliario;
       // console.log("Tiempo maximo sin marcar vivienda eco", this.tiempoMaxCreditoInmobiliario);
       this.tiempoMaxCreditoInmobiliario = 180;
-
     }
     /**Variables globales para los dos sistemas */
     // this.tasaInteresAnual = this.tasaCreditoEducativo;
@@ -290,7 +278,9 @@ export class SimulatorsVComponent implements OnInit {
     ) {
       this.valorPrestamo = this.montoMinCreditoInmobiliario;
       this.toastr.warning(
-        `Monto máximo ${Intl.NumberFormat().format(this.montoMaxCreditoInmobiliario)} monto mínimo  ${Intl.NumberFormat().format(this.montoMinCreditoInmobiliario)} `,
+        `Monto máximo $${this.transform(
+          this.montoMaxCreditoInmobiliario
+        )} monto mínimo $${this.transform(this.montoMinCreditoInmobiliario)} `,
         'Monto fuera de rango',
         {
           timeOut: 4500,
@@ -412,7 +402,6 @@ export class SimulatorsVComponent implements OnInit {
     }
   }
 
-
   /************************************** */
   //Funciones para Guardar el formulario de cliente mediante el api
   new() {
@@ -425,10 +414,10 @@ export class SimulatorsVComponent implements OnInit {
     //   target: '#hubspotForm',
     // });
     hbspt.forms.create({
-      portalId: "6606991",
-      formId: "87a486a8-87f8-49de-a6bf-efb79658e7a6",
+      portalId: '6606991',
+      formId: '87a486a8-87f8-49de-a6bf-efb79658e7a6',
       target: '#hubspotForm',
-  });
+    });
     window.scrollTo(0, 0);
   }
 
@@ -466,8 +455,6 @@ export class SimulatorsVComponent implements OnInit {
     this.valorPrestamo = event.value;
   }
 
-
-
   onInputChangeTiempo(event: any) {
     // console.log(event.value);
     this.numeroCuotas = event.value;
@@ -499,7 +486,7 @@ export class SimulatorsVComponent implements OnInit {
   formatedOutputValue: any;
 
   async generatePDF(action = 'download') {
-     if (this.itemS == 0 && this.francesa.is_visible) {
+    if (this.itemS == 0 && this.francesa.is_visible) {
       //credito inversion francesa
       let docDefinition = {
         footer: {
@@ -1098,5 +1085,4 @@ export class SimulatorsVComponent implements OnInit {
       }
     }
   }
-
 }
