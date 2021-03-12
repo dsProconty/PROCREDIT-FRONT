@@ -280,7 +280,7 @@ export class SimulatorsVComponent implements OnInit {
       this.toastr.warning(
         `Monto máximo $${this.transform(
           this.montoMaxCreditoInmobiliario
-        )} monto mínimo $${this.transform(this.montoMinCreditoInmobiliario)} `,
+        )}, monto mínimo $${this.transform(this.montoMinCreditoInmobiliario)} `,
         'Monto fuera de rango',
         {
           timeOut: 4500,

@@ -149,7 +149,6 @@ export class SimulatorsAfComponent implements OnInit {
       // this.retention = this.returnRate * 0.02;
       this.total = this.amount + this.returnRate;
       // console.log("tiempo en meses", this.tiempoMeses);
-
     }
   }
 

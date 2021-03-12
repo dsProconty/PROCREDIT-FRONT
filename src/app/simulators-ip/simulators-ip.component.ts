@@ -263,7 +263,7 @@ export class SimulatorsIpComponent implements OnInit {
       this.valorPrestamo = this.montoMinCreditoInversion;
 
       this.toastr.warning(
-        `Monto máximo $${this.transform( this.montoMaxCreditoInversion)}
+        `Monto máximo $${this.transform( this.montoMaxCreditoInversion)},
        monto mínimo $${this.transform(this.montoMinCreditoInversion)} `,
         'Monto fuera de rango',
         {
