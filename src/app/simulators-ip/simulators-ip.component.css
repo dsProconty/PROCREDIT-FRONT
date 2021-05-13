@@ -17,6 +17,8 @@
     height: 60px;
 }
 
+
+
 th {
     font-weight: 400;
 }
@@ -512,6 +514,59 @@ margin-left: 7%; */
   color: #959398;
   line-height: 16pt;
 }
+.btn-sf{
+  background-color: #959398;
+}
+
+.btn-sf:hover,
+.btn-sf:focus {
+    color: white;
+    outline: 0;
+}
+.sf-francesa {
+  border-color: #959398;
+  box-shadow: 0 0 40px 40px #959398 inset, 0 0 0 0 #959398;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.sf-francesa:hover {
+  box-shadow: 0 0 10px 0 #f46c24 inset, 0 0 10px 4px #f46c24;
+  background-color: #f46c24;
+}
+
+.bgf{
+  background-color: #f46c24;
+  box-shadow: 0 0 10px 0 #f46c24 inset, 0 0 10px 4px #f46c24;
+}
+
+
+.btn-sa{
+  background-color: #959398;
+}
+
+.btn-sa:hover,
+.btn-sa:focus {
+    color: white;
+    outline: 0;
+}
+.sa-alemana{
+  border-color: #959398;
+  box-shadow: 0 0 40px 40px #959398 inset, 0 0 0 0 #959398;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.sa-alemana:hover {
+  box-shadow: 0 0 10px 0 #f46c24 inset, 0 0 10px 4px #f46c24;
+  background-color: #f46c24;
+}
+
+.bga{
+  background-color: #f46c24;
+  box-shadow: 0 0 10px 0 #f46c24 inset, 0 0 10px 4px #f46c24;
+}
+
 
 .btn1 {
     box-sizing: border-box;

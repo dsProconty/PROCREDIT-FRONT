@@ -112,6 +112,9 @@ export class SimulatorsVComponent implements OnInit {
   solcaV: number;
   cp: CurrencyPipe;
 
+  botoncolorF=false
+  botoncolorA=true
+
   constructor(
     private service: ClientService,
     private toastr: ToastrService,
@@ -137,24 +140,19 @@ export class SimulatorsVComponent implements OnInit {
           this.montoMinCreditoInmobiliario = x.montomin;
           this.montoMaxCreditoInmobiliario = x.montomax;
           this.tiempoMinCreditoInmobiliario = x.tiempomin;
-          // this.tiempoMaxCreditoInmobiliario = x.tiempomax;
           this.tiempoMaxCreditoInmobiliario = 180;
-
           this.tasaEcoCreditoInmobiliario = x.tasa_ecologica;
         }
         this.tasaEfectivaV =
           Math.pow(1 + this.tasaCreditoInmobiliario / 12 / 100, 12) - 1;
         this.tasaEfectivaVEco =
           Math.pow(1 + this.tasaEcoCreditoInmobiliario / 12 / 100, 12) - 1;
-
-        // console.log('Tasa ecologica', this.tasaEcoCreditoInmobiliario);
       },
       (error) => {
-        // console.log('ERROR DE CONEXION', error);
         this.refresh();
       }
     );
-    this.porcentajeSD = 0.684;
+    this.porcentajeSD = 0.655;
   }
 
   refresh(): void {
@@ -181,15 +179,21 @@ export class SimulatorsVComponent implements OnInit {
     this.botonSimulacion2.is_visible = false;
   }
 
+
+
   verFrancesa(): void {
     this.francesa.is_visible = true;
     this.alemana.is_visible = false;
+    this.botoncolorF=false;
+    this.botoncolorA=true;
     this.cerrarTablas();
   }
 
   verAlemana(): void {
     this.alemana.is_visible = true;
     this.francesa.is_visible = false;
+    this.botoncolorF=true;
+    this.botoncolorA=false;
     this.cerrarTablas();
   }
 
@@ -264,13 +268,7 @@ export class SimulatorsVComponent implements OnInit {
       this.tiempoMaxCreditoInmobiliario = 180;
     }
     /**Variables globales para los dos sistemas */
-    // this.tasaInteresAnual = this.tasaCreditoEducativo;
-    // this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
-    // this.porcentajeSeguroDesgravamen = 0.684 / 100;
 
-    // this.solcaV = (this.valorPrestamo * 0.5) / 100;
-    // // console.log('valor solca', this.solcaV);
-    // this.liquidoRecibirV = this.valorPrestamo - this.solcaV;
     /**Validacion montos y tiempo */
     if (
       this.valorPrestamo > this.montoMaxCreditoInmobiliario ||
@@ -302,7 +300,7 @@ export class SimulatorsVComponent implements OnInit {
       /**Calculo Frances */
       //valores calculo frances
       this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
-      this.porcentajeSeguroDesgravamen = 0.684 / 100;
+      this.porcentajeSeguroDesgravamen = 0.655 / 100;
 
       this.solcaV = (this.valorPrestamo * 0.5) / 100;
       // console.log('valor solca', this.solcaV);

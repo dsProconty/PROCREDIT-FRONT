@@ -112,6 +112,10 @@ export class SimulatorsIpComponent implements OnInit {
 
   cp: CurrencyPipe;
 
+
+  botoncolorF=false
+  botoncolorA=true
+
   constructor(
     private service: ClientService,
     private toastr: ToastrService,
@@ -148,7 +152,7 @@ export class SimulatorsIpComponent implements OnInit {
         this.refresh();
       }
     );
-    this.porcentajeSD = 0.684;
+    this.porcentajeSD = 0.655;
   }
 
   refresh(): void {
@@ -178,12 +182,16 @@ export class SimulatorsIpComponent implements OnInit {
   verFrancesa(): void {
     this.francesa.is_visible = true;
     this.alemana.is_visible = false;
+    this.botoncolorF=false;
+    this.botoncolorA=true;
     this.cerrarTablas();
   }
 
   verAlemana(): void {
     this.alemana.is_visible = true;
     this.francesa.is_visible = false;
+    this.botoncolorF=true;
+    this.botoncolorA=false;
     this.cerrarTablas();
   }
 
@@ -250,7 +258,7 @@ export class SimulatorsIpComponent implements OnInit {
     /**Variables globales para los dos sistemas */
     //  this.tasaInteresAnual = this.tasaCreditoInversion;
     //  this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
-    //  this.porcentajeSeguroDesgravamen = 0.684 / 100;
+    //  this.porcentajeSeguroDesgravamen = 0.655 / 100;
 
     //  this.solcaP = (this.valorPrestamo * 0.5) / 100;
     // //  console.log('valor solca', this.solcaP);
@@ -285,7 +293,7 @@ export class SimulatorsIpComponent implements OnInit {
     } else {
       this.tasaInteresAnual = this.tasaCreditoInversion;
       this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
-      this.porcentajeSeguroDesgravamen = 0.684 / 100;
+      this.porcentajeSeguroDesgravamen = 0.655 / 100;
 
       this.solcaP = (this.valorPrestamo * 0.5) / 100;
       //  console.log('valor solca', this.solcaP);

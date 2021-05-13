@@ -279,7 +279,7 @@ export class SimulatorsComponent implements OnInit {
         this.refresh();
       }
     );
-    this.porcentajeSD = 0.684;
+    this.porcentajeSD = 0.655;
   }
 
   refresh(): void {
@@ -409,7 +409,7 @@ export class SimulatorsComponent implements OnInit {
     /**Variables globales para los dos sistemas */
     this.tasaInteresAnual = this.tasaCreditoInversion;
     this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
-    this.porcentajeSeguroDesgravamen = 0.684 / 100;
+    this.porcentajeSeguroDesgravamen = 0.655 / 100;
 
     this.solcaP = (this.valorPrestamo * 0.5) / 100;
     console.log('valor solca', this.solcaP);
@@ -545,7 +545,7 @@ export class SimulatorsComponent implements OnInit {
     }
     // this.limpiarTabla();
     this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
-    this.porcentajeSeguroDesgravamen = 0.684 / 100;
+    this.porcentajeSeguroDesgravamen = 0.655 / 100;
 
     this.solcaV = (this.valorPrestamo * 0.5) / 100;
     console.log('valor solca', this.solcaV);
@@ -676,7 +676,7 @@ export class SimulatorsComponent implements OnInit {
     /**Variables globales para los dos sistemas */
     this.tasaInteresAnual = this.tasaCreditoEducativo;
     this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
-    this.porcentajeSeguroDesgravamen = 0.684 / 100;
+    this.porcentajeSeguroDesgravamen = 0.655 / 100;
     /**Validacion montos y tiempo */
     if (
       this.valorPrestamo > this.montoMaxCreditoEducativo ||

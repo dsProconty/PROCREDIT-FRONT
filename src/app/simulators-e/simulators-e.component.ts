@@ -103,6 +103,10 @@ export class SimulatorsEComponent implements OnInit {
   tasaEfectiva: number;
   solca: number;
 
+  botoncolorF=false
+  botoncolorA=true
+
+
   constructor(
     private service: ClientService,
     private toastr: ToastrService,
@@ -140,7 +144,7 @@ export class SimulatorsEComponent implements OnInit {
         this.refresh();
       }
     );
-    this.porcentajeSD = 0.684;
+    this.porcentajeSD = 0.655;
   }
 
   refresh(): void {
@@ -170,12 +174,16 @@ export class SimulatorsEComponent implements OnInit {
   verFrancesa(): void {
     this.francesa.is_visible = true;
     this.alemana.is_visible = false;
+    this.botoncolorF=false;
+    this.botoncolorA=true;
     this.cerrarTablas();
   }
 
   verAlemana(): void {
     this.alemana.is_visible = true;
     this.francesa.is_visible = false;
+    this.botoncolorF=true;
+    this.botoncolorA=false;
     this.cerrarTablas();
   }
 
@@ -242,7 +250,7 @@ export class SimulatorsEComponent implements OnInit {
     /**Variables globales para los dos sistemas */
     // this.tasaInteresAnual = this.tasaCreditoEducativo;
     // this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
-    // this.porcentajeSeguroDesgravamen = 0.684 / 100;
+    // this.porcentajeSeguroDesgravamen = 0.655 / 100;
     // this.solca = (this.valorPrestamo * 0.5) / 100;
     // console.log('valor solca', this.solca);
     // this.liquidoRecibir = this.valorPrestamo - this.solca;
@@ -274,7 +282,7 @@ export class SimulatorsEComponent implements OnInit {
     } else {
       this.tasaInteresAnual = this.tasaCreditoEducativo;
       this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
-      this.porcentajeSeguroDesgravamen = 0.684 / 100;
+      this.porcentajeSeguroDesgravamen = 0.655 / 100;
       this.solca = (this.valorPrestamo * 0.5) / 100;
       // console.log('valor solca', this.solca);
       this.liquidoRecibir = this.valorPrestamo - this.solca;

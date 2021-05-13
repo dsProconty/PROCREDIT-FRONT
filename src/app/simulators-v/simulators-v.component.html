@@ -61,10 +61,14 @@
               <label class="label-tabla-de">Tabla de amortización</label> <br>
               <!-- <label class="label-amortizacion">amortización</label> -->
               <div class="button-group div-botones-francesa-alemana">
-                <button class="btn btn-light boton-simuladores" (click)="verFrancesa()"
-                  style="background-color: #970077; ">Francesa</button>
-                <button class="btn btn-light boton-simuladores" (click)="verAlemana()"
-                  style="background-color: #959398;  margin-left: 2%;">Alemana</button>
+                <button class="btn btn-light boton-simuladores btn-sf sf-francesa"
+                (click)="verFrancesa()" *ngIf="botoncolorF==true">Francesa</button>
+                <button class="btn btn-light boton-simuladores bgf"
+                (click)="verFrancesa()" *ngIf="botoncolorF==false">Francesa</button>
+                <button class="btn btn-light boton-simuladores btn-sa sa-alemana" (click)="verAlemana()"
+                  style="margin-left: 2%;" *ngIf="botoncolorA==true">Alemana</button>
+                  <button class="btn btn-light boton-simuladores bga" (click)="verAlemana()"
+                  style="margin-left: 2%;" *ngIf="botoncolorA==false">Alemana</button>
               </div>
               <div class="div-bg-gray">
                 <h2 class="h3-tasa-interes-efectiva" *ngIf="checked==false">
