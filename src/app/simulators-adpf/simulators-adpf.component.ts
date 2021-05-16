@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { DialogExampleComponent } from '../dialog-example/dialog-example.component';
 import { CurrencyPipe, formatCurrency } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
 declare var hbspt: any; // put this at the top
 
 @Component({
@@ -49,15 +50,20 @@ export class SimulatorsAdpfComponent implements OnInit {
   transformdValue: any;
   formatedOutputValue: any;
 
+  isTranslated = false;
+
   constructor(
     private service: ClientService,
     private toastr: ToastrService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private translate: TranslateService
   ) {
     this.itemS = 0;
     this.nombreProducto = 'Ahorro DPF';
     // this.termDpf = 6;
     this.amountDpf = 5000;
+    translate.addLangs(['es', 'en']);
+    translate.setDefaultLang('es');
   }
 
   openDialog() {
@@ -86,6 +92,15 @@ export class SimulatorsAdpfComponent implements OnInit {
   refresh(): void {
     window.location.reload();
   }
+  useLanguage(language: string) {
+    this.translate.use(language);
+    // this.isTranslated=!this.isTranslated;
+    if (language == 'es') {
+      this.isTranslated = false;
+    } else {
+      this.isTranslated = true;
+    }
+  }
 
   /************************************************************************ */
   //Funciones para capturar cambio de pestana
@@ -113,12 +128,10 @@ export class SimulatorsAdpfComponent implements OnInit {
     this.selectedIndex = index;
   }
 
-
   /************************************************************************** */
   //Funciones Simuladores de Ahorro
 
   dpfSave(): void {
-
     if (this.tasaAhorroDpf == null) {
       this.ngOnInit();
     } else {
@@ -145,7 +158,7 @@ export class SimulatorsAdpfComponent implements OnInit {
 
         if (this.termDpf > 12) {
           this.totalDpf = this.amountDpf + this.returnRateDpf;
-          this.retentionDpf=0;
+          this.retentionDpf = 0;
         } else {
           this.retentionDpf = this.returnRateDpf * 0.02;
           this.totalDpf =
@@ -332,6 +345,172 @@ export class SimulatorsAdpfComponent implements OnInit {
                 widths: ['auto'],
                 body: [
                   [{ text: 'Visita Nuestra Página Web', alignment: 'right' }],
+                  [{ qr: `https://www.bancoprocredit.com.ec/`, fit: '100' }],
+                ],
+              },
+              alignment: 'center',
+              layout: 'noBorders',
+            },
+          ],
+        },
+      ],
+      styles: {
+        table: {
+          bold: true,
+          fontSize: 10,
+          alignment: 'center',
+          decorationColor: 'red',
+        },
+        sectionHeader: {
+          bold: true,
+          decoration: 'underline',
+          fontSize: 14,
+          margin: [0, 15, 0, 15],
+        },
+        header: {
+          fontSize: 18,
+          bold: true,
+          margin: [0, 0, 0, 10],
+        },
+        subheader: {
+          fontSize: 16,
+          bold: true,
+          margin: [0, 10, 0, 5],
+        },
+        tableExample: {
+          margin: [0, 5, 0, 15],
+        },
+        tableOpacityExample: {
+          margin: [0, 5, 0, 15],
+          fillColor: 'blue',
+          fillOpacity: 0.3,
+        },
+        tableHeader: {
+          bold: true,
+          fontSize: 13,
+          color: 'red',
+          background: 'black',
+        },
+      },
+    };
+    if (action === 'download') {
+      pdfMake.createPdf(docDefinition).download();
+    } else if (action === 'print') {
+      pdfMake.createPdf(docDefinition).print();
+    } else {
+      pdfMake.createPdf(docDefinition).download();
+    }
+  }
+  async generatePDF_English(action = 'download') {
+    let docDefinition = {
+      footer: {
+        columns: [
+          {
+            image: await this.getBase64ImageFromURL(
+              '../../assets/images/footer3Pdf.PNG'
+            ),
+            width: 600,
+            heigth: 1,
+          },
+        ],
+      },
+
+      header: {
+        columns: [
+          {
+            image: await this.getBase64ImageFromURL(
+              '../../assets/images/franja.png'
+            ),
+            width: 600,
+            heigth: 1,
+          },
+        ],
+      },
+      content: [
+        {
+          columns: [
+            {
+              image: await this.getBase64ImageFromURL(
+                '../../assets/images/logo.png'
+              ),
+              width: 150,
+            },
+
+            {
+              text: `Date: ${new Date().toLocaleString()}\n Product : Saving DPF`,
+              alignment: 'right',
+            },
+          ],
+        },
+        {
+          aligment: 'center',
+          text: '  ',
+        },
+        {
+          aligment: 'center',
+          text: '  ',
+        },
+        {
+          columns: [
+            {
+              table: {
+                layout: 'lightHorizontalLines',
+                headerRows: 1,
+                widths: ['auto', 'auto'],
+                body: [
+                  [
+                    {
+                      text: 'Simulation details',
+                      alignment: 'center',
+                      fillColor: '#b40c15',
+                      color: 'white',
+                      colSpan: 2,
+                    },
+                    {},
+                  ],
+                  [
+                    { text: 'Savings Amount', bold: true },
+                    `${Intl.NumberFormat('en-US', {
+                      style: 'currency',
+                      currency: 'USD',
+                    }).format(this.amountDpf)}`,
+                  ],
+                  [
+                    { text: 'Current Nominal Rate', bold: true },
+                    `${this.tasaAhorroDpf}%`,
+                  ],
+                  [{ text: 'Term (Months)', bold: true }, `${this.termDpf}`],
+                  [
+                    { text: 'Referential Earned Interest', bold: true },
+                    `${Intl.NumberFormat('en-US', {
+                      style: 'currency',
+                      currency: 'USD',
+                    }).format(this.returnRateDpf)}`,
+                  ],
+                  [
+                    { text: 'IR hold', bold: true },
+                    `${Intl.NumberFormat('en-US', {
+                      style: 'currency',
+                      currency: 'USD',
+                    }).format(this.retentionDpf)}`,
+                  ],
+                  [
+                    { text: 'Total to Receive', bold: true },
+                    `${Intl.NumberFormat('en-US', {
+                      style: 'currency',
+                      currency: 'USD',
+                    }).format(this.totalDpf)}`,
+                  ],
+                ],
+              },
+              width: 350,
+            },
+            {
+              table: {
+                headerRows: 1,
+                widths: ['auto'],
+                body: [
+                  [{ text: 'Visit our website', alignment: 'right' }],
                   [{ qr: `https://www.bancoprocredit.com.ec/`, fit: '100' }],
                 ],
               },

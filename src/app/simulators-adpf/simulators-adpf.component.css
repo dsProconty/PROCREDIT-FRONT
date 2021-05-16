@@ -674,6 +674,10 @@ display: inline-block; */
 #Resolución = B/w 320px to 479px */
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .switcher-lang{
+    margin-top: 5%;
+    text-align: center;
+  }
     .div-principal {
         padding-bottom: 1px;
         padding-right: 0px;

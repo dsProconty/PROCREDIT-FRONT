@@ -16,18 +16,40 @@
     <img src="../../assets/images/franja.png" width="100%" height="6">
   </div>
   <div class="container">
-    <img src="../../assets/images/logo.png" style="margin-bottom: -5%;" width="25%" height="100%">
+    <div class="row">
+      <div class="col-lg-9">
+        <img src="../../assets/images/logo.png"  width="30%" height="80%">
 
+      </div>
+      <div class="col-lg-3 switcher-lang">
+        <mat-form-field appearance="fill">
+          <mat-label *ngIf="isTranslated==false">{{ "general.espanol" | translate }} <img
+              src="../../assets/images/es.png" height="16" width="16" alt="es"></mat-label>
+          <mat-label *ngIf="isTranslated==true">{{ "general.ingles" | translate }} <img
+              src="../../assets/images/en-us.png" height="16" width="16" alt="es"></mat-label>
+
+          <mat-select>
+            <mat-option (click)="useLanguage('es')">
+              {{ "general.espanol" | translate }}<img src="../../assets/images/es.png" height="16" width="16" alt="es">
+            </mat-option>
+            <mat-option (click)="useLanguage('en')">
+              {{ "general.ingles" | translate }} <img src="../../assets/images/en-us.png" height="16" width="16"
+                alt="es">
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
   </div>
   <div>
     <div class="container-fluid  div-principal">
       <mat-tab-group #mattabgroup mat-align-tabs="center">
-        <mat-tab label="Crédito de Vivienda">
+        <mat-tab label="{{ 'vivienda.matLabelTranslated' | translate }}">
           <br><br>
-          <h2 class="titulo-simulador">Simulador Crédito de Vivienda</h2>
+          <h2 class="titulo-simulador">{{ "vivienda.title" | translate }}</h2>
           <div class="row div-principal-2-credito">
             <div class="col-md-6 div-lado-izq">
-              <label for="exampleInputEmail1" class="label-monto">Monto</label>
+              <label for="exampleInputEmail1" class="label-monto">{{ 'general.monto' | translate }}</label>
               <div class="input-group margin-left-3">
                 <mat-slider thumbLabel [displayWith]="formatoMonto" (input)="onInputChangeMonto($event)" step="100"
                   tickInterval="100" class="mat-slider" min="{{montoMinCreditoInmobiliario}}"
@@ -35,13 +57,14 @@
                   (ngModelChange)="simuladorInmobiliario()">
                 </mat-slider>
                 <input type="number" pattern="^[0-9]+" onkeypress="return event.charCode >= 48" pattern="^[0-9]+"
-                  class="form-control input-monto-tiempo" id="exampleInputEmail1" placeholder="Monto"
-                  min="{{montoMinCreditoInmobiliario}}" max="{{montoMaxCreditoInmobiliario}}"
-                  [(ngModel)]="valorPrestamo" name="valorPrestamo" (ngModelChange)="simuladorInmobiliario()" size=40>
+                  class="form-control input-monto-tiempo" id="exampleInputEmail1"
+                  placeholder="{{ 'general.monto' | translate }}" min="{{montoMinCreditoInmobiliario}}"
+                  max="{{montoMaxCreditoInmobiliario}}" [(ngModel)]="valorPrestamo" name="valorPrestamo"
+                  (ngModelChange)="simuladorInmobiliario()" size=40>
               </div>
               <br>
               <label for="exampleInputPassword1" class="label-plazo">
-                Plazo (Meses)
+                {{ 'general.plazo_meses' | translate }}
               </label>
               <div class="input-group margin-left-3">
                 <mat-slider thumbLabel [displayWith]="formatoTiempo" (input)="onInputChangeTiempo($event)"
@@ -51,33 +74,33 @@
                 </mat-slider>
                 <input type="number" pattern="^[0-9]+" onkeypress="return event.charCode >= 48"
                   class="input-monto-tiempo form-control " id="exampleInputPassword1" value="{{numeroCuotas}}"
-                  placeholder="Plazo" min="{{tiempoMinCreditoInmobiliario}}" max="{{tiempoMaxCreditoInmobiliario}}"
-                  [(ngModel)]="numeroCuotas" name="numeroCuotas" (ngModelChange)="simuladorInmobiliario()" size=40>
+                  placeholder="{{ 'general.plazo' | translate }}" min="{{tiempoMinCreditoInmobiliario}}"
+                  max="{{tiempoMaxCreditoInmobiliario}}" [(ngModel)]="numeroCuotas" name="numeroCuotas"
+                  (ngModelChange)="simuladorInmobiliario()" size=40>
               </div>
               <section class="example-section">
                 <mat-checkbox class="example-margin" [(ngModel)]="checked" (ngModelChange)="simuladorInmobiliario()">
-                  Vivienda Ecológica</mat-checkbox>
+                  {{ "vivienda.vivienda_eco" | translate }}</mat-checkbox>
               </section>
-              <label class="label-tabla-de">Tabla de amortización</label> <br>
-              <!-- <label class="label-amortizacion">amortización</label> -->
+              <label class="label-tabla-de"> {{ 'general.tabla_amortizacion' | translate }}</label> <br>
               <div class="button-group div-botones-francesa-alemana">
-                <button class="btn btn-light boton-simuladores btn-sf sf-francesa"
-                (click)="verFrancesa()" *ngIf="botoncolorF==true">Francesa</button>
-                <button class="btn btn-light boton-simuladores bgf"
-                (click)="verFrancesa()" *ngIf="botoncolorF==false">Francesa</button>
+                <button class="btn btn-light boton-simuladores btn-sf sf-francesa" (click)="verFrancesa()"
+                  *ngIf="botoncolorF==true">{{ 'general.francesa' | translate }}</button>
+                <button class="btn btn-light boton-simuladores bgf" (click)="verFrancesa()"
+                  *ngIf="botoncolorF==false">{{ 'general.francesa' | translate }}</button>
                 <button class="btn btn-light boton-simuladores btn-sa sa-alemana" (click)="verAlemana()"
-                  style="margin-left: 2%;" *ngIf="botoncolorA==true">Alemana</button>
-                  <button class="btn btn-light boton-simuladores bga" (click)="verAlemana()"
-                  style="margin-left: 2%;" *ngIf="botoncolorA==false">Alemana</button>
+                  style="margin-left: 2%;" *ngIf="botoncolorA==true">{{ 'general.alemana' | translate }}</button>
+                <button class="btn btn-light boton-simuladores bga" (click)="verAlemana()" style="margin-left: 2%;"
+                  *ngIf="botoncolorA==false">{{ 'general.alemana' | translate }}</button>
               </div>
               <div class="div-bg-gray">
                 <h2 class="h3-tasa-interes-efectiva" *ngIf="checked==false">
-                  Tasa de interés efectiva: {{this.tasaEfectivaV | percent: '1.2-2'}}</h2>
+                  {{ 'general.tasa_interes_efectiva' | translate }}{{this.tasaEfectivaV | percent: '1.2-2'}}</h2>
 
                 <h2 class="h3-tasa-interes-efectiva" *ngIf="checked">
-                  Tasa de interés efectiva: {{this.tasaEfectivaVEco | percent: '1.2-2'}}</h2>
+                  {{ 'general.tasa_interes_efectiva' | translate }}{{this.tasaEfectivaVEco | percent: '1.2-2'}}</h2>
                 <h2 class="h3-tasa-interes">
-                  Tasa de interés</h2>
+                  {{ 'general.tasa_interes' | translate }}</h2>
                 <div class="row div-interes-tasa">
                   <div class="col-md-4 margin-left-3">
                     <h1 class="h1-tasa-credito" *ngIf="checked==false">{{tasaCreditoInmobiliario | number: '1.2-2'}}
@@ -93,7 +116,7 @@
                     </div>
                     <div class="row">
                       <div class="col-md-12">
-                        <h1 class="h1-anual">anual</h1>
+                        <h1 class="h1-anual">{{ 'general.anual' | translate }}</h1>
                       </div>
                     </div>
                   </div>
@@ -102,18 +125,18 @@
 
                       <h4 class=""
                         style="margin-left: 6%; font-size: 14px; font-weight: 700; font-family: amaranth-regular; margin-top: 4%; ">
-                        Sujeta a cambios y en caso de crédito ECO la tasa es con constructoras previamente
-                        pre-seleccionadas</h4>
+                        {{ "vivienda.sujeta_cambios" | translate }}</h4>
                     </div>
                   </div>
                 </div>
                 <div class="button-group div-tiempos-y-montos" style="background-color: #970077; ">
-                  <label class="label-limites-tiempos" style="color:white">Tiempo mínimo
-                    {{tiempoMinCreditoInmobiliario}} meses,
-                    máximo {{tiempoMaxCreditoInmobiliario}} meses</label>
-                  <label class="label-limites-montos" style="color:white">Monto mínimo
+                  <label class="label-limites-tiempos" style="color:white"> {{ 'general.tiempo_minimo' | translate }}
+                    {{tiempoMinCreditoInmobiliario}} {{ 'general.meses' | translate }},
+                    {{ 'general.maximo' | translate }} {{tiempoMaxCreditoInmobiliario}} {{ 'general.meses' | translate
+                    }}</label>
+                  <label class="label-limites-montos" style="color:white">{{ 'general.monto_minimo' | translate }}
                     ${{montoMinCreditoInmobiliario | number}}
-                    monto máximo ${{montoMaxCreditoInmobiliario | number}}
+                    {{ 'general.monto_maximo' | translate }} ${{montoMaxCreditoInmobiliario | number}}
                   </label>
                 </div>
               </div>
@@ -121,7 +144,7 @@
                 <br>
                 <button class="btn btn-light boton-cerrar-tabla" style="background-color: #970077; color:white"
                   (click)="cerrarTablas()">
-                  Cerrar Tabla</button>
+                  {{ 'general.cerrar_tabla' | translate }}</button>
               </div>
             </div>
             <div class="col-md-6 div-lado-derecho-credito">
@@ -133,41 +156,42 @@
                 <div class="col-md-8 div-detalle-simulacion-credito" style="background-color: #970077;">
                   <div *ngIf="alemana.is_visible" id="htmlData">
                     <h3 class="h3-detalle-alemana" style="color:white">
-                      Detalle de la simulación Alemana:</h3>
+                      {{ 'general.detalle_s_alemana' | translate }}:</h3>
                     <table width="100%" cellspacing="5px" cellpadding="5px" class="tabla-detalle-alemana"
                       style="color:white">
                       <tr>
-                        <th>Tasa periódica:</th>
+                        <th>{{ 'general.tasa_periodica' | translate }}:</th>
                         <td class="txt-align-r">
                           <input class="input-td" value="{{tasaInteresPeriodica | number:'1.0-2' }}%" readonly>
                         </td>
                       </tr>
                       <tr>
-                        <th> Seguro desgravamen:</th>
+                        <th> {{ 'general.seguro_desgravamen' | translate }}:</th>
                         <td class="txt-align-r">
                           <input value="{{porcentajeSD| number:'1.0-4'}}%" readonly class="input-td">
                         </td>
                       </tr>
                       <tr>
-                        <th> Total seguro :</th>
+                        <th> {{ 'general.total_seguro' | translate }}:</th>
                         <td class="txt-align-r">
                           <input value="${{sumaSeguroDesgravamenA | number:'1.0-2' }}" readonly class="input-td">
                         </td>
                       </tr>
                       <tr>
-                        <th> Liquido a Recibir:</th>
+                        <th> {{ 'general.liquido_recibir' | translate }}:</th>
                         <td class="txt-align-r">
                           <input value="${{liquidoRecibirV | number:'1.0-2'}}" readonly class="input-td-2">
                         </td>
                       </tr>
                       <tr style="background-color: #ec047c;">
-                        <th>Cuota inicial:</th>
+                        <th>{{ 'general.cuota_inicial' | translate }}:</th>
                         <td class="txt-align-r">
-                          <input class="input-td-2 input-td-2-creditoA" value="${{cuotaInicial | number:'1.0-2'}}" readonly>
+                          <input class="input-td-2 input-td-2-creditoA" value="${{cuotaInicial | number:'1.0-2'}}"
+                            readonly>
                         </td>
                       </tr>
                       <tr>
-                        <th class="">Total interés a pagar:</th>
+                        <th class="">{{ 'general.total_interes_a_pagar' | translate }}:</th>
                         <td class="txt-align-r">
                           <input value="${{sumaIntereses | number:'1.0-2'}}" readonly class="input-td-2">
                         </td>
@@ -176,43 +200,44 @@
                   </div>
                   <div *ngIf="francesa.is_visible">
                     <h3 class="h3-detalle-alemana" style="color:white">
-                      Detalle de la simulación Francesa:</h3>
+                      {{ 'general.detalle_simulacion_francesa' | translate }}:</h3>
                     <table width="100%" cellspacing="5px" cellpadding="5px" class="tabla-detalle-alemana"
                       style="color:white">
                       <tr>
-                        <th>Tasa periódica:</th>
+                        <th>{{ 'general.tasa_periodica' | translate }}:</th>
                         <td class="txt-align-r">
                           <input class="input-td" value="{{tasaInteresPeriodica | number:'1.0-2' }}%" readonly>
                         </td>
                       </tr>
                       <tr>
-                        <th> Seguro desgravamen:</th>
+                        <th> {{ 'general.seguro_desgravamen' | translate }}:</th>
                         <td class="txt-align-r">
                           <input value="{{porcentajeSD| number:'1.0-4'}}%" readonly class="input-td">
                         </td>
                       </tr>
                       <tr>
-                        <th> Total seguro :</th>
+                        <th> {{ 'general.total_seguro' | translate }}:</th>
                         <td class="txt-align-r">
                           <input value="${{sumaSeguroDesgravamenF | number:'1.0-2'}}" readonly class="input-td">
                         </td>
                       </tr>
                       <tr>
-                        <th> Liquido a Recibir:</th>
+                        <th> {{ 'general.liquido_recibir' | translate }}:</th>
                         <td class="txt-align-r">
                           <input value="${{liquidoRecibirV | number:'1.0-2'}}" readonly class="input-td-2">
                         </td>
                       </tr>
                       <!-- <div class="div-td-2" style="background-color: #ec047c ; "> -->
                       <tr style="background-color: #ec047c ; ">
-                        <th> *Cuota a pagar:</th>
+                        <th> *{{ 'general.cuota_a_pagar' | translate }}:</th>
                         <td class="txt-align-r">
-                          <input class="input-td-2 input-td-2-creditof" value="${{cuotaPagarF | number:'1.0-2'}}" readonly>
+                          <input class="input-td-2 input-td-2-creditof" value="${{cuotaPagarF | number:'1.0-2'}}"
+                            readonly>
                         </td>
                       </tr>
                       <!-- </div> -->
                       <tr>
-                        <th class=""> Total interés a pagar:</th>
+                        <th class=""> {{ 'general.total_interes_a_pagar' | translate }}:</th>
                         <td class="txt-align-r ">
                           <input class="input-td-2" value="${{sumaInteresesF | number:'1.0-2'}}" readonly>
                         </td>
@@ -226,11 +251,15 @@
                 </div>
               </div>
               <div class="div-solca">
-                <h3 class="h3-solca">*Todos los créditos del sistema financiero serán descontados el 0.5% de contribución a SOLCA por Normativa de la Superintendencia de Bancos</h3>
+                <h3 class="h3-solca">*{{ 'general.todos_los_creditos' | translate }}</h3>
               </div>
               <div class="div-flechas-descargar">
                 <img src="../../assets/images/flechas-moradas.png" width="10%" height="15" class="img-flechas">
-                <button class="btn1 third" style=" " (click)="generatePDF()">Descargar</button>
+                <button class="btn1 third" *ngIf="isTranslated==false" (click)="generatePDF()">{{ 'general.descargar' |
+                  translate }}</button>
+                <button class="btn1 third" *ngIf="isTranslated==true" (click)="generatePDF_English()">{{
+                  'general.descargar' | translate }}</button>
+
               </div>
             </div>
           </div>
@@ -240,28 +269,28 @@
         <div class="div-tabla-francesa">
           <div *ngIf="amortizacionF.is_visible" style="overflow: xscroll;">
             <div style="text-align: center;">
-              <h2>Tabla de Amortización Francesa</h2>
+              <h2>{{ 'general.tabla_amortizacion_francesa' | translate }}</h2>
             </div>
             <table class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>
-                    #Cuota
+                    #{{ 'general.cuota' | translate }}
                   </th>
                   <th>
-                    Interés del Periodo
+                    {{ 'general.interes_periodo' | translate }}
                   </th>
                   <th>
-                    Capital Amortizado
+                    {{ 'general.capital_amortizado' | translate }}
                   </th>
                   <th>
-                    Seguro
+                    {{ 'general.seguro' | translate }}
                   </th>
                   <th>
-                    Cuota a Pagar
+                    {{ 'general.cuota_a_pagar' | translate }}
                   </th>
                   <th>
-                    Saldo Remanente
+                    {{ 'general.saldo_remanente' | translate }}
                   </th>
                 </tr>
               </thead>
@@ -279,28 +308,28 @@
           </div>
           <div *ngIf="amortizacionIA.is_visible" style="overflow: xscroll;">
             <div style="text-align: center;">
-              <h2>Tabla de Amortización Alemana</h2>
+              <h2>{{ 'general.tabla_amortizacion_alemana' | translate }}</h2>
             </div>
             <table class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>
-                    #Cuota
+                    #{{ 'general.cuota' | translate }}
                   </th>
                   <th>
-                    Interés del Periodo
+                    {{ 'general.interes_periodo' | translate }}
                   </th>
                   <th>
-                    Capital Amortizado
+                    {{ 'general.capital_amortizado' | translate }}
                   </th>
                   <th>
-                    Seguro
+                    {{ 'general.seguro' | translate }}
                   </th>
                   <th>
-                    Cuota a Pagar
+                    {{ 'general.cuota_a_pagar' | translate }}
                   </th>
                   <th>
-                    Saldo Remanente
+                    {{ 'general.saldo_remanente' | translate }}
                   </th>
                 </tr>
               </thead>
@@ -323,20 +352,22 @@
         <div>
 
           <div class="form-group grupo-botones">
-            <button class="boton-lq-cliente third1" *ngIf="crud_operation.is_visible==false" (click)="new()">!Lo
-              quiero!</button>
+            <button class="boton-lq-cliente third1" *ngIf="crud_operation.is_visible==false" (click)="new()">
+              !{{ 'general.lo_quiero' | translate }}!</button>
             <button *ngIf="alemana.is_visible && botonSimulacion2.is_visible" class="boton-sd third2"
-              (click)="vetTablaIA()">Simulación detallada </button>
+              (click)="vetTablaIA()">{{ 'general.simulacion_detallada' | translate }} </button>
             <button *ngIf="francesa.is_visible && botonSimulacion2.is_visible" class="boton-sd third2"
-              (click)="vetTablaFrancesa()">Simulación detallada </button>
+              (click)="vetTablaFrancesa()">{{ 'general.simulacion_detallada' | translate }} </button>
             <button *ngIf="botonSimulacion.is_visible" class="btn btn-light boton-lq-cliente "
               style="background-color: #291d19;  color:white" (click)="cerrarTablas()">
-              Cerrar Tabla</button>
+              {{ 'general.cerrar_tabla' | translate }}</button>
           </div>
         </div>
         <div class="form-group" *ngIf="crud_operation.is_visible" style="text-align: center;">
           <div id="hubspotForm"></div>
-          <button class="btn btn-light boton-cancelar" (click)="crud_operation.is_visible=false">Cancelar</button>
+          <button class="btn btn-light boton-cancelar" (click)="crud_operation.is_visible=false">{{ 'general.cancelar' |
+            translate }}</button>
+
         </div>
       </div>
     </div>

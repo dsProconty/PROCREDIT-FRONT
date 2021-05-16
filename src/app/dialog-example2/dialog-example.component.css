@@ -1,0 +1,44 @@
+.boton-lq-cliente {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* background-color: transparent; */
+    border: 2px solid #e74c3c;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: inline-block;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    font-weight: 400;
+    width: 15%;
+    margin: 10px;
+    padding: 1px;
+    text-decoration: none;
+    text-align: center;
+    /* margin-top: 10%;
+margin-left: 80%; */
+    font-weight: 500;
+}
+
+.boton-lq-cliente:hover,
+.boton-lq-cliente:focus {
+    color: black;
+    outline: 0;
+}
+
+.third1 {
+    border-color: #959398;
+    box-shadow: 0 0 40px 40px #959398 inset, 0 0 0 0 #959398;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+
+.third1:hover {
+    box-shadow: 0 0 10px 0 #959398 inset, 0 0 10px 4px #959398;
+}

@@ -11,6 +11,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { DialogExampleComponent } from '../dialog-example/dialog-example.component';
 
 import { CurrencyPipe } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
 declare var hbspt: any;
 
 @Component({
@@ -111,26 +112,31 @@ export class SimulatorsVComponent implements OnInit {
 
   solcaV: number;
   cp: CurrencyPipe;
+  isTranslated = false;
 
-  botoncolorF=false
-  botoncolorA=true
+  botoncolorF = false;
+  botoncolorA = true;
 
   constructor(
     private service: ClientService,
     private toastr: ToastrService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private translate: TranslateService
   ) {
     this.data = [];
     this.itemS = 0;
-    this.nombreProducto = 'Ahorro DPF';
+    this.nombreProducto = 'Crédito de Vivienda';
     this.francesa.is_visible = true;
     this.nombreProducto = 'Crédito Inmobiliario ';
+    translate.addLangs(['es', 'en']);
+    translate.setDefaultLang('es');
   }
 
   openDialog() {
     this.dialog.open(DialogExampleComponent);
   }
 
+  matLabelTranslated = '';
   ngOnInit(): void {
     this.service.getCreditoInmobiliario().subscribe(
       (datos) => {
@@ -153,10 +159,20 @@ export class SimulatorsVComponent implements OnInit {
       }
     );
     this.porcentajeSD = 0.655;
+    this.matLabelTranslated = this.translate.instant('key');
   }
 
   refresh(): void {
     window.location.reload();
+  }
+
+  useLanguage(language: string) {
+    this.translate.use(language);
+    if (language == 'es') {
+      this.isTranslated = false;
+    } else {
+      this.isTranslated = true;
+    }
   }
 
   cerrarTablas(): void {
@@ -179,21 +195,19 @@ export class SimulatorsVComponent implements OnInit {
     this.botonSimulacion2.is_visible = false;
   }
 
-
-
   verFrancesa(): void {
     this.francesa.is_visible = true;
     this.alemana.is_visible = false;
-    this.botoncolorF=false;
-    this.botoncolorA=true;
+    this.botoncolorF = false;
+    this.botoncolorA = true;
     this.cerrarTablas();
   }
 
   verAlemana(): void {
     this.alemana.is_visible = true;
     this.francesa.is_visible = false;
-    this.botoncolorF=true;
-    this.botoncolorA=false;
+    this.botoncolorF = true;
+    this.botoncolorA = false;
     this.cerrarTablas();
   }
 
@@ -485,7 +499,6 @@ export class SimulatorsVComponent implements OnInit {
 
   async generatePDF(action = 'download') {
     if (this.itemS == 0 && this.francesa.is_visible) {
-      //credito inversion francesa
       let docDefinition = {
         footer: {
           columns: [
@@ -493,7 +506,6 @@ export class SimulatorsVComponent implements OnInit {
               // width:'*',
               image: await this.getBase64ImageFromURL(
                 '../../assets/images/footer3Pdf.PNG'
-                // "https://images.pexels.com/photos/209640/pexels-photo-209640.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=300"
               ),
               width: 600,
               heigth: 1,
@@ -506,7 +518,6 @@ export class SimulatorsVComponent implements OnInit {
               // width:'*',
               image: await this.getBase64ImageFromURL(
                 '../../assets/images/franja.png'
-                // "https://images.pexels.com/photos/209640/pexels-photo-209640.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=300"
               ),
               width: 600,
               heigth: 1,
@@ -519,7 +530,6 @@ export class SimulatorsVComponent implements OnInit {
               {
                 image: await this.getBase64ImageFromURL(
                   '../../assets/images/logo.png'
-                  // "https://images.pexels.com/photos/209640/pexels-photo-209640.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=300"
                 ),
                 width: 150,
               },
@@ -625,7 +635,7 @@ export class SimulatorsVComponent implements OnInit {
                 },
                 width: 350,
               },
-              // {text: ' ', fontSize: 14, bold: true, margin: [0, 20, 0, 8]},
+
               {
                 table: {
                   // layout: 'lightHorizontalLines',
@@ -721,19 +731,6 @@ export class SimulatorsVComponent implements OnInit {
               ],
             },
           },
-          // {
-          //   aligment: 'center',
-          //   text: 'Visita Nuestra Página Web',
-          // },
-          // {
-          //   aligment: 'center',
-          //   text: '  ',
-          // },
-          // {
-          //   columns: [
-          //     [{ qr: `https://www.bancoprocredit.com.ec/`, fit: '100' }],
-          //   ],
-          // },
         ],
         styles: {
           table: {
@@ -790,7 +787,6 @@ export class SimulatorsVComponent implements OnInit {
               // width:'*',
               image: await this.getBase64ImageFromURL(
                 '../../assets/images/footer3Pdf.PNG'
-                // "https://images.pexels.com/photos/209640/pexels-photo-209640.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=300"
               ),
               width: 600,
               heigth: 1,
@@ -803,7 +799,6 @@ export class SimulatorsVComponent implements OnInit {
               // width:'*',
               image: await this.getBase64ImageFromURL(
                 '../../assets/images/franja.png'
-                // "https://images.pexels.com/photos/209640/pexels-photo-209640.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=300"
               ),
               width: 600,
               heigth: 1,
@@ -816,7 +811,6 @@ export class SimulatorsVComponent implements OnInit {
               {
                 image: await this.getBase64ImageFromURL(
                   '../../assets/images/logo.png'
-                  // "https://images.pexels.com/photos/209640/pexels-photo-209640.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=300"
                 ),
                 width: 150,
               },
@@ -911,7 +905,6 @@ export class SimulatorsVComponent implements OnInit {
                         currency: 'USD',
                       }).format(this.cuotaInicial)}`,
                     ],
-                    // [{ text: 'Cuota a Pagar Periodicamente', bold: true }, `$${this.cuotaPagarF.toFixed(2)}`],
                     [
                       { text: 'Total Interés a Pagar', bold: true },
                       `${Intl.NumberFormat('en-US', {
@@ -923,7 +916,7 @@ export class SimulatorsVComponent implements OnInit {
                 },
                 width: 350,
               },
-              // {text: ' ', fontSize: 14, bold: true, margin: [0, 20, 0, 8]},
+
               {
                 table: {
                   // layout: 'lightHorizontalLines',
@@ -1020,20 +1013,569 @@ export class SimulatorsVComponent implements OnInit {
               ],
             },
           },
+        ],
+        styles: {
+          table: {
+            bold: true,
+            fontSize: 10,
+            alignment: 'center',
+            decorationColor: 'red',
+          },
+          sectionHeader: {
+            bold: true,
+            decoration: 'underline',
+            fontSize: 14,
+            margin: [0, 15, 0, 15],
+          },
+          header: {
+            fontSize: 18,
+            bold: true,
+            margin: [0, 0, 0, 10],
+          },
+          subheader: {
+            fontSize: 16,
+            bold: true,
+            margin: [0, 10, 0, 5],
+          },
+          tableExample: {
+            margin: [0, 5, 0, 15],
+          },
+          tableOpacityExample: {
+            margin: [0, 5, 0, 15],
+            fillColor: 'blue',
+            fillOpacity: 0.3,
+          },
+          tableHeader: {
+            bold: true,
+            fontSize: 13,
+            color: 'red',
+            background: 'black',
+          },
+        },
+      };
+      if (action === 'download') {
+        pdfMake.createPdf(docDefinition).download();
+      } else if (action === 'print') {
+        pdfMake.createPdf(docDefinition).print();
+      } else {
+        pdfMake.createPdf(docDefinition).download();
+      }
+    }
+  }
 
-          // {
-          //   aligment: 'center',
-          //   text: 'Visita Nuestra Página Web',
-          // },
-          // {
-          //   aligment: 'center',
-          //   text: '  ',
-          // },
-          // {
-          //   columns: [
-          //     [{ qr: `https://www.bancoprocredit.com.ec/`, fit: '100' }],
-          //   ],
-          // },
+  async generatePDF_English(action = 'download') {
+    if (this.itemS == 0 && this.francesa.is_visible) {
+      let docDefinition = {
+        footer: {
+          columns: [
+            {
+              // width:'*',
+              image: await this.getBase64ImageFromURL(
+                '../../assets/images/footer3Pdf.PNG'
+              ),
+              width: 600,
+              heigth: 1,
+            },
+          ],
+        },
+        header: {
+          columns: [
+            {
+              // width:'*',
+              image: await this.getBase64ImageFromURL(
+                '../../assets/images/franja.png'
+              ),
+              width: 600,
+              heigth: 1,
+            },
+          ],
+        },
+        content: [
+          {
+            columns: [
+              {
+                image: await this.getBase64ImageFromURL(
+                  '../../assets/images/logo.png'
+                ),
+                width: 150,
+              },
+
+              {
+                text: `Date: ${new Date().toLocaleString()}\n Product :   Home Loan\n French amortization`,
+                alignment: 'right',
+              },
+            ],
+          },
+          {
+            aligment: 'center',
+            text: '  ',
+          },
+          {
+            aligment: 'center',
+            text: '  ',
+          },
+          {
+            columns: [
+              {
+                table: {
+                  layout: 'lightHorizontalLines',
+                  headerRows: 1,
+                  widths: ['auto', 'auto'],
+                  body: [
+                    [
+                      {
+                        text: 'Simulation details',
+                        alignment: 'center',
+                        fillColor: '#b40c15',
+                        color: 'white',
+                        colSpan: 2,
+                      },
+                      {},
+                    ],
+                    [
+                      { text: 'Loan Amount', bold: true },
+                      `${Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                      }).format(this.valorPrestamo)}`,
+                    ],
+                    [
+                      { text: 'Term (Months)', bold: true },
+                      `${this.numeroCuotas}`,
+                    ],
+                    [
+                      { text: 'Interest rate', bold: true },
+                      `${this.tasaInteresAnual.toFixed(2)}%`,
+                    ],
+                    [
+                      { text: 'Periodic Interest Rate', bold: true },
+                      `${this.tasaInteresPeriodica.toFixed(2)}%`,
+                    ],
+                    [
+                      { text: 'Effective Interest Rate', bold: true },
+                      `${(this.tasaEfectivaV * 100).toFixed(2)}%`,
+                    ],
+                    [
+                      { text: 'Insurance Rate', bold: true },
+                      `${this.porcentajeSD.toFixed(3)}%`,
+                    ],
+                    [
+                      { text: 'Total Insurance to Pay', bold: true },
+                      `${Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                      }).format(this.sumaSeguroDesgravamenF)}`,
+                    ],
+                    [
+                      { text: 'SOLCA contribution 0.5%', bold: true },
+                      `${Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                      }).format(this.solcaV)}`,
+                    ],
+
+                    [
+                      { text: 'Liquid to Receive', bold: true },
+                      `${Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                      }).format(this.liquidoRecibirV)}`,
+                    ],
+                    [
+                      { text: 'Fee to Pay Periodically', bold: true },
+                      `${Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                      }).format(this.cuotaPagarF)}`,
+                    ],
+                    [
+                      { text: 'Total Interest to Pay', bold: true },
+                      `${Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                      }).format(this.sumaInteresesF)}`,
+                    ],
+                  ],
+                },
+                width: 350,
+              },
+
+              {
+                table: {
+                  // layout: 'lightHorizontalLines',
+                  headerRows: 1,
+                  widths: ['auto'],
+                  body: [
+                    [{ text: 'Visit our website', alignment: 'right' }],
+                    [{ qr: `https://www.bancoprocredit.com.ec/`, fit: '100' }],
+                  ],
+                },
+                alignment: 'center',
+                layout: 'noBorders',
+              },
+            ],
+          },
+
+          {
+            aligment: 'center',
+            text: '  ',
+          },
+          {
+            aligment: 'center',
+            text: '  ',
+          },
+          {
+            style: 'tableExample',
+            table: {
+              layout: 'lightHorizontalLines',
+              headerRows: 1,
+              widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
+              body: [
+                [
+                  {
+                    text: '#Fees',
+                    alignment: 'center',
+                    fillColor: '#b40c15',
+                    color: 'white',
+                  },
+                  {
+                    text: 'Interest of the Period',
+                    alignment: 'center',
+                    fillColor: '#b40c15',
+                    color: 'white',
+                  },
+                  {
+                    text: 'Amortized capital',
+                    alignment: 'center',
+                    fillColor: '#b40c15',
+                    color: 'white',
+                  },
+                  {
+                    text: 'Insurance',
+                    alignment: 'center',
+                    fillColor: '#b40c15',
+                    color: 'white',
+                  },
+                  {
+                    text: 'Fee to pay',
+                    alignment: 'center',
+                    fillColor: '#b40c15',
+                    color: 'white',
+                  },
+                  {
+                    text: 'Remaining balance',
+                    alignment: 'center',
+                    fillColor: '#b40c15',
+                    color: 'white',
+                  },
+                ],
+                ...this.dataFrances.map((p) => [
+                  p.numeroCuota,
+                  Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                  }).format(p.interesPeriodo),
+                  Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                  }).format(p.capitalAmortizado),
+                  Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                  }).format(p.seguro),
+                  Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                  }).format(p.cuotaPagar),
+                  Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                  }).format(p.saldoRemanente),
+                ]),
+              ],
+            },
+          },
+        ],
+        styles: {
+          table: {
+            bold: true,
+            fontSize: 10,
+            alignment: 'center',
+            decorationColor: 'red',
+          },
+          sectionHeader: {
+            bold: true,
+            decoration: 'underline',
+            fontSize: 14,
+            margin: [0, 15, 0, 15],
+          },
+          header: {
+            fontSize: 18,
+            bold: true,
+            margin: [0, 0, 0, 10],
+          },
+          subheader: {
+            fontSize: 16,
+            bold: true,
+            margin: [0, 10, 0, 5],
+          },
+          tableExample: {
+            margin: [0, 5, 0, 15],
+          },
+          tableOpacityExample: {
+            margin: [0, 5, 0, 15],
+            fillColor: 'blue',
+            fillOpacity: 0.3,
+          },
+          tableHeader: {
+            bold: true,
+            fontSize: 13,
+            color: 'red',
+            background: 'black',
+          },
+        },
+      };
+      if (action === 'download') {
+        pdfMake.createPdf(docDefinition).download();
+      } else if (action === 'print') {
+        pdfMake.createPdf(docDefinition).print();
+      } else {
+        pdfMake.createPdf(docDefinition).download();
+      }
+    } else if (this.itemS == 0 && this.alemana.is_visible) {
+      // credito inversion Simulacion Alemana
+      let docDefinition = {
+        footer: {
+          columns: [
+            {
+              // width:'*',
+              image: await this.getBase64ImageFromURL(
+                '../../assets/images/footer3Pdf.PNG'
+              ),
+              width: 600,
+              heigth: 1,
+            },
+          ],
+        },
+        header: {
+          columns: [
+            {
+              // width:'*',
+              image: await this.getBase64ImageFromURL(
+                '../../assets/images/franja.png'
+              ),
+              width: 600,
+              heigth: 1,
+            },
+          ],
+        },
+        content: [
+          {
+            columns: [
+              {
+                image: await this.getBase64ImageFromURL(
+                  '../../assets/images/logo.png'
+                ),
+                width: 150,
+              },
+
+              {
+                text: `Date: ${new Date().toLocaleString()}\n Product : Home Loan\n German Amortization`,
+
+                alignment: 'right',
+              },
+            ],
+          },
+          {
+            aligment: 'center',
+            text: '  ',
+          },
+          {
+            aligment: 'center',
+            text: '  ',
+          },
+          {
+            columns: [
+              {
+                table: {
+                  layout: 'lightHorizontalLines', // optional
+                  headerRows: 1,
+                  widths: ['auto', 'auto'],
+                  body: [
+                    [
+                      {
+                        text: 'Simulation details',
+                        alignment: 'center',
+                        fillColor: '#b40c15',
+                        color: 'white',
+                        colSpan: 2,
+                      },
+                      {},
+                    ],
+                    [
+                      { text: 'Loan Amount', bold: true },
+                      `${Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                      }).format(this.valorPrestamo)}`,
+                    ],
+                    [
+                      { text: 'Term (Months)', bold: true },
+                      `${this.numeroCuotas}`,
+                    ],
+                    [
+                      { text: 'Interest rate', bold: true },
+                      `${this.tasaInteresAnual.toFixed(2)}%`,
+                    ],
+                    [
+                      { text: 'Periodic Interest Rate', bold: true },
+                      `${this.tasaInteresPeriodica.toFixed(2)}`,
+                    ],
+                    [
+                      { text: 'Effective Interest Rate', bold: true },
+                      `${(this.tasaEfectivaV * 100).toFixed(2)}%`,
+                    ],
+                    [
+                      { text: 'Insurance Rate', bold: true },
+                      `${this.porcentajeSD.toFixed(2)}%`,
+                    ],
+                    [
+                      { text: 'Total Insurance to Pay', bold: true },
+                      `${Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                      }).format(this.sumaSeguroDesgravamenA)}`,
+                    ],
+                    [
+                      { text: 'SOLCA contribution 0.5%', bold: true },
+                      `${Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                      }).format(this.solcaV)}`,
+                    ],
+
+                    [
+                      { text: 'Liquid to Receive', bold: true },
+                      `${Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                      }).format(this.liquidoRecibirV)}`,
+                    ],
+                    [
+                      { text: 'Initial fee', bold: true },
+                      `${Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                      }).format(this.cuotaInicial)}`,
+                    ],
+                    [
+                      { text: 'Total Interest to Pay', bold: true },
+                      `${Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                      }).format(this.sumaIntereses)}`,
+                    ],
+                  ],
+                },
+                width: 350,
+              },
+
+              {
+                table: {
+                  // layout: 'lightHorizontalLines',
+                  headerRows: 1,
+                  widths: ['auto'],
+                  body: [
+                    [{ text: 'Visit our website', alignment: 'right' }],
+                    [{ qr: `https://www.bancoprocredit.com.ec/`, fit: '100' }],
+                  ],
+                },
+                alignment: 'center',
+                layout: 'noBorders',
+              },
+            ],
+          },
+
+          {
+            aligment: 'center',
+            text: '  ',
+          },
+          {
+            aligment: 'center',
+            text: '  ',
+          },
+
+          {
+            style: 'tableExample',
+            table: {
+              layout: 'lightHorizontalLines', // optional
+              headerRows: 1,
+              widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
+              body: [
+                [
+                  {
+                    text: '#Fees',
+                    alignment: 'center',
+                    fillColor: '#b40c15',
+                    color: 'white',
+                  },
+                  {
+                    text: 'Interest of the Period',
+                    alignment: 'center',
+                    fillColor: '#b40c15',
+                    color: 'white',
+                  },
+                  {
+                    text: 'Amortized capital',
+                    alignment: 'center',
+                    fillColor: '#b40c15',
+                    color: 'white',
+                  },
+                  {
+                    text: 'Insurance',
+                    alignment: 'center',
+                    fillColor: '#b40c15',
+                    color: 'white',
+                  },
+                  {
+                    text: 'Fee to pay',
+                    alignment: 'center',
+                    fillColor: '#b40c15',
+                    color: 'white',
+                  },
+                  {
+                    text: 'Remaining balance',
+                    alignment: 'center',
+                    fillColor: '#b40c15',
+                    color: 'white',
+                  },
+                ],
+                ...this.dataAleman.map((p) => [
+                  p.numeroCuota,
+                  Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                  }).format(p.interesPeriodo),
+                  Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                  }).format(p.capitalAmortizado),
+                  Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                  }).format(p.seguro),
+                  Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                  }).format(p.cuotaPagar),
+                  Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                  }).format(p.saldoRemanente),
+                ]),
+              ],
+            },
+          },
         ],
         styles: {
           table: {

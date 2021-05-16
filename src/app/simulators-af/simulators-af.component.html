@@ -2,155 +2,207 @@
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Source code generated using layoutit.com">
-    <meta name="author" content="LayoutIt!">
-    <meta name="robots" content="noindex">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Source code generated using layoutit.com">
+  <meta name="author" content="LayoutIt!">
+  <meta name="robots" content="noindex">
 </head>
 
 <body>
-    <div class="container">
-        <img src="../../assets/images/franja.png" width="100%" height="6">
+  <div class="container">
+    <img src="../../assets/images/franja.png" width="100%" height="6">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+        <img src="../../assets/images/logo.png"  width="30%" height="80%">
+
+      </div>
+      <div class="col-lg-3 switcher-lang">
+        <mat-form-field appearance="fill">
+          <mat-label *ngIf="isTranslated==false">{{ "general.espanol" | translate }} <img
+              src="../../assets/images/es.png" height="16" width="16" alt="es"></mat-label>
+          <mat-label *ngIf="isTranslated==true">{{ "general.ingles" | translate }} <img
+              src="../../assets/images/en-us.png" height="16" width="16" alt="es"></mat-label>
+
+          <mat-select>
+            <mat-option (click)="useLanguage('es')">
+              {{ "general.espanol" | translate }}<img src="../../assets/images/es.png" height="16" width="16" alt="es">
+            </mat-option>
+            <mat-option (click)="useLanguage('en')">
+              {{ "general.ingles" | translate }} <img src="../../assets/images/en-us.png" height="16" width="16"
+                alt="es">
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
-    <div class="container">
-        <img src="../../assets/images/logo.png" style="margin-bottom: -5%;" width="25%" height="100%">
+  </div>
+  <div>
+    <div class="container-fluid  div-principal">
+      <mat-tab-group #mattabgroup (selectedTabChange)="_selectedTabChange($event.index)"
+        (selectedIndexChange)="_selectedIndexChange($event)" [selectedIndex]="selectedIndex" mat-align-tabs="center">
 
-    </div>
-    <div>
-        <div class="container-fluid  div-principal">
-            <mat-tab-group #mattabgroup (selectedTabChange)="_selectedTabChange($event.index)" (selectedIndexChange)="_selectedIndexChange($event)" [selectedIndex]="selectedIndex" mat-align-tabs="center">
-
-                <mat-tab label="Cuenta de Ahorro FlexSave" class="mat-tab-body-content" style="overflow: initial;">
-                    <br><br>
-                    <h2 class="titulo-simulador">Simulador Cuenta de Ahorro FlexSave </h2>
-                    <div class="row div-principal-2">
-                        <div class="col-md-6 div-lado-izq" style="height: auto;">
-                            <label for="exampleInputEmail1" class="label-monto">
-                Monto
+        <mat-tab label="{{ 'flexsave.matLabelTranslated' | translate }}" class="mat-tab-body-content"
+          style="overflow: initial;">
+          <br><br>
+          <h2 class="titulo-simulador">{{ "flexsave.title" | translate }}</h2>
+          <div class="row div-principal-2">
+            <div class="col-md-6 div-lado-izq" style="height: auto;">
+              <label for="exampleInputEmail1" class="label-monto">
+                {{ 'general.monto' | translate }}
               </label>
-                            <div class="input-group margin-left-3">
-                                <mat-slider class="mat-slider" thumbLabel [displayWith]="formatoMonto" (input)="onInputChangeMontoFlex($event)" tickInterval="100" min="1" max="1000000" [(ngModel)]="amount" (ngModelChange)="flexSave()" style="min-width: 280px;" step="100"></mat-slider>
-                                <input type="number" pattern="^[0-9]+" onkeypress="return event.charCode >= 48"  class="form-control input-monto-tiempo input-monto" id="exampleInputEmail1" placeholder="Monto" [(ngModel)]="amount" name="amount" (ngModelChange)="flexSave()" size=40>
-                            </div>
-                            <br>
-                            <label for="exampleInputPassword1" class="label-plazo">
-                Plazo (Días)
+              <div class="input-group margin-left-3">
+                <mat-slider class="mat-slider" thumbLabel [displayWith]="formatoMonto"
+                  (input)="onInputChangeMontoFlex($event)" tickInterval="100" min="1" max="1000000" [(ngModel)]="amount"
+                  (ngModelChange)="flexSave()" style="min-width: 280px;" step="100"></mat-slider>
+                <input type="number" pattern="^[0-9]+" onkeypress="return event.charCode >= 48"
+                  class="form-control input-monto-tiempo input-monto" id="exampleInputEmail1"
+                  placeholder="{{ 'general.monto' | translate }}" [(ngModel)]="amount" name="amount"
+                  (ngModelChange)="flexSave()" size=40>
+              </div>
+              <br>
+              <label for="exampleInputPassword1" class="label-plazo">
+                {{ 'general.plazo_dias' | translate }}
               </label>
-                            <div class="input-group margin-left-3">
-                                <mat-slider class="mat-slider" thumbLabel [displayWith]="formatoTiempo" (input)="onInputChangeTiempoFlex($event)" tickInterval="1" min="{{tiempoMinAhorroFlexSave}}" max="{{tiempoMaxAhorroFlexSave}}" [(ngModel)]="term" (ngModelChange)="flexSave()" style="min-width: 280px;">
-                                </mat-slider>
-                                <input type="number" pattern="^[0-9]+" onkeypress="return event.charCode >= 48" class="form-control input-monto-tiempo" id="exampleInputPassword1" placeholder="Plazo" [(ngModel)]="term" name="term" (ngModelChange)="flexSave()" size=40 style="width:100px; flex:none;">
-                            </div>
-                            <br>
-                            <div class="div-bg-gray">
-                                <br class="salto-linea"><br class="salto-linea">
-                                <h2 class="h3-tasa-interes">
-                                    Tasa de Interés</h2>
-                                <div class="row">
-                                    <div class="col-md-4 margin-left-3">
-                                        <h1 class="h1-tasa-credito">
-                                            {{tasaAhorroFlexSave | number: '1.2-2'}} </h1>
-                                    </div>
-                                    <div class="col-md-8 div-porcentaje-anual div-porcentaje-anual-ahorro">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <h1 class="h1-porcentaje">%</h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="button-group div-tiempos-y-montos div-tiempos-y-montos-ahorro" style="background-color: #b40c15; ">
-                                    <label class="label-limites-tiempos" style="color:white; font-weight: 500">Tiempo mínimo
-                    {{tiempoMinAhorroFlexSave}} día, máximo {{tiempoMaxAhorroFlexSave}}
-                    días</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 div-lado-derecho">
-                            <div class="container-fluid div-imagen-marco">
-                                <img src="../../assets//images//marco-rojo.png" style="position: absolute; margin-top: -30%; margin-left: -25%; width: 160%;  -webkit-transform: rotate(6deg);">
-                            </div>
-                            <div class="row detalle-ahorro">
-                                <div class="col-md-8 div-detalle-simulacion" style="background-color: #b40c15;">
-                                    <div id="htmlData">
-                                        <h3 class="h3-detalle-alemana" style="color:white; ">
-                                            Detalle de la simulación:</h3>
-                                        <table width="100%" cellspacing="5px" cellpadding="5px" class="tabla-detalle-alemana" style="color:white; font-weight: 500">
-                                            <tr>
-                                                <th>Monto:</th>
-                                                <td class="txt-align-r">
-                                                    <input class="input-td" value="${{amount | number:'1.0-2'}}" readonly>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <th>Plazo Días:</th>
-                                                <td class="txt-align-r">
-                                                    <input value="{{term}}" readonly class="input-td">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                              <th>Plazo Meses:</th>
-                                              <td class="txt-align-r">
-                                                  <input value="{{tiempoMeses | number:'1.0-0'}}" readonly class="input-td">
-                                              </td>
-                                          </tr>
-                                            <tr>
-                                                <th>Interés Ganado Referencial:</th>
-                                                <td class="txt-align-r">
-                                                    <input value="${{returnRate | number:'1.0-2'}}" readonly class="input-td">
-                                                </td>
-                                            </tr>
-
-                                            <tr style="background-color: #cc242c;">
-                                                <th>Total Recibir:</th>
-                                                <td class="txt-align-r ">
-                                                    <input class="input-td-2 td-div-input" value="${{total | number:'1.0-2'}}" readonly>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="">Tasa de interés</th>
-                                                <td class="txt-align-r">
-                                                    <input readonly value="{{tasaAhorroFlexSave | number: '1.2-2'}}%" class="input-td-2">
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 div-img-detalle" style=" background-color: #b40c15;">
-                                    <img alt="ImgImgImg" src="../../assets/images/ahorroflex-Procredit.png" width="500" height="600" class="img-detalle" />
-
-                                </div>
-                            </div>
-                            <div class="div-flechas-descargar">
-                                <img src="../../assets/images/flechas_rojas.PNG" width="10%" height="15" class="img-flechas">
-                                <button class="btn1 third" style=" font-weight: 500" (click)="generatePDF()">Descargar</button>
-                            </div>
-                        </div>
+              <div class="input-group margin-left-3">
+                <mat-slider class="mat-slider" thumbLabel [displayWith]="formatoTiempo"
+                  (input)="onInputChangeTiempoFlex($event)" tickInterval="1" min="{{tiempoMinAhorroFlexSave}}"
+                  max="{{tiempoMaxAhorroFlexSave}}" [(ngModel)]="term" (ngModelChange)="flexSave()"
+                  style="min-width: 280px;">
+                </mat-slider>
+                <input type="number" pattern="^[0-9]+" onkeypress="return event.charCode >= 48"
+                  class="form-control input-monto-tiempo" id="exampleInputPassword1"
+                  placeholder="{{ 'general.plazo' | translate }}" [(ngModel)]="term" name="term"
+                  (ngModelChange)="flexSave()" size=40 style="width:100px; flex:none;">
+              </div>
+              <br>
+              <div class="div-bg-gray">
+                <br class="salto-linea"><br class="salto-linea">
+                <h2 class="h3-tasa-interes">
+                  {{ 'general.tasa_interes' | translate }}</h2>
+                <div class="row">
+                  <div class="col-md-4 margin-left-3">
+                    <h1 class="h1-tasa-credito">
+                      {{tasaAhorroFlexSave | number: '1.2-2'}} </h1>
+                  </div>
+                  <div class="col-md-8 div-porcentaje-anual div-porcentaje-anual-ahorro">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h1 class="h1-porcentaje">%</h1>
+                      </div>
                     </div>
-                </mat-tab>
-            </mat-tab-group>
-            <div class="container">
-                <div>
-                    <div class="form-group grupo-botones">
-                        <button class=" boton-lq-cliente third1" *ngIf="itemS==0" (click)="openDialog()">Abre tu cuenta</button>
-
-                    </div>
+                  </div>
                 </div>
-                <div class="form-group" *ngIf="crud_operation.is_visible" style="text-align: center;">
-                    <div id="hubspotForm"></div>
-                    <button class="btn btn-light boton-cancelar" (click)="crud_operation.is_visible=false">Cancelar</button>
+                <div class="button-group div-tiempos-y-montos div-tiempos-y-montos-ahorro"
+                  style="background-color: #b40c15; ">
+                  <label class="label-limites-tiempos" style="color:white; font-weight: 500">{{ 'general.tiempo_minimo'
+                    | translate }}
+                    {{tiempoMinAhorroFlexSave}} {{ 'general.dia' | translate }}, {{ 'general.maximo' | translate }}
+                    {{tiempoMaxAhorroFlexSave}}
+                    {{ 'general.dias' | translate }}</label>
                 </div>
+              </div>
             </div>
+            <div class="col-md-6 div-lado-derecho">
+              <div class="container-fluid div-imagen-marco">
+                <img src="../../assets//images//marco-rojo.png"
+                  style="position: absolute; margin-top: -30%; margin-left: -25%; width: 160%;  -webkit-transform: rotate(6deg);">
+              </div>
+              <div class="row detalle-ahorro">
+                <div class="col-md-8 div-detalle-simulacion" style="background-color: #b40c15;">
+                  <div id="htmlData">
+                    <h3 class="h3-detalle-alemana" style="color:white; ">
+                      {{ 'general.detalle_de_la_simulacion' | translate }}:</h3>
+                    <table width="100%" cellspacing="5px" cellpadding="5px" class="tabla-detalle-alemana"
+                      style="color:white; font-weight: 500">
+                      <tr>
+                        <th> {{ 'general.monto' | translate }}:</th>
+                        <td class="txt-align-r">
+                          <input class="input-td" value="${{amount | number:'1.0-2'}}" readonly>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th>{{ 'general.plazo_dias_t' | translate }}:</th>
+                        <td class="txt-align-r">
+                          <input value="{{term}}" readonly class="input-td">
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>{{ 'general.plazo_meses_t' | translate }}:</th>
+                        <td class="txt-align-r">
+                          <input value="{{tiempoMeses | number:'1.0-0'}}" readonly class="input-td">
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>{{ 'general.interes_ganado_referencial' | translate }}:</th>
+                        <td class="txt-align-r">
+                          <input value="${{returnRate | number:'1.0-2'}}" readonly class="input-td">
+                        </td>
+                      </tr>
+
+                      <tr style="background-color: #cc242c;">
+                        <th>{{ 'general.total_recibir' | translate }}:</th>
+                        <td class="txt-align-r ">
+                          <input class="input-td-2 td-div-input" value="${{total | number:'1.0-2'}}" readonly>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th class="">{{ 'general.tasa_interes' | translate }}</th>
+                        <td class="txt-align-r">
+                          <input readonly value="{{tasaAhorroFlexSave | number: '1.2-2'}}%" class="input-td-2">
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="col-md-4 div-img-detalle" style=" background-color: #b40c15;">
+                  <img alt="ImgImgImg" src="../../assets/images/ahorroflex-Procredit.png" width="500" height="600"
+                    class="img-detalle" />
+
+                </div>
+              </div>
+              <div class="div-flechas-descargar">
+                <img src="../../assets/images/flechas_rojas.PNG" width="10%" height="15" class="img-flechas">
+                <button class="btn1 third" *ngIf="isTranslated==false" style=" font-weight: 500"
+                  (click)="generatePDF()">{{ 'general.descargar' |
+                  translate }}</button>
+                <button class="btn1 third" *ngIf="isTranslated==true" style="font-weight: 500"
+                  (click)="generatePDF_English()">{{ 'general.descargar' |
+                  translate }}</button>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+      <div class="container">
+        <div>
+          <div class="form-group grupo-botones">
+            <button class=" boton-lq-cliente third1" *ngIf="!isTranslated" (click)="openDialog()">{{
+              'general.abre_tu_cuenta'
+              | translate }}</button>
+            <button class=" boton-lq-cliente third1" *ngIf="isTranslated" (click)="openDialog2()">{{
+              'general.abre_tu_cuenta'
+              | translate }}</button>
+
+          </div>
         </div>
+        <div class="form-group" *ngIf="crud_operation.is_visible" style="text-align: center;">
+          <div id="hubspotForm"></div>
+          <button class="btn btn-light boton-cancelar" (click)="crud_operation.is_visible=false">{{ 'general.cancelar' |
+            translate }}</button>
+        </div>
+      </div>
     </div>
+  </div>
 </body>
 <footer>
-    <div class="container">
-        <img src="../../assets/images/franja.png" width="100%" height="6">
-    </div>
+  <div class="container">
+    <img src="../../assets/images/franja.png" width="100%" height="6">
+  </div>
 </footer>
 
 </html>

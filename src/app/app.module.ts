@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule} from '@angular/forms';
 import { SimulatorsComponent } from './simulators/simulators.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ClientService } from './client.service';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -58,6 +58,10 @@ import { NgxCurrencyModule } from "ngx-currency";
 import  {MatCurrencyFormatModule} from 'mat-currency-format';
 import localeEs from '@angular/common/locales/es';
 import {registerLocaleData} from '@angular/common'
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { DialogExampleComponent2 } from './dialog-example2/dialog-example.component';
+
 registerLocaleData(localeEs,'es');
 
 
@@ -66,6 +70,7 @@ registerLocaleData(localeEs,'es');
     AppComponent,
     SimulatorsComponent,
     DialogExampleComponent,
+    DialogExampleComponent2,
     SimulatorsEComponent,
     SimulatorsAfComponent,
     SimulatorsAdpfComponent,
@@ -84,6 +89,7 @@ registerLocaleData(localeEs,'es');
       progressBar:true,
       preventDuplicates: true,
     }),
+    HttpClientModule,
     MatSliderModule,
     MatFormFieldModule,
     MatTabsModule,
@@ -170,7 +176,14 @@ registerLocaleData(localeEs,'es');
     PortalModule,
     ScrollingModule,
     NgxCurrencyModule,
-    MatCurrencyFormatModule
+    MatCurrencyFormatModule,
+    TranslateModule.forRoot({
+      loader:{
+        provide:TranslateLoader,
+        useFactory:HttpLoaderFactory,
+        deps:[HttpClient]
+      }
+    })
 
 
   ],
@@ -178,3 +191,7 @@ registerLocaleData(localeEs,'es');
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http: HttpClient){
+  return new TranslateHttpLoader(http);
+}
