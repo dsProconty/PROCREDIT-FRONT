@@ -130,8 +130,16 @@ export class SimulatorsAdpfComponent implements OnInit {
 
   /************************************************************************** */
   //Funciones Simuladores de Ahorro
-
+  message = null;
+  message1 = null;
   dpfSave(): void {
+    if (this.isTranslated) {
+      this.message = 'Limits out of range';
+      this.message1 = 'Warning';
+    } else {
+      this.message = 'Límites fuera de rango ';
+      this.message1 = 'Advertencia';
+    }
     if (this.tasaAhorroDpf == null) {
       this.ngOnInit();
     } else {
@@ -144,7 +152,7 @@ export class SimulatorsAdpfComponent implements OnInit {
       ) {
         this.termDpf = this.tiempoMinAhorroDpf;
         this.amountDpf = 5000;
-        this.toastr.warning('Límites fuera de rango ', 'Advertencia', {
+        this.toastr.warning(this.message, this.message1, {
           timeOut: 4500,
         });
       } else {
@@ -407,7 +415,7 @@ export class SimulatorsAdpfComponent implements OnInit {
         columns: [
           {
             image: await this.getBase64ImageFromURL(
-              '../../assets/images/footer3Pdf.PNG'
+              '../../assets/images/franjaFooter2.PNG'
             ),
             width: 600,
             heigth: 1,
@@ -437,7 +445,7 @@ export class SimulatorsAdpfComponent implements OnInit {
             },
 
             {
-              text: `Date: ${new Date().toLocaleString()}\n Product : Saving DPF`,
+              text: `Date: ${new Date().toLocaleString()}\n Product : Fixed term deposit`,
               alignment: 'right',
             },
           ],
@@ -476,7 +484,7 @@ export class SimulatorsAdpfComponent implements OnInit {
                     }).format(this.amountDpf)}`,
                   ],
                   [
-                    { text: 'Current Nominal Rate', bold: true },
+                    { text: 'Nominal interest rate in force', bold: true },
                     `${this.tasaAhorroDpf}%`,
                   ],
                   [{ text: 'Term (Months)', bold: true }, `${this.termDpf}`],
@@ -488,7 +496,7 @@ export class SimulatorsAdpfComponent implements OnInit {
                     }).format(this.returnRateDpf)}`,
                   ],
                   [
-                    { text: 'IR hold', bold: true },
+                    { text: 'Retention', bold: true },
                     `${Intl.NumberFormat('en-US', {
                       style: 'currency',
                       currency: 'USD',

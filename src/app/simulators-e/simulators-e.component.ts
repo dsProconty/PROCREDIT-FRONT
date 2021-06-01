@@ -257,20 +257,43 @@ export class SimulatorsEComponent implements OnInit {
 
   /************************************************************* */
   /**Funciones Simuladores de Credito */
+  message = null;
+  message2 = null;
+  message3 = null;
+  message4 = null;
+  message5 = null;
+  message6 = null;
+  message7 = null;
 
   simuladorEducativo(): void {
     this.limpiarTabla();
-
+    if (this.isTranslated) {
+      this.message = 'Maximum amount';
+      this.message2 = 'Minimum amount ';
+      this.message3 = 'Amount out of range';
+      this.message4 = 'Maximum time';
+      this.message5 = 'months Minimum time';
+      this.message6 = 'months';
+      this.message7 = 'Time out of range';
+    } else {
+      this.message = 'Monto máximo';
+      this.message2 = 'monto mínimo';
+      this.message3 = 'Monto fuera de rango';
+      this.message4 = 'Tiempo máximo';
+      this.message5 = 'meses tiempo mínimo';
+      this.message6 = 'meses';
+      this.message7 = 'Tiempo fuera de rango';
+    }
     if (
       this.valorPrestamo > this.montoMaxCreditoEducativo ||
       this.valorPrestamo < this.montoMinCreditoEducativo
     ) {
       this.valorPrestamo = this.montoMinCreditoEducativo;
       this.toastr.warning(
-        `Monto máximo $${this.transform(
-          this.montoMaxCreditoEducativo
-        )}, monto mínimo $${this.transform(this.montoMinCreditoEducativo)} `,
-        'Monto fuera de rango',
+        `${this.message}  $${this.transform(this.montoMaxCreditoEducativo)}, ${
+          this.message2
+        } $${this.transform(this.montoMinCreditoEducativo)} `,
+        `${this.message3}`,
         {
           timeOut: 4500,
         }
@@ -281,8 +304,8 @@ export class SimulatorsEComponent implements OnInit {
     ) {
       this.numeroCuotas = this.tiempoMinCreditoEducativo;
       this.toastr.warning(
-        `Tiempo máximo ${this.tiempoMaxCreditoEducativo} meses, tiempo mínimo ${this.tiempoMinCreditoEducativo} meses`,
-        'Tiempo fuera de rango',
+        `${this.message4} ${this.tiempoMaxCreditoEducativo} ${this.message5} ${this.tiempoMinCreditoEducativo} ${this.message6}`,
+        this.message7,
         {
           timeOut: 4500,
         }
@@ -1036,7 +1059,7 @@ export class SimulatorsEComponent implements OnInit {
             {
               // width:'*',
               image: await this.getBase64ImageFromURL(
-                '../../assets/images/footer3Pdf.PNG'
+                '../../assets/images/franjaFooter2.PNG'
               ),
               width: 600,
               heigth: 1,
@@ -1066,7 +1089,7 @@ export class SimulatorsEComponent implements OnInit {
               },
 
               {
-                text: `Date: ${new Date().toLocaleString()}\n Product : Educative credit\n French amortization`,
+                text: `Date: ${new Date().toLocaleString()}\n Product : Education loan\n French Payment Schedule`,
 
                 alignment: 'right',
               },
@@ -1140,14 +1163,17 @@ export class SimulatorsEComponent implements OnInit {
                       }).format(this.solca)}`,
                     ],
                     [
-                      { text: 'Liquid to Receive', bold: true },
+                      { text: 'Net to receive', bold: true },
                       `${Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'USD',
                       }).format(this.liquidoRecibir)}`,
                     ],
                     [
-                      { text: 'Fee to Pay Periodically', bold: true },
+                      {
+                        text: 'Installment to be paid periodically',
+                        bold: true,
+                      },
                       `${Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'USD',
@@ -1195,7 +1221,7 @@ export class SimulatorsEComponent implements OnInit {
               body: [
                 [
                   {
-                    text: '#Fees',
+                    text: '#Installment',
                     alignment: 'center',
                     fillColor: '#b40c15',
                     color: 'white',
@@ -1311,7 +1337,7 @@ export class SimulatorsEComponent implements OnInit {
           columns: [
             {
               image: await this.getBase64ImageFromURL(
-                '../../assets/images/footer3Pdf.PNG'
+                '../../assets/images/franjaFooter2.PNG'
               ),
               width: 600,
               heigth: 1,
@@ -1340,7 +1366,7 @@ export class SimulatorsEComponent implements OnInit {
               },
 
               {
-                text: `Date: ${new Date().toLocaleString()}\n Product : Educative credit\n German Amortization`,
+                text: `Date: ${new Date().toLocaleString()}\n Product : Education loan\n German Payment schedule`,
                 alignment: 'right',
               },
             ],
@@ -1413,7 +1439,7 @@ export class SimulatorsEComponent implements OnInit {
                       }).format(this.solca)}`,
                     ],
                     [
-                      { text: 'Liquid to Receive', bold: true },
+                      { text: 'Net to receive', bold: true },
                       `${Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'USD',
@@ -1470,7 +1496,7 @@ export class SimulatorsEComponent implements OnInit {
               body: [
                 [
                   {
-                    text: '#Fees',
+                    text: '#Installment',
                     alignment: 'center',
                     fillColor: '#b40c15',
                     color: 'white',

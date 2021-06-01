@@ -263,18 +263,33 @@ export class SimulatorsIpComponent implements OnInit {
   }
   /************************************************************* */
   /**Funciones Simuladores de Credito */
+  message = null;
+  message2 = null;
+  message3 = null;
+  message4 = null;
+  message5 = null;
+  message6 = null;
+  message7 = null;
 
   simuladorInversion(): void {
+    if (this.isTranslated) {
+      this.message = 'Maximum amount';
+      this.message2 = 'Minimum amount ';
+      this.message3 = 'Amount out of range';
+      this.message4 = 'Maximum time';
+      this.message5 = 'months Minimum time';
+      this.message6 = 'months';
+      this.message7 = 'Time out of range';
+    } else {
+      this.message = 'Monto máximo';
+      this.message2 = 'monto mínimo';
+      this.message3 = 'Monto fuera de rango';
+      this.message4 = 'Tiempo máximo';
+      this.message5 = 'meses tiempo mínimo';
+      this.message6 = 'meses';
+      this.message7 = 'Tiempo fuera de rango';
+    }
     this.limpiarTabla();
-    /**Variables globales para los dos sistemas */
-    //  this.tasaInteresAnual = this.tasaCreditoInversion;
-    //  this.tasaInteresPeriodica = this.tasaInteresAnual / 12;
-    //  this.porcentajeSeguroDesgravamen = 0.655 / 100;
-
-    //  this.solcaP = (this.valorPrestamo * 0.5) / 100;
-    // //  console.log('valor solca', this.solcaP);
-    //  this.liquidoRecibirP = this.valorPrestamo - this.solcaP;
-    /**Validacion montos y tiempo */
     if (
       this.valorPrestamo > this.montoMaxCreditoInversion ||
       this.valorPrestamo < this.montoMinCreditoInversion
@@ -282,9 +297,9 @@ export class SimulatorsIpComponent implements OnInit {
       this.valorPrestamo = this.montoMinCreditoInversion;
 
       this.toastr.warning(
-        `Monto máximo $${this.transform(this.montoMaxCreditoInversion)},
-       monto mínimo $${this.transform(this.montoMinCreditoInversion)} `,
-        'Monto fuera de rango',
+        `${this.message} $${this.transform(this.montoMaxCreditoInversion)},
+        ${this.message2} $${this.transform(this.montoMinCreditoInversion)} `,
+        `${this.message3}`,
         {
           timeOut: 4500,
         }
@@ -295,8 +310,8 @@ export class SimulatorsIpComponent implements OnInit {
     ) {
       this.numeroCuotas = this.tiempoMinCreditoInversion;
       this.toastr.warning(
-        `Tiempo máximo ${this.tiempoMaxCreditoInversion} meses tiempo mínimo ${this.tiempoMinCreditoInversion} meses`,
-        'Tiempo fuera de rango',
+        `${this.message4} ${this.tiempoMaxCreditoInversion} ${this.message5} ${this.tiempoMinCreditoInversion} ${this.message6}`,
+        this.message7,
         {
           timeOut: 4500,
         }
@@ -719,19 +734,6 @@ export class SimulatorsIpComponent implements OnInit {
               ],
             },
           },
-          // {
-          //   aligment: 'center',
-          //   text: 'Visita Nuestra Página Web',
-          // },
-          // {
-          //   aligment: 'center',
-          //   text: '  ',
-          // },
-          // {
-          //   columns: [
-          //     [{ qr: `https://www.bancoprocredit.com.ec/`, fit: '100' }],
-          //   ]
-          // },
         ],
         styles: {
           table: {
@@ -1066,7 +1068,7 @@ export class SimulatorsIpComponent implements OnInit {
             {
               // width:'*',
               image: await this.getBase64ImageFromURL(
-                '../../assets/images/footer3Pdf.PNG'
+                '../../assets/images/franjaFooter2.PNG'
               ),
               width: 600,
               heigth: 1,
@@ -1096,7 +1098,7 @@ export class SimulatorsIpComponent implements OnInit {
               },
 
               {
-                text: `Date: ${new Date().toLocaleString()}\n Product : Personal Investment Credit\n French amortization`,
+                text: `Date: ${new Date().toLocaleString()}\n Product : Personal Investment Credit\n French Payment Schedule`,
                 alignment: 'right',
               },
             ],
@@ -1170,14 +1172,17 @@ export class SimulatorsIpComponent implements OnInit {
                     ],
 
                     [
-                      { text: 'Liquid to Receive', bold: true },
+                      { text: 'Net to receive', bold: true },
                       `${Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'USD',
                       }).format(this.liquidoRecibirP)}`,
                     ],
                     [
-                      { text: 'Fee to Pay Periodically', bold: true },
+                      {
+                        text: 'Installment to be paid periodically',
+                        bold: true,
+                      },
                       `${Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'USD',
@@ -1227,7 +1232,7 @@ export class SimulatorsIpComponent implements OnInit {
               body: [
                 [
                   {
-                    text: '#Fees',
+                    text: '#Installment',
                     alignment: 'center',
                     fillColor: '#b40c15',
                     color: 'white',
@@ -1343,7 +1348,7 @@ export class SimulatorsIpComponent implements OnInit {
           columns: [
             {
               image: await this.getBase64ImageFromURL(
-                '../../assets/images/footer3Pdf.PNG'
+                '../../assets/images/franjaFooter2.PNG'
               ),
               width: 600,
               heigth: 1,
@@ -1373,7 +1378,7 @@ export class SimulatorsIpComponent implements OnInit {
               },
 
               {
-                text: `Date: ${new Date().toLocaleString()}\n Product : Personal Investment Credit\n German Amortization`,
+                text: `Date: ${new Date().toLocaleString()}\n Product : Personal Investment Credit\n German Payment schedule`,
 
                 alignment: 'right',
               },
@@ -1447,7 +1452,7 @@ export class SimulatorsIpComponent implements OnInit {
                       }).format(this.solcaP)}`,
                     ],
                     [
-                      { text: 'Liquid to Receive', bold: true },
+                      { text: 'Net to receive', bold: true },
                       `${Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'USD',
@@ -1503,7 +1508,7 @@ export class SimulatorsIpComponent implements OnInit {
               body: [
                 [
                   {
-                    text: '#Fees',
+                    text: '#Installment',
                     alignment: 'center',
                     fillColor: '#b40c15',
                     color: 'white',

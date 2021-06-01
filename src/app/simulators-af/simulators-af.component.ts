@@ -142,12 +142,20 @@ export class SimulatorsAfComponent implements OnInit {
   }
 
   /****************************************************************** */
-
+  message = null;
+  message1 = null;
   //Funciones Simuladores de Ahorro
 
   flexSave(): void {
     this.tiempoMeses = this.term * 0.0328767;
     // console.log("tiempo meses", this.tiempoMeses);
+    if (this.isTranslated) {
+      this.message = 'Limits out of range';
+      this.message1 = 'Warning';
+    } else {
+      this.message = 'Límites fuera de rango ';
+      this.message1 = 'Advertencia';
+    }
     if (
       this.term < this.tiempoMinAhorroFlexSave ||
       this.term > this.tiempoMaxAhorroFlexSave ||
@@ -155,7 +163,7 @@ export class SimulatorsAfComponent implements OnInit {
     ) {
       this.term = this.tiempoMinAhorroFlexSave;
       this.amount = 1;
-      this.toastr.warning('Límites fuera de rango ', 'Advertencia', {
+      this.toastr.warning(this.message, this.message1, {
         timeOut: 4500,
       });
     } else {
@@ -337,13 +345,6 @@ export class SimulatorsAfComponent implements OnInit {
                       currency: 'USD',
                     }).format(this.returnRate)}`,
                   ],
-                  // [
-                  //   { text: 'Retención IR', bold: true },
-                  //   `${Intl.NumberFormat('en-US', {
-                  //     style: 'currency',
-                  //     currency: 'USD',
-                  //   }).format(this.retention)}`,
-                  // ],
                   [
                     { text: 'Total a Recibir', bold: true },
                     `${Intl.NumberFormat('en-US', {
@@ -423,7 +424,7 @@ export class SimulatorsAfComponent implements OnInit {
         columns: [
           {
             image: await this.getBase64ImageFromURL(
-              '../../assets/images/footer3Pdf.PNG'
+              '../../assets/images/franjaFooter2.PNG'
             ),
             width: 600,
             heigth: 1,
@@ -452,7 +453,7 @@ export class SimulatorsAfComponent implements OnInit {
             },
 
             {
-              text: `Date: ${new Date().toLocaleString()}\n Product : FlexSave savings`,
+              text: `Date: ${new Date().toLocaleString()}\n Product : FlexSave Savings Account`,
               alignment: 'right',
             },
           ],
@@ -492,7 +493,7 @@ export class SimulatorsAfComponent implements OnInit {
                     }).format(this.amount)}`,
                   ],
                   [
-                    { text: 'Current Nominal Rate', bold: true },
+                    { text: 'Nominal interest rate in force', bold: true },
                     `${this.tasaAhorroFlexSave}%`,
                   ],
                   [{ text: 'Term (Days)', bold: true }, `${this.term}`],
@@ -503,13 +504,6 @@ export class SimulatorsAfComponent implements OnInit {
                       currency: 'USD',
                     }).format(this.returnRate)}`,
                   ],
-                  // [
-                  //   { text: 'Retención IR', bold: true },
-                  //   `${Intl.NumberFormat('en-US', {
-                  //     style: 'currency',
-                  //     currency: 'USD',
-                  //   }).format(this.retention)}`,
-                  // ],
                   [
                     { text: 'Total to Receive', bold: true },
                     `${Intl.NumberFormat('en-US', {

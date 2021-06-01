@@ -3,7 +3,6 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule} from '@angular/forms';
-import { SimulatorsComponent } from './simulators/simulators.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ClientService } from './client.service';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -68,7 +67,6 @@ registerLocaleData(localeEs,'es');
 @NgModule({
   declarations: [
     AppComponent,
-    SimulatorsComponent,
     DialogExampleComponent,
     DialogExampleComponent2,
     SimulatorsEComponent,
