@@ -23,6 +23,8 @@ declare var hbspt: any; // put this at the top
 })
 export class SimulatorsAdpfComponent implements OnInit {
   crud_operation = { is_new: false, is_visible: false };
+  crud_operation2 = { is_new: false, is_visible: false };
+
   selectedIndex = 0;
   //Ahorro DPF
   amountDpf: number;
@@ -178,22 +180,27 @@ export class SimulatorsAdpfComponent implements OnInit {
   /******************************************************************************** */
 
   //Funciones para Guardar el formulario de cliente mediante el api
+  /************************************** */
+  //Funciones para Guardar el formulario de cliente mediante el api
   new() {
     this.crud_operation.is_visible = true;
-    this.crud_operation.is_new = true;
+
     // hbspt.forms.create({
     //   portalId: '8821548',
     //   formId: 'b3e4925e-7ec3-45ef-b106-e085420d9091',
     //   target: '#hubspotForm',
     // });
-    hbspt.forms.create({
-      portalId: '6606991',
-      formId: '70816719-56a7-467f-b589-ea231934f9c3',
-      target: '#hubspotForm',
-    });
-    window.scrollTo(0, 0);
+    // hbspt.forms.create({
+    //   portalId: '6606991',
+    //   formId: '87a486a8-87f8-49de-a6bf-efb79658e7a6',
+    //   target: '#hubspotForm',
+    // });
+    // window.scrollTo(0, 0);
   }
+  new2() {
+    this.crud_operation2.is_visible = true;
 
+  }
   /************************************************ */
   //Funciones formato mat-slider
   formatoTiempo(value: number) {

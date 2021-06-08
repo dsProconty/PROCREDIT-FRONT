@@ -12,6 +12,7 @@ import { DialogExampleComponent } from '../dialog-example/dialog-example.compone
 
 import { CurrencyPipe } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
+import {NgForm} from '@angular/forms';
 declare var hbspt: any;
 
 @Component({
@@ -27,6 +28,7 @@ export class SimulatorsVComponent implements OnInit {
 
   //curd_oepration variable para guardar el estado del formulario
   crud_operation = { is_new: false, is_visible: false };
+  crud_operation2 = { is_new: false, is_visible: false };
 
   //amortizacionIA y amortizacionF guarda el estado de las tablas de amortizacion
   amortizacionIA = { is_visible: false };
@@ -121,7 +123,8 @@ export class SimulatorsVComponent implements OnInit {
     private service: ClientService,
     private toastr: ToastrService,
     public dialog: MatDialog,
-    private translate: TranslateService
+    private translate: TranslateService,
+
   ) {
     this.data = [];
     this.itemS = 0;
@@ -441,20 +444,23 @@ export class SimulatorsVComponent implements OnInit {
   /************************************** */
   //Funciones para Guardar el formulario de cliente mediante el api
   new() {
-    this.current_clien = new Client();
     this.crud_operation.is_visible = true;
-    this.crud_operation.is_new = true;
+
     // hbspt.forms.create({
     //   portalId: '8821548',
     //   formId: 'b3e4925e-7ec3-45ef-b106-e085420d9091',
     //   target: '#hubspotForm',
     // });
-    hbspt.forms.create({
-      portalId: '6606991',
-      formId: '87a486a8-87f8-49de-a6bf-efb79658e7a6',
-      target: '#hubspotForm',
-    });
-    window.scrollTo(0, 0);
+    // hbspt.forms.create({
+    //   portalId: '6606991',
+    //   formId: '87a486a8-87f8-49de-a6bf-efb79658e7a6',
+    //   target: '#hubspotForm',
+    // });
+    // window.scrollTo(0, 0);
+  }
+  new2() {
+    this.crud_operation2.is_visible = true;
+
   }
 
   save() {
