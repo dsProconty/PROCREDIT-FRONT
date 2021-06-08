@@ -164,6 +164,8 @@ export class SimulatorsEComponent implements OnInit {
     } else {
       this.isTranslated = true;
     }
+    this.crud_operation.is_visible = false;
+    this.crud_operation2.is_visible = false;
   }
 
   cerrarTablas(): void {
@@ -1128,14 +1130,14 @@ export class SimulatorsEComponent implements OnInit {
                       {},
                     ],
                     [
-                      { text: 'Loan Amount', bold: true },
+                      { text: 'Loan amount', bold: true },
                       `${Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'USD',
                       }).format(this.valorPrestamo)}`,
                     ],
                     [
-                      { text: 'Term (Months)', bold: true },
+                      { text: 'Term (months)', bold: true },
                       `${this.numeroCuotas}`,
                     ],
                     [
@@ -1143,19 +1145,19 @@ export class SimulatorsEComponent implements OnInit {
                       `${this.tasaInteresAnual.toFixed(2)}%`,
                     ],
                     [
-                      { text: 'Periodic Interest Rate', bold: true },
+                      { text: 'Periodic interest rate', bold: true },
                       `${this.tasaInteresPeriodica.toFixed(2)}%`,
                     ],
                     [
-                      { text: 'Effective Interest Rate', bold: true },
+                      { text: 'Effective interest rate', bold: true },
                       `${(this.tasaEfectiva * 100).toFixed(2)}%`,
                     ],
                     [
-                      { text: 'Insurance Rate', bold: true },
+                      { text: 'Insurance rate', bold: true },
                       `${this.porcentajeSD.toFixed(3)}%`,
                     ],
                     [
-                      { text: 'Total Insurance to Pay', bold: true },
+                      { text: 'Total insurance to pay', bold: true },
                       `${Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'USD',
@@ -1186,7 +1188,7 @@ export class SimulatorsEComponent implements OnInit {
                       }).format(this.cuotaPagarF)}`,
                     ],
                     [
-                      { text: 'Total Interest to Pay', bold: true },
+                      { text: 'Total Interest to pay', bold: true },
                       `${Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'USD',
@@ -1233,7 +1235,7 @@ export class SimulatorsEComponent implements OnInit {
                     color: 'white',
                   },
                   {
-                    text: 'Interest of the Period',
+                    text: 'Interest for the period',
                     alignment: 'center',
                     fillColor: '#b40c15',
                     color: 'white',
@@ -1251,7 +1253,7 @@ export class SimulatorsEComponent implements OnInit {
                     color: 'white',
                   },
                   {
-                    text: 'Fee to pay',
+                    text: 'Installment to pay',
                     alignment: 'center',
                     fillColor: '#b40c15',
                     color: 'white',
@@ -1404,14 +1406,14 @@ export class SimulatorsEComponent implements OnInit {
                       {},
                     ],
                     [
-                      { text: 'Loan Amount', bold: true },
+                      { text: 'Loan amount', bold: true },
                       `${Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'USD',
                       }).format(this.valorPrestamo)}`,
                     ],
                     [
-                      { text: 'Term (Months)', bold: true },
+                      { text: 'Term (months)', bold: true },
                       `${this.numeroCuotas}`,
                     ],
                     [
@@ -1419,19 +1421,19 @@ export class SimulatorsEComponent implements OnInit {
                       `${this.tasaInteresAnual.toFixed(2)}%`,
                     ],
                     [
-                      { text: 'Periodic Interest Rate', bold: true },
+                      { text: 'Periodic interest rate', bold: true },
                       `${this.tasaInteresPeriodica.toFixed(2)}%`,
                     ],
                     [
-                      { text: 'Effective Interest Rate', bold: true },
+                      { text: 'Effective interest rate', bold: true },
                       `${(this.tasaEfectiva * 100).toFixed(2)}%`,
                     ],
                     [
-                      { text: 'Insurance Rate', bold: true },
+                      { text: 'Insurance rate', bold: true },
                       `${this.porcentajeSD.toFixed(2)}%`,
                     ],
                     [
-                      { text: 'Total Insurance to Pay', bold: true },
+                      { text: 'Total insurance to pay', bold: true },
                       `${Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'USD',
@@ -1459,7 +1461,7 @@ export class SimulatorsEComponent implements OnInit {
                       }).format(this.cuotaInicial)}`,
                     ],
                     [
-                      { text: 'Total Interest to Pay', bold: true },
+                      { text: 'Total interest to pay', bold: true },
                       `${Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'USD',
@@ -1508,7 +1510,7 @@ export class SimulatorsEComponent implements OnInit {
                     color: 'white',
                   },
                   {
-                    text: 'Interest of the Period',
+                    text: 'Interest for the period',
                     alignment: 'center',
                     fillColor: '#b40c15',
                     color: 'white',
@@ -1526,7 +1528,7 @@ export class SimulatorsEComponent implements OnInit {
                     color: 'white',
                   },
                   {
-                    text: 'Fee to pay',
+                    text: 'Installment to pay',
                     alignment: 'center',
                     fillColor: '#b40c15',
                     color: 'white',

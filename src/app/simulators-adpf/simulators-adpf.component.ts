@@ -102,6 +102,8 @@ export class SimulatorsAdpfComponent implements OnInit {
     } else {
       this.isTranslated = true;
     }
+    this.crud_operation.is_visible = false;
+    this.crud_operation2.is_visible = false;
   }
 
   /************************************************************************ */
@@ -484,7 +486,7 @@ export class SimulatorsAdpfComponent implements OnInit {
                     {},
                   ],
                   [
-                    { text: 'Savings Amount', bold: true },
+                    { text: 'Savings amount', bold: true },
                     `${Intl.NumberFormat('en-US', {
                       style: 'currency',
                       currency: 'USD',
@@ -494,9 +496,9 @@ export class SimulatorsAdpfComponent implements OnInit {
                     { text: 'Nominal interest rate in force', bold: true },
                     `${this.tasaAhorroDpf}%`,
                   ],
-                  [{ text: 'Term (Months)', bold: true }, `${this.termDpf}`],
+                  [{ text: 'Term (months)', bold: true }, `${this.termDpf}`],
                   [
-                    { text: 'Referential Earned Interest', bold: true },
+                    { text: 'Referential rarned interest', bold: true },
                     `${Intl.NumberFormat('en-US', {
                       style: 'currency',
                       currency: 'USD',
@@ -510,7 +512,7 @@ export class SimulatorsAdpfComponent implements OnInit {
                     }).format(this.retentionDpf)}`,
                   ],
                   [
-                    { text: 'Total to Receive', bold: true },
+                    { text: 'Total to receive', bold: true },
                     `${Intl.NumberFormat('en-US', {
                       style: 'currency',
                       currency: 'USD',

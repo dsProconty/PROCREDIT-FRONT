@@ -122,6 +122,8 @@ export class SimulatorsAfComponent implements OnInit {
     } else {
       this.isTranslated = true;
     }
+    this.crud_operation.is_visible = false;
+
   }
   /************************************************************************ */
   //Funciones para capturar cambio de pestana
@@ -486,7 +488,7 @@ export class SimulatorsAfComponent implements OnInit {
                   ],
 
                   [
-                    { text: 'Savings Amount', bold: true },
+                    { text: 'Savings amount', bold: true },
                     `${Intl.NumberFormat('en-US', {
                       style: 'currency',
                       currency: 'USD',
@@ -496,16 +498,16 @@ export class SimulatorsAfComponent implements OnInit {
                     { text: 'Nominal interest rate in force', bold: true },
                     `${this.tasaAhorroFlexSave}%`,
                   ],
-                  [{ text: 'Term (Days)', bold: true }, `${this.term}`],
+                  [{ text: 'Term (days)', bold: true }, `${this.term}`],
                   [
-                    { text: 'Referential Earned Interest', bold: true },
+                    { text: 'Referential earned interest', bold: true },
                     `${Intl.NumberFormat('en-US', {
                       style: 'currency',
                       currency: 'USD',
                     }).format(this.returnRate)}`,
                   ],
                   [
-                    { text: 'Total to Receive', bold: true },
+                    { text: 'Total to receive', bold: true },
                     `${Intl.NumberFormat('en-US', {
                       style: 'currency',
                       currency: 'USD',
