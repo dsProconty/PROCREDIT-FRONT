@@ -273,10 +273,10 @@ export class SimulatorsEComponent implements OnInit {
     this.limpiarTabla();
     if (this.isTranslated) {
       this.message = 'Maximum amount';
-      this.message2 = 'Minimum amount ';
+      this.message2 = 'minimum amount ';
       this.message3 = 'Amount out of range';
       this.message4 = 'Maximum time';
-      this.message5 = 'months Minimum time';
+      this.message5 = 'months, minimum time';
       this.message6 = 'months';
       this.message7 = 'Time out of range';
     } else {
@@ -1229,7 +1229,7 @@ export class SimulatorsEComponent implements OnInit {
               body: [
                 [
                   {
-                    text: '#Installment',
+                    text: '#Term',
                     alignment: 'center',
                     fillColor: '#b40c15',
                     color: 'white',
@@ -1504,7 +1504,7 @@ export class SimulatorsEComponent implements OnInit {
               body: [
                 [
                   {
-                    text: '#Installment',
+                    text: '#Term',
                     alignment: 'center',
                     fillColor: '#b40c15',
                     color: 'white',
